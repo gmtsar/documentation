@@ -11,7 +11,7 @@ Synopsis
 Description
 -----------
 **ALOS_fbd2fbs** reads in Fine Beam Double (FBD) polarization mode raw data (16MHz range sampling) 
-and upsample the data in range to match Fine Beam Single (FBS) polarization mode raw data (16MHz range sampling). 
+and upsample the data in range to match Fine Beam Single (FBS) polarization mode raw data (32MHz range sampling). 
 The algorithm is to read in each line of raw data, Fourier transform the data, add equal length of zeros to the end, 
 and then Fourier transform back. This will keep the data feature in Frequency domain.
 
