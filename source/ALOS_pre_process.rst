@@ -6,7 +6,7 @@ ALOS_pre_process
 
 Synopsis
 --------
-**ALOS_pre_process** *imagefile* *LEDfile* [-near near_range] [-radius RE] [-swap] [-V] [-debug] [-quiet] 
+**ALOS_pre_process** *imagefile* *LEDfile* [-near near_range] [-radius RE] [-swap] [-V] [-debug] [-quiet] ...
 
 Description
 -----------
