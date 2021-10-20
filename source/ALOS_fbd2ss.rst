@@ -21,7 +21,7 @@ and convert it to match a specific subswath of ALOS ScanSAR data.
 
 *ntot*          total number of rows between bursts in the SubSwath (i.e. *num_valid_az*/6)
 
-*a_stretch_a*   either the parameter from matching or (*PRF*_SubSwath - *PRF*_input)/*PRF*_input
+*a_stretch_a*   either the parameter from matching or (*PRF_SubSwath* - *PRF_input*)/*PRF_input*
 
 Example
 -------
