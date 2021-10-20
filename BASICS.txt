@@ -1,0 +1,9 @@
+pip install sphinx
+pip install sphinx_rtd_theme
+
+# edit the Makefile in build/ and change SPHINXBUILD to python3 -msphinx
+make html
+
+# to add a term
+cp esarp.rst new_term.rst
+# edit the new module and then add that term into modules.rst
