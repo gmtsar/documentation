@@ -13,15 +13,15 @@ Description
 **ALOS_fbd2ss** reads in Fine Beam Double (FBD) polarization mode raw data (16MHz range sampling) 
 and convert it to match a specific subswath of ALOS ScanSAR data.
 
-*input.PRM*     PRM file for input  image in fine beam dual polarization (FBD 14 MHz) (input) 
+ *input.PRM*     PRM file for input  image in fine beam dual polarization (FBD 14 MHz) (input) 
 
-*SubSwath.PRM*  PRM file with appropriate lines zeroed to match a WB1_SW4 file 
+ *SubSwath.PRM*  PRM file with appropriate lines zeroed to match a WB1_SW4 file 
 
-*ashift*        azimuth shift needed to align the first row of the FBD to the SubSwath 
+ *ashift*        azimuth shift needed to align the first row of the FBD to the SubSwath 
 
-*ntot*          total number of rows between bursts in the SubSwath (i.e. *num_valid_az*/6)
+ *ntot*          total number of rows between bursts in the SubSwath (i.e. *num_valid_az*/6)
 
-*a_stretch_a*   either the parameter from matching or (*PRF_SubSwath* - *PRF_input*)/*PRF_input*
+ *a_stretch_a*   either the parameter from matching or (*PRF_SubSwath* - *PRF_input*)/*PRF_input*
 
 Example
 -------
