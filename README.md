@@ -1,6 +1,8 @@
 # documentation
 GMTSAR documentation
 
+First install sphinx and rtd theme through pip.
+
 How to add a module:
 1) go to source, copy a module to a new_module_name.rst
 2) edit the file, change names, add description, usage, examples
