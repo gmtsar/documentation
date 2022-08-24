@@ -7,12 +7,15 @@ ALOS_baseline
 Synopsis
 --------
 **ALOS_baseline** *PRM_master* *PRM_aligned*
+
 or
+
 **ALOS_baseline** *PRM.list*
 
 Description
 -----------
 **ALOS_baseline** creates a baseline table using mode 1 (two input fils) or mode 2 (one input file)
+
 Mode 1:
 ALOS_baseline can be used to generate baseline parameters for one pair of images.
 This mode requires the input master PRM file name and the secondary or aligned PRM file name and
