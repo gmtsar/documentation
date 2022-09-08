@@ -18,7 +18,6 @@ Core Modules
    ENVI_pre_process
    ERS_pre_process
    esarp
-   MAI_processing
    SAT_baseline
    SAT_llt2rat
    SAT_look
@@ -30,5 +29,6 @@ Scripts
 .. toctree::
    :maxdepth: 1
 
+   MAI_processing.csh
    p2p_processing.csh
    pop_config.csh
