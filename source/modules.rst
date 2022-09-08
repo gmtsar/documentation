@@ -8,12 +8,19 @@ Core Modules
    ALOS_fbd2fbs
    ALOS_fbd2fbs_SLC
    ALOS_fbd2ss
+   ALOS_look
    ALOS_merge
    ALOS_mosaic_ss
    ALOS_pre_process
    ALOS_pre_process_SLC
    ALOS_pre_process_SS
+   ENVI_SLC_pre_process
+   ENVI_pre_process
+   ERS_pre_process
    esarp
+   MAI_processing
+   SAT_baseline
+   SAT_llt2rat
    SAT_look
    
 
