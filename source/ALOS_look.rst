@@ -18,8 +18,11 @@ a file of longitude, latitude, elevation, look_E, look_N, and look_U
 (ASCII file default)
 
  master.PRM   -  parameter file for master image and points to LED orbit file 
+
  inputfile    -  lon, lat, elevation [ASCII] 
+
  outputfile   -  lon, lat, elevation look_E look_N look_U [ASCII default] 
+
  -bos or -bod   -  binary single or double precision output
 
 

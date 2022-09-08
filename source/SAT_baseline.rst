@@ -23,8 +23,10 @@ This is used to compute height information
 
 Mode 2: **SAT_baseline** PRM_master PRM_aligned
 
-PRM_master 	   PRM file for reference image
-PRM_aligned 	   PRM file of secondary image
+     PRM_master  -   PRM file for reference image
+
+     PRM_aligned -   PRM file of secondary image
+
 Please make sure the orbit file data is in PRM 
 Program runs through repeat orbit to find nearest point 
 to the start, center and end on the reference orbit

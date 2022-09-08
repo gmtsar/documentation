@@ -13,10 +13,15 @@ Description
 **ENVI_pre_process** will digest Envisat formatted data 
 
     name_stem     -    filename of the .baq file
+
     near_range    -    near range (in meters) of the SAR image (put 0 if use default value)
+
     earth_radius  -    local earth radius (in meters) (put 0 if use default value)
+
     num_patch     -    number of patches  (put 0 if use default value)
+
     Doppler       -    Doppler value (blank if use default value)
+
     earth_radius  -    local earth radius (in meters) (put 0 if use default value)
 
 

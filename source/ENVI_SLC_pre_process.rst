@@ -15,6 +15,7 @@ Description
 (file names starting with ASA_WSS_1P)
 
     name_stem     -    filename of the data file
+
     earth_radius  -    local earth radius (in meters) (put 0 if use default value)
 
 
