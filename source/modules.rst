@@ -35,6 +35,11 @@ Core Modules
    fitoffset
    geocode_slc
    get_PRM
+   make_gaussian_filter
+   make_raw_csk
+   make_s1a_tops
+   make_s1a_tops_6par
+   make_slc_csk
    SAT_baseline
    SAT_llt2rat
    SAT_look
@@ -90,6 +95,13 @@ Scripts
    intf_batch_ALOS2_SCAN.csh
    intf_tops.csh
    intf_tops_parallel.csh
+   landmask.csh
+   landmask_ALOS2.csh
+   m2s.csh
    MAI_processing.csh
+   make_a_offset.csh
+   make_dem.csh
+   make_los_ascii.csh
+   make_profile.csh
    p2p_processing.csh
    pop_config.csh
