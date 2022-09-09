@@ -20,6 +20,8 @@ Core Modules
    bperp
    calc_dop_orb
    calc_dop_orb_envi
+   conv
+   cut_slc
    ENVI_SLC_pre_process
    ENVI_pre_process
    ERS_pre_process
@@ -46,6 +48,15 @@ Scripts
    align_tops_6par.csh
    align_tops_esd.csh
    baseline_table.csh
+   cleanup.csh
+   correct_insar_with_gnss.csh
+   correct_merge_offset.csh
+   create_frame_tops.csh
+   create_merge_input.csh
+   dem2topo_ra.csh
+   dem2topo_ra_ALOS2.csh
+   detrend_before_unwrap.csh
+   download_sentinel_orbits.csh
    MAI_processing.csh
    p2p_processing.csh
    pop_config.csh
