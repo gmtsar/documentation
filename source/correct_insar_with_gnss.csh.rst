@@ -25,7 +25,7 @@ Input files:
     filter_wavelength -  wavelength of the filter in meters (0.5 gain)
 
 
-*Note: See gnss_enu2los.csh for converting GNSS ENU displacement to LOS*
+*Note: See :doc:`gnss_enu2los.csh` for converting GNSS ENU displacement to LOS*
 
 
 The GNSS-correction/GNSS-integration method is an area of active research. To learn about the method and it's evolution,
