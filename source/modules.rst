@@ -40,6 +40,11 @@ Core Modules
    make_s1a_tops
    make_s1a_tops_6par
    make_slc_csk
+   make_slc_rs2
+   make_slc_s1a
+   merge_swath
+   nearest_grid
+   offset_topo
    SAT_baseline
    SAT_llt2rat
    SAT_look
@@ -103,5 +108,9 @@ Scripts
    make_dem.csh
    make_los_ascii.csh
    make_profile.csh
+   merge_batch.csh
+   merge_unwrap_geocode_tops.csh
+   organize_files_tops.csh
+   organize_files_tops_linux.csh
    p2p_processing.csh
    pop_config.csh
