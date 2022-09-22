@@ -50,10 +50,15 @@ Core Modules
    phasediff
    phasediff_get_topo_phase
    phasefilt
+   read_data_file_ccrs
+   read_data_file_dpaf
+   read_sarleader_dpaf
+   resamp
    SAT_baseline
    SAT_llt2rat
    SAT_look
-   
+   sbas  
+   sbas_parallel 
 
 Scripts
 =======
@@ -135,4 +140,13 @@ Scripts
    prep_sbas.csh
    preproc_batch_tops.csh
    preproc_batch_tops_esd.csh
+   proj_ll2ra.csh
+   proj_ll2ra_ascii.csh
+   proj_model.csh
+   proj_ra2ll.csh
+   proj_ra2ll_ascii.csh
+   samp_slc.csh
+   select_pairs.csh
+   shift_atime_PRM.csh
+   slc2amp.csh
    ENDpop_config.csh
