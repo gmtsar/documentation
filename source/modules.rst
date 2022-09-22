@@ -45,6 +45,11 @@ Core Modules
    merge_swath
    nearest_grid
    offset_topo
+   p_scatter
+   phase2topo
+   phasediff
+   phasediff_get_topo_phase
+   phasefilt
    SAT_baseline
    SAT_llt2rat
    SAT_look
@@ -112,5 +117,22 @@ Scripts
    merge_unwrap_geocode_tops.csh
    organize_files_tops.csh
    organize_files_tops_linux.csh
+   p2p_ALOS2_SCAN_Frame.csh
+   p2p_ALOS2_SCAN_SLC.csh
+   p2p_ENVI.csh
+   p2p_ERS.csh
+   p2p_S1_TOPS.csh
+   p2p_S1_TOPS_Frame.csh
    p2p_processing.csh
    pop_config.csh
+   pre_proc.csh
+   pre_proc_batch.csh
+   pre_proc_batch_ALOS2_SCAN.csh
+   pre_proc_batch_ALOS_SLC.csh
+   pre_proc_init.csh
+   prep_data.csh
+   prep_data_linux.csh
+   prep_sbas.csh
+   preproc_batch_tops.csh
+   preproc_batch_tops_esd.csh
+   ENDpop_config.csh
