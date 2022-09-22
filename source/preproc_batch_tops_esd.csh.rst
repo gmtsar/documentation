@@ -15,7 +15,7 @@ Description
 
 Input:
 
-  data.in    -   input file list of specific SAFE measurement file root names and their respective orbit files, formatted as below. To automatically create `data.in` use :doc:`prep_data[_linux}.csh` .
+  data.in    -   input file list of specific SAFE measurement file root names and their respective orbit files, formatted as below. To automatically create `data.in` use :doc:`prep_data[_linux].csh` .
              
                format of data.in:
 
