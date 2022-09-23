@@ -54,10 +54,8 @@ Most common options:
   --nproc <integer>               number of processors used in tile mode
 
 
-type snaphu -h for a complete list of options
+Note: type snaphu -h for a complete list of options
 
-Reference:
-Chen, C.W., & Zebker, H.A. (2002). Phase Unwrapping for Large SAR Interferograms: Statistical Segmentation and Generalized Network Models, IEEE Transactions on Geoscience and Remote Sensing, 40(8). https://doi.org/10.1109/TGRS.2002.802453
 
 Example
 -------
