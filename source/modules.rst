@@ -148,6 +148,7 @@ Scripts
    proj_ra2ll.csh
    proj_ra2ll_ascii.csh
    samp_slc.csh
+   sarp.csh
    select_pairs.csh
    shift_atime_PRM.csh
    slc2amp.csh

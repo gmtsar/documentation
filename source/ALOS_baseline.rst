@@ -26,10 +26,30 @@ Mode 2:
   image in the list assumed to be the master image, and all others listed to be the secondary aligned
   images. This writes out decimal year, perpendicular baseline, and the PRM name.
 
+Required Arguments
+-----------
+Mode 1:
+
+*PRM_master* 
+	
+	Master or reference image PRM file.
+
+*PRM_aligned*
+
+	Aligned or secondary image PRM file.
+
+Mode 1:
+
+*PRM.list*
+
+	List of image PRM files, where the first line in the file is assumed to be the master image.
+
 Example
 -------
-    **ALOS_baseline** IMG-HH-ALPSRP049040660-H1.0__A.PRM IMG-HH-ALPSRP049050660-H1.0__A.PRM
+Mode 1::     
 
-or
+    ALOS_baseline IMG-HH-ALPSRP049040660-H1.0__A.PRM IMG-HH-ALPSRP049050660-H1.0__A.PRM
 
-    **ALOS_baseline** PRM.list 
+Mode 2:: 
+
+    ALOS_baseline PRM.list 

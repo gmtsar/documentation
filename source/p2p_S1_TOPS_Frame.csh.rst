@@ -18,7 +18,7 @@ Execute this command at the directory location above `raw` and `topo`.
 
 During processing, F1, F2, F3 and merge folder will be generated. Final results will be placed in the merge folder, with phase.grd, corr
 
-   *EOF files    =  orbit files. One can download precise or restituted orbit files with :doc:`download_sentinel_orbits[_linux].csh`
+   *EOF files    =  orbit files. One can download precise or restituted orbit files with :doc:`download_sentinel_orbits.csh` or :doc:`download_sentinel_orbits_[linux].csh`
 
    polarization  =  vv  vh  hh or hv
 
