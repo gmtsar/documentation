@@ -42,6 +42,7 @@ Core Modules
    make_slc_csk
    make_slc_rs2
    make_slc_s1a
+   make_slc_tsx
    merge_swath
    nearest_grid
    offset_topo
