@@ -1,8 +1,8 @@
 .. index:: ! download_sentinel_orbits_linux.csh
 
-******************************
+**********************************
 download_sentinel_orbits_linux.csh
-******************************
+**********************************
 
 Synopsis
 --------
@@ -10,7 +10,7 @@ Synopsis
 
 Description
 -----------
-**download_sentinel_orbits_linux.csh** Downloads precise or restituted orbits for specific Sentinel-1 *.SAFE data files
+**download_sentinel_orbits_linux.csh** Downloads precise or restituted orbits for specific Sentinel-1 .SAFE data files
 
 safefilelist:
 

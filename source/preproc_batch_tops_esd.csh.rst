@@ -1,8 +1,8 @@
 .. index:: ! preproc_batch_tops_esd.csh
 
-**************
+**************************
 preproc_batch_tops_esd.csh
-**************
+**************************
 
 Synopsis
 --------
@@ -27,7 +27,7 @@ Input:
 
                     s1a-iw1-slc-vv-20150715...001:s1a-iw1-slc-vv-20150715...001:s1a-iw1-slc-vv-20150715...001:S1A_OPER_AUX_POEORB_V20150625_20150627.EOF
 
-   dem.grd   -   DEM file located in the `topo` folder must be linked here
+   dem.grd   -   DEM file located in the topo folder must be linked here
 
    mode      -   mode = 1 prepares for alignment and creates a baseline-time.ps plot to choose a master image, while mode=2 does the actual alignment (user-chosen master image must be promoted to the first line in data.in before mode 2 is run).
 
@@ -37,7 +37,7 @@ Output:
 
     baseline.ps align_table.ra (contains info for precise geomatric alignment)
     
-    Mode 2 produces the final *.PRM *.LED and aligned *.SLC files
+    Mode 2 produces the final .PRM .LED and aligned .SLC files
 
   Note:
     The names must be in time order in each line to be stitched together
