@@ -1,8 +1,8 @@
 .. index:: ! p2p_S1_TOPS_Frame.csh
 
-**************
+*********************
 p2p_S1_TOPS_Frame.csh
-**************
+*********************
 
 Synopsis
 --------
@@ -12,13 +12,13 @@ Description
 -----------
 **p2p_S1_TOPS_Frame.csh** A processing script for producing an interferogram from Sentinel-1 TOPS data.
 
-Place the *.SAFE file in a directory called raw and a dem.grd file in a parallel directory called topo. 
+Place the SAFE file in a directory called raw and a dem.grd file in a parallel directory called topo. 
 
 Execute this command at the directory location above raw and topo.
 
 During processing, F1, F2, F3 and merge folder will be generated. Final results will be placed in the merge folder, with phase.grd, corr
 
-   *EOF files    =  orbit files. One can download precise or restituted orbit files with :doc:`download_sentinel_orbits.csh` or :doc:`download_sentinel_orbits_linux.csh`
+   EOF files    =  orbit files. One can download precise or restituted orbit files with :doc:`download_sentinel_orbits.csh` or :doc:`download_sentinel_orbits_linux.csh`
 
    polarization  =  vv  vh  hh or hv
 
