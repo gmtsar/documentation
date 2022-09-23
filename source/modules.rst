@@ -82,7 +82,6 @@ Scripts
    align_batch_ALOS2_SCAN.csh
    align_batch_ALOS_SLC.csh
    align_tops.csh
-   align_tops_6par.csh
    align_tops_esd.csh
    baseline_table.csh
    cleanup.csh
@@ -92,7 +91,6 @@ Scripts
    create_merge_input.csh
    dem2topo_ra.csh
    dem2topo_ra_ALOS2.csh
-   detrend_before_unwrap.csh
    download_sentinel_orbits.csh
    dump_orbit_envi.pl
    dump_orbit_ers.pl
@@ -101,7 +99,6 @@ Scripts
    extract_one_time_series.csh
    fetchOrbit.py
    filter.csh
-   filter_alos_ss.csh
    find_auxi.pl
    fit_planar_trend.py
    fitoffset.csh
@@ -125,7 +122,6 @@ Scripts
    make_a_offset.csh
    make_dem.csh
    make_los_ascii.csh
-   make_profile.csh
    merge_batch.csh
    merge_unwrap_geocode_tops.csh
    organize_files_tops.csh
@@ -134,7 +130,6 @@ Scripts
    p2p_ALOS2_SCAN_SLC.csh
    p2p_ENVI.csh
    p2p_ERS.csh
-   p2p_S1_TOPS.csh
    p2p_S1_TOPS_Frame.csh
    p2p_processing.csh
    pop_config.csh
@@ -142,7 +137,6 @@ Scripts
    pre_proc_batch.csh
    pre_proc_batch_ALOS2_SCAN.csh
    pre_proc_batch_ALOS_SLC.csh
-   pre_proc_init.csh
    prep_data.csh
    prep_data_linux.csh
    prep_sbas.csh
@@ -163,4 +157,3 @@ Scripts
    stack_corr.csh
    tide_correction.csh
    unwrap_parallel.csh
-   update_PRM.csh
