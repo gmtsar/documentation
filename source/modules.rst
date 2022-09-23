@@ -93,6 +93,7 @@ Scripts
    dem2topo_ra.csh
    dem2topo_ra_ALOS2.csh
    download_sentinel_orbits.csh
+   download_sentinel_orbits_linux.csh
    dump_orbit_envi.pl
    dump_orbit_ers.pl
    dump_time_envi.pl
