@@ -22,7 +22,7 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = u'GMTSAR'
-copyright = u'2021, Xiaohua Xu'
+copyright = u'2022, Xiaohua Xu'
 author = u'Xiaohua Xu'
 
 # The short X.Y version
