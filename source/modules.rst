@@ -59,6 +59,14 @@ Core Modules
    SAT_look
    sbas  
    sbas_parallel 
+   snaphu
+   solid_tide
+   spectral_diversity
+   split_aperture
+   split_spectrum
+   stitch_tops
+   update_PRM
+   xcorr
 
 Scripts
 =======
@@ -149,4 +157,10 @@ Scripts
    select_pairs.csh
    shift_atime_PRM.csh
    slc2amp.csh
-   ENDpop_config.csh
+   snaphu.csh
+   snaphu_interp.csh
+   stack.csh
+   stack_corr.csh
+   tide_correction.csh
+   unwrap_parallel.csh
+   update_PRM.csh
