@@ -14,7 +14,7 @@ or
 
 Description
 -----------
-**ALOS_baseline** creates a baseline table using mode 1 (two input fils) or mode 2 (one input file)
+**ALOS_baseline** creates a baseline table using mode 1 (two input files) or mode 2 (one input file)
 
 Mode 1:
   ALOS_baseline can be used to generate baseline parameters for one pair of images.
