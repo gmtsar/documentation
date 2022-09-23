@@ -17,4 +17,6 @@ and then Fourier transform back. This will keep the data feature in Frequency do
 
 Example
 -------
-    **ALOS_fbd2fbs_SLC** IMG-HH-ALPSRP049040660-H1.0__A.PRM IMG-HH-ALPSRP049040660-H1.0__A_FBS.PRM
+ ::
+    
+    ALOS_fbd2fbs_SLC IMG-HH-ALPSRP049040660-H1.0__A.PRM IMG-HH-ALPSRP049040660-H1.0__A_FBS.PRM
