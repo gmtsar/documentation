@@ -12,37 +12,71 @@ Description
 -----------
 **ALOS_pre_process_SLC** creates .SLC (Single Look Complex) format data and writes out parameters in .PRM format 
 
-    imagefile   -   ALOS Level 1.1 Single Look Complex file (CEOS format):
+Required Arguments
+------------------
 
-    LEDfile -   ALOS Level 1.1 LED file (CEOS leaderfile format):  
+*imagefile*   
 
-    options: 
+	ALOS Level 1.1 Single Look Complex file (CEOS format):
 
-        -near *near_range* - specify the *near_range* (m) 
+*LEDfile* 
 
-        -radius *RE* - specify the local earth radius *RE* (m) 
+	ALOS Level 1.1 LED file (CEOS leaderfile format):  
 
-        -SLC_factor *fact* - scale factor *fact* to convert float to int SLC [default 1.0] 
 
-        -swap - do byte-swap (should be automatic) 
+Optional Arguments
+------------------
 
-        -nodopp - does not calculate doppler (sets fd1 to zero!) 
+**-near**  *near_range* 
 
-        -ALOS1 - ALOS2 L1.1 data format 
+	Specify the *near_range* (m) 
 
-        -ALOS2 - ALOS2 L1.1 data format (default)
+**-radius**  *RE*   
 
-        -LED - write GMTSAR generic LED format output and update PRM (default) 
+	Specify the local earth radius *RE* (m) 
 
-        -noLED - do not write GMTSAR generic LED format output 
+**-SLC_factor**  *fact*   
 
-        -V - verbose write information) 
+	Scale factor *fact* to convert float to int SLC [default 1.0] 
 
-        -debug - write even more information 
+**-swap**    
 
-        -quiet - don't write any information 
+	Do byte-swap (should be automatic) 
+
+**-nodopp**    
+
+	Does not calculate doppler (sets fd1 to zero!) 
+
+**-ALOS1**    
+
+	ALOS2 L1.1 data format 
+
+**-ALOS2**    
+
+	ALOS2 L1.1 data format (default)
+
+**-LED**    
+
+	Write GMTSAR generic LED format output and update PRM (default) 
+
+**-noLED**    
+
+	Do not write GMTSAR generic LED format output 
+
+**-V**    
+
+	Verbose write information) 
+
+**-debug**    
+
+	Write even more information 
+
+**-quiet**    
+
+	Don't write any information 
 
 Example
 -------
-    **ALOS_pre_process_SLC** IMG-HH-ALOS2011986990-140813-HBQR1.1__A LED-ALOS2011986990-140813-HBQR1.1__A 
-    -SLC_factor 1. -rbias -70.0000 -tbias 0.068759 
+ ::
+
+    ALOS_pre_process_SLC IMG-HH-ALOS2011986990-140813-HBQR1.1__A LED-ALOS2011986990-140813-HBQR1.1__A -SLC_factor 1. -rbias -70.0000 -tbias 0.068759 
