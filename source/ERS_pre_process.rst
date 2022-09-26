@@ -12,20 +12,38 @@ Description
 -----------
 **ERS_pre_process** will digest ERS SAR data           
 
-     name_stem     -    filename of the .dat and .ldr file
- 
-     near_range    -    near range (in meters) of the SAR image (put 0 if use default value)
+Required Arguments
+------------------
 
-     earth_radius  -    local earth radius (in meters) (put 0 if use default value)
+*name_stem*          
+
+	Filename of the .dat and .ldr file
  
-     num_patch     -    number of patches  (put 0 if use default value)
+*near_range*         
+
+	Near range (in meters) of the SAR image (put 0 if use default value)
+
+*earth_radius*       
+
+	Local earth radius (in meters) (put 0 if use default value)
  
-     Doppler       -    Doppler value (blank if use default value)
+*num_patch*          
+
+	Number of patches  (put 0 if use default value)
+
+Optional Arguments
+------------------
+ 
+*Doppler*           
+
+	Doppler value (blank if use default value)
 
 
 Example
 -------
-    **ERS_pre_process** ERS_pre_process ERS2_356_2925_61332 978992.922 6378000 5           
+ ::
+
+    ERS_pre_process ERS_pre_process ERS2_356_2925_61332 978992.922 6378000 5           
 
 This command will preprocess ERS2 SAR data 'ERS2_356_2925_61332'                                                              
 then output parameter file 'ERS2_356_2925_61332.PRM' and fixed raw data                           

@@ -12,23 +12,41 @@ Description
 -----------
 **ENVI_pre_process** will digest Envisat formatted data 
 
-    name_stem     -    filename of the .baq file
 
-    near_range    -    near range (in meters) of the SAR image (put 0 if use default value)
+Required Arguments
+------------------
 
-    earth_radius  -    local earth radius (in meters) (put 0 if use default value)
+*name_stem*          
 
-    num_patch     -    number of patches  (put 0 if use default value)
+	Filename of the .baq file
 
-    Doppler       -    Doppler value (blank if use default value)
+*near_range*         
 
-    earth_radius  -    local earth radius (in meters) (put 0 if use default value)
+	Near range (in meters) of the SAR image (put 0 if use default value)
+
+*earth_radius*       
+
+	Local earth radius (in meters) (put 0 if use default value)
+
+*num_patch*          
+
+	Number of patches  (put 0 if use default value)
+
+*Doppler*            
+
+	Doppler value (blank if use default value)
+
+*earth_radius*       
+
+	Local earth radius (in meters) (put 0 if use default value)
 
 
 
 Example
 -------
-    **ENVI_pre_process** ENV1_2463_2943_15046 978992.922 6378000 5                          
+ ::
+
+    ENVI_pre_process ENV1_2463_2943_15046 978992.922 6378000 5                          
 
 This command will preprocess raw Envisat ASAR data 'ENV1_2463_2943_15046.baq'                                                 
 then output parameter file 'ENV1_2463_2943_15046.PRM' and raw data file 'ENV1_2463_2943_15046.raw' 

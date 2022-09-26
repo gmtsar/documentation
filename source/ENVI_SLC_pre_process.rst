@@ -14,15 +14,24 @@ Description
 (files with extension .E1 .E2 or .N1). It will not (yet) read the Wide Scan mode format
 (file names starting with ASA_WSS_1P)
 
-    name_stem     -    filename of the data file
+Required Arguments
+------------------
 
-    earth_radius  -    local earth radius (in meters) (put 0 if use default value)
+*name_stem*    
+
+	Filename of the data file
+
+*earth_radius*       
+
+	Local earth radius (in meters) (put 0 if use default value)
 
 
 
 Example
 -------
-    **ENVI_SLC_pre_process** ASA_IMS_1PNESA20060130_054255_000000182044_00392_20486_0000 6378000
+ ::
+
+    ENVI_SLC_pre_process ASA_IMS_1PNESA20060130_054255_000000182044_00392_20486_0000 6378000
 
 This command will preprocess Envisat formatted L.1 ASAR data 'ASA_IMS_1PNESA20060130_054255_000000182044_00392_20486_0000.N1' 
 then output parameter file 'ASA_IMS_1PNESA20060130_054255_000000182044_00392_20486_0000.PRM', SLC data file 

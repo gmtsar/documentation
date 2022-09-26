@@ -17,17 +17,30 @@ ALOS_look reads in an input file of longitude, latitude, and elevation and outpu
 a file of longitude, latitude, elevation, look_E, look_N, and look_U 
 (ASCII file default)
 
- master.PRM   -  parameter file for master image and points to LED orbit file 
+Required Arguments
+------------------
 
- inputfile    -  lon, lat, elevation [ASCII] 
+*master.PRM*  
 
- outputfile   -  lon, lat, elevation look_E look_N look_U [ASCII default] 
+	Parameter file for master image and points to LED orbit file 
 
- -bos or -bod   -  binary single or double precision output
+*inputfile*  
+
+	Format: Longitude, Latitude, Elevation(m) [ASCII] 
+
+*outputfile*   
+
+	Format: Longitude, Latitude, Elevation(m), look_East, look_North, look_Up [ASCII default] 
+
+*-bos*  or  *-bod*   
+
+	Binary single (s) or double (d) precision output
 
 
 Example
 -------
-    **ALOS_look** master.PRM < topo.llt > topo.lltn 
+ ::
+
+    ALOS_look master.PRM < topo.llt > topo.lltn 
 
 

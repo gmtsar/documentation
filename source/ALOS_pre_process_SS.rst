@@ -13,35 +13,68 @@ Description
 -----------
 **ALOS_pre_process_SS** creates .raw format data and writes out parameters in .PRM format 
 
-    imagefile   -   ALOS Level 1.0 complex ScanSAR file (CEOS format):
 
-    LEDfile -   ALOS Level 1.0 LED file (CEOS leaderfile format):  
+Required Arguments
+------------------
 
-    options: 
+*imagefile*   
 
-        -near *near_range* - specify the *near_range* (m) 
+	ALOS Level 1.0 complex ScanSAR file (CEOS format):
 
-        -radius *RE* - specify the local earth radius *RE* (m) 
+*LEDfile*    
 
-        -SLC_factor *fact* - scale factor *fact* to convert float to int SLC [default 1.0] 
+	ALOS Level 1.0 LED file (CEOS leaderfile format):  
 
-        -swath *N* - specify swath number *N* 1-5 [default 4] 
 
-        -burst_skip *M* - number of burst *M* to skip before starting output (1559 lines/burst) 
+Optional Arguments
+------------------
 
-        -num_burst *N_burst* - number of burst *N_burst* to process [default all] (there are 72 bursts in a WB1 frame) 
+**-near**  *near_range*   
 
-        -swap - do byte-swap (should be automatic) 
+	Specify the *near_range* (m) 
 
-        -fd1 *DOPP* - sets doppler centroid [fd1] to *DOPP*
+**-radius**  *RE*   
 
-        -V - verbose write information) 
+	Specify the local earth radius *RE* (m) 
 
-        -debug - write even more information 
+**-SLC_factor**  *fact*   
 
-        -quiet - don't write any information 
+	Scale factor *fact* to convert float to int SLC [default 1.0] 
+
+**-swath**  *N*   
+
+	Specify swath number *N* 1-5 [default 4] 
+
+**-burst_skip**  *M*   
+
+	Number of burst *M* to skip before starting output (1559 lines/burst) 
+
+**-num_burst**  *N_burst*   
+
+	Number of burst *N_burst* to process [default all] (there are 72 bursts in a WB1 frame) 
+
+**-swap**    
+
+	Do byte-swap (should be automatic) 
+
+**-fd1**  *DOPP*   
+
+	Sets doppler centroid [fd1] to *DOPP*
+
+**-V**   
+
+	Verbose write information) 
+
+**-debug**   
+
+	Write even more information 
+
+**-quiet**    
+
+	Don't write any information 
         
 Example
 -------
-    **ALOS_pre_process_SS** IMG-HH-ALPSRS049842950-W1.0__D LED-ALPSRS049842950-W1.0__D -near 847916 
-    -radius 6371668.872945 -burst_skip 5 -num_burst 36  
+ ::
+
+    ALOS_pre_process_SS IMG-HH-ALPSRS049842950-W1.0__D LED-ALPSRS049842950-W1.0__D -near 847916 -radius 6371668.872945 -burst_skip 5 -num_burst 36 

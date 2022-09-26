@@ -12,48 +12,94 @@ Description
 -----------
 **ALOS_pre_process** creates .raw format data and writes out parameters in .PRM format 
 
-    imagefile   -   ALOS Level 1.0 complex file (CEOS format):
+Required Arguments
+------------------
 
-    LEDfile -   ALOS Level 1.0 LED file (CEOS leaderfile format):  
+*imagefile*   
 
-    options: 
+	ALOS Level 1.0 complex file (CEOS format):
 
-        -near *near_range* - specify the *near_range* (m) 
+*LEDfile* 
 
-        -radius *RE* - specify the local earth radius *RE* (m) 
+	ALOS Level 1.0 LED file (CEOS leaderfile format):  
 
-        -swap - do byte-swap (should be automatic) 
+Optional Arguments
+------------------
 
-        -nodopp - does not calculate doppler (sets fd1 to zero!) 
+**-near**  *near_range* 
 
-        -npatch - set the number of patches 
+	Specify the *near_range* (m) 
 
-        -fd1 *DOPP* : sets doppler centroid [fd1] to *DOPP*
+**-radius**  *RE* 
 
-        -quad - adjust parameters for quad pol mod (PRF/2)
+	Specify the local earth radius *RE* (m) 
 
-        -ALOSE - use ERSDAC format 
+**-swap**  
 
-        -ALOS - use AUIG format (default) 
+	Do byte-swap (should be automatic) 
 
-        -LED - write GMTSAR generic LED format output and update PRM (default) 
+**-nodopp**  
 
-        -noLED - do not write GMTSAR generic LED format output 
+	Does not calculate doppler (sets fd1 to zero!) 
 
-        -roi - write roi_pac format output
+**-npatch**  
 
-        -V - verbose write information) 
+	Set the number of patches 
 
-        -debug - write even more information 
+**-fd1**  *DOPP*  
 
-        -quiet - don't write any information 
+	Sets doppler centroid [fd1] to *DOPP*
 
-        -force_slope *chirp_slope* - force a value for the *chirp_slope*
+**-quad** 
 
-        -chirp_ext *chirp_ext* - force a value for the chirp extension *chirp_ext* (integer)
+	Adjust parameters for quad pol mod (PRF/2)
 
-        -tbias *tbias* - correct the clock bias *tbias* (positive value means plus)
+**-ALOSE**  
+
+	Use ERSDAC format 
+
+**-ALOS**  
+
+	Use AUIG format (default) 
+
+**-LED**  
+
+	Write GMTSAR generic LED format output and update PRM (default) 
+
+**-noLED**  
+
+	Do not write GMTSAR generic LED format output 
+
+**-roi**  
+
+	Write roi_pac format output
+
+**-V**  
+
+	Verbose write information) 
+
+**-debug**  
+
+	Write even more information 
+
+**-quiet**  
+
+	Don't write any information 
+
+**-force_slope**  *chirp_slope* 
+
+	Force a value for the *chirp_slope*
+
+**-chirp_ext**  *chirp_ext* 
+
+	Force a value for the chirp extension *chirp_ext* (integer)
+
+**-tbias**  *tbias* 
+
+	Correct the clock bias *tbias* (positive value means plus)
 
 Example
 -------
-    **ALOS_pre_process**  IMG-HH-ALPSRP050420840-H1.0__A  LED-ALPSRP050420840-H1.0__A  
+ ::
+
+    ALOS_pre_process  IMG-HH-ALPSRP050420840-H1.0__A  LED-ALPSRP050420840-H1.0__A  

@@ -10,16 +10,29 @@ Synopsis
 
 Description
 -----------
-**ALOS_mosaic_ss[_2frames]** will mosiac 5 subswath of [2 frames of] ALOS-1 ScanSAR in radar coordinates.
+**ALOS_mosaic_ss[_2frames]** will mosiac 5 subswaths of [2 frames of] ALOS-1 ScanSAR in radar coordinates.
 
- prm[1-5]   -   the PRM files 
+Required Arguments
+------------------
+
+*prm[1-5]*   
+
+	The PRM files 
  
- grd[1-5]   -   the GMT grid files (corr, phase, phasefilt) 
+*grd[1-5]*  
 
- dec    -   decimation factor in radar coordinates (e.g. 10) 
+	The GMT grid files (corr, phase, phasefilt) 
 
- dir    -   dir is 1 means mosaic 5 subswaths, dir is 0 means divide the mosaic into 5 subswaths 
+*dec*   
+
+	Decimation factor in radar coordinates (e.g. 10) 
+
+*dir*   
+
+	Dir = 1 means mosaic 5 subswaths, dir = 0 means divide the mosaic into 5 subswaths 
 
 Example
 -------
-    **ALOS_mosaic_ss[_2frames]** 
+ ::
+
+    ALOS_mosaic_ss[_2frames] 
