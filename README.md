@@ -20,4 +20,4 @@ Three main structure rules are suggested to maintain consistency:
 
 3) Underneath **Required Arguments** input file names are listed with their names starting in the first character column, in italics. The description of the input argument is placed two carriage returns and a tab over beneath the name. 
 
-4) To link another documentation page to the page you are working on, you must reference the exact name of the other tool page. To build the link, type `:doc:\ `name` \ ` (e.g., if I wanted to link to preproc_batch_tops.csh, I'd make a link like ` :doc:\ `preproc_batch_tops.csh` \ ` ). When the html pages are built, the links will be visible and usable. 
+4) To link another documentation page to the page you are working on, you must reference the exact name of the other tool page. To build the link, type `:doc: ``` `name` ``` ` (e.g., if I wanted to link to preproc_batch_tops.csh, I'd make a link like ` :doc: ``` `preproc_batch_tops.csh` ``` ` ). When the html pages are built, the links will be visible and usable. 
