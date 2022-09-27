@@ -16,7 +16,7 @@ Check out source/ALOS_merge.rst as an example of formatting for each documentati
 Three main structure rules are suggested to maintain consistency:
 1) Subheadings are delineated by "underlining" your subheader text with "----" characters. The main subheadings are **Synopsis**, **Description**, **Required Arguments**, [ **Optional Arguments** , if necessary], and **Example**. In addition, if specific tools have Citations/References, they are listed in a **References** subheading at the bottom.
 
-2) Underneath **Synopsis**, the name of the tool is bolded with two asterisks characters on either side of the word, and all generic argument names are italicized with single asterisks on each side of the argument name (e.g., `*inputfile*`)
+2) Underneath **Synopsis**, the name of the tool is bolded with two asterisks characters on either side of the word (e.g., `**ALOS_look**` ), and all generic argument names are italicized with single asterisks on each side of the argument name (e.g., `*inputfile*`)
 
 3) Underneath **Required Arguments** input file names are listed with their names starting in the first character column, in italics. The description of the input argument is placed two carriage returns and a tab over beneath the name. 
 
