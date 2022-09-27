@@ -12,20 +12,35 @@ Synopsis
 Description
 -----------
 **calc_dop_orb**                       
+
+Required Arguments
+------------------
     
-    file.PRM        - input name of PRM file 
+*file.PRM*         
 
-    new.PRM         - output additional parameters to add to the PRM file 
+	Input name of PRM file 
 
-    earth_radius    - input set earth radius, 0 calculates radius 
+*new.PRM*          
 
- [doppler_centroid] - no parameter calculates doppler 
+	Output additional parameters to add to the PRM file 
 
- [doppler_centroid] - use value (e.g. 0.0) to force doppler 
+*earth_radius*     
+
+	Input set earth radius, 0 calculates radius 
+
+Optional Argument
+-----------------
+
+*doppler_centroid*  
+
+	No parameter calculates doppler. Use a value (e.g., 0.0) to force no calculation of doppler centroid
+
 
 Example
 -------
-    **calc_dop_orb** 
+ ::
+
+    calc_dop_orb 
 
 
 

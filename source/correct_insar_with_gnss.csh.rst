@@ -14,19 +14,34 @@ Description
 
 The user must supply the grid to be corrected, as well as the GNSS observations to correct that grid. The correction takes the GNSS observations in Line-Of-Sight (LOS) and extracts the values of those locations in the InSAR grid supplied. It then computes a residual (InSAR-GNSS), and calculates an interpolated gridusing GMT surface. This grid is then filtered using a Gaussian filter of the wavelength supplied by the user (we recommend using the average station spacing of your GNSS observations). The filtered grid is then upsampled, and subtracted from your supplied InSAR grid.
 
-Input files:
+Required Arguments
+------------------
 
-    master.PRM        -  PRM file for the master SAR image
+*master.PRM*          
+
+	PRM file for the master SAR image
    
-    phase.grd         -  phase file to be corrected
+*phase.grd*           
+
+	Phase file to be corrected
    
-    gnsslos.rad       -  GNSS displacements in LOS in millimeters
+*gnsslos.rad*         
+
+	GNSS displacements in LOS in millimeters. See :doc:`gnss_enu2los.csh` for converting GNSS ENU displacement to LOS
    
-    filter_wavelength -  wavelength of the filter in meters (0.5 gain)
+*filter_wavelength*   
+
+	Wavelength of the filter in meters (0.5 gain)
 
 
-*Note: See :doc:`gnss_enu2los.csh` for converting GNSS ENU displacement to LOS*
+Example
+-------
+ ::
 
+    correct_insar_with_gnss.csh supermaster.PRM unwrap_dsamp.grd gnss_los.rad 40000
+
+References
+----------
 
 The GNSS-correction/GNSS-integration method is an area of active research. To learn about the method and it's evolution,
 check out these references:
@@ -42,6 +57,3 @@ Neely, W.R., Borsa, A.A., & Silverii, F. (2020). GInSAR: A cGPS Correction for E
 Xu, X., Sandwell, D.T., Klein, E., and Bock, Y. (2021). Integrated Sentinel-1 InSAR and GNSS Time-Series Along the San Andreas Fault System. Journal of Geophysical Research: Solid Earth, 126, https://doi.org/10.1029/2021JB022579
 
 
-Example
--------
-**correct_insar_with_gnss.csh** supermaster.PRM unwrap_dsamp.grd gnss_los.rad 40000 

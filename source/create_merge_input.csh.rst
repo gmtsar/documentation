@@ -12,18 +12,29 @@ Description
 -----------
 **create_merge_input.csh** Used to create inputlist for merge_batch.csh 
 
-    intf_list  -  is the folder names in F?/intf_all
+Required Arguments
+------------------
 
-    path       -  the path to your F* directories (usually "..")
+*intf_list*   
 
-    mode       -  which subswaths you want to merge
+	Is the folder names in F?/intf_all
 
-                  mode 0 is merging all 3 subswaths
+*path*       
 
-                  mode 1 is for F1/F2
+	The path to your F* directories (usually "..")
 
-                  mode 2 is for F2/F3
+*mode*     
+
+	Delineates which subswaths you want to merge
+
+                  mode = 0 is merging all 3 subswaths
+
+                  mode = 1 is for F1/F2
+
+                  mode = 2 is for F2/F3
 
 Example
 -------
-**create_merge_input.csh** intflist .. 0 
+ ::
+
+    create_merge_input.csh intflist .. 0 

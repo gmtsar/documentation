@@ -1,8 +1,8 @@
 .. index:: ! bperp                
 
-************      
+*****      
 bperp             
-************      
+*****      
 
 Synopsis
 --------
@@ -12,16 +12,27 @@ Synopsis
 Description
 -----------
 **bperp** Perpendicular baseline processing                      
+
+Required Arguments
+------------------
     
-   rep.PRM    -  input repeat PRM file that provides the interferometric baseline 
+*rep.PRM*      
 
-   phase.grd  -  input phase grd file that provides the dimensions of the grd file 
+	Input repeat PRM file that provides the interferometric baseline 
 
-   bperp.grd  -  output grd file of the perpendicular baseline
+*phase.grd*    
+
+	Input phase grd file that provides the dimensions of the grd file 
+
+*bperp.grd*    
+
+	Output grd file of the perpendicular baseline
 
 Example
 -------
-    **bperp** 
+ ::
+
+    bperp repeat.PRM phase.grd bperp.grd 
 
 
 

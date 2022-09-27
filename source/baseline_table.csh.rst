@@ -13,21 +13,35 @@ Description
 -----------
 **baseline_table.csh** creats a baseline_table.dat file
 
-Input:
+*Output File format:*
 
-    master.PRM  -  PRM file for the master image
+	sat_orb aligned_time aligned_days(1992ERS,2006ALOS) Bpl Bperp xshift yshift
+
+
+Required Arguments
+------------------
+
+*master.PRM*    
+
+	PRM file for the master image
  
-    aligned.PRM -  PRM file for the secondary/aligned image
+*aligned.PRM*   
 
-    [GMT]       -  creates table for pstext         
+	PRM file for the secondary/aligned image
 
-Output File format:
 
-sat_orb aligned_time aligned_days(1992ERS,2006ALOS) Bpl Bperp xshift yshift
+Optional Argument
+-----------------
+
+*GMT*        
+
+	Creates table for pstext         
 
 
 Example
 -------
-    **baseline_table.csh** master.PRM aligned.PRM 
+ ::
+
+    baseline_table.csh master.PRM aligned.PRM 
 
 
