@@ -1,8 +1,8 @@
 .. index:: ! create_frame_tops.csh 
 
-**************
+*********************
 create_frame_tops.csh
-**************
+*********************
 
 Synopsis
 --------
