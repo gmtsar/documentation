@@ -12,17 +12,36 @@ Description
 -----------
 **SAT_llt2rat** converts longitude/latitide/elevation to range/azimuth/elevation coordinates 
 
-     master.PRM   -  parameter file for master image and points to LED orbit file 
 
-     precise      -  (0) standard back geocoding, (1) - polynomial refinenent (slower) 
+Required Arguments
+------------------
 
-     inputfile    -  lon, lat, elevation [ASCII] 
+*master.PRM*      
 
-     outputfile   -  range, azimuth, lon, lat, elevation [ASCII default] 
+	Parameter file for master image and points to LED orbit file 
 
-     -bos or -bod -  binary single or double precision output 
+*precise*         
+
+	(0) standard back geocoding, (1) - polynomial refinenent (slower) 
+
+*inputfile*       
+
+	Longitude, latitude, elevation (m) [ASCII] 
+
+*outputfile*      
+
+	Range, azimuth, longitude, latitude, elevation (m) [ASCII default] 
+
+Optional Arguments
+------------------
+
+*-bos* or *-bod*    
+
+	Binary single (s) or double (d) precision output 
 
 
 Example
 -------
-    **SAT_llt2rat** master.PRM 0 < topo.llt > topo.ratll
+ ::
+
+    SAT_llt2rat master.PRM 0 < topo.llt > topo.ratll

@@ -14,16 +14,34 @@ Description
 for alignment), the corresponding *led_file*, the 3-column *input_table*, and create 6-column output 
 to *output_table*
 
- master.PRM     -  parameter file for master image and points to LED orbit file 
 
- input_table    -  lon, lat, elevation(above ellipsoid) [ASCII] 
+Required Arguments
+------------------
 
- output_table   -  lon, lat, elevation(above reference radius in PRM), look_E, look_N, look_U, [ASCII default] 
+*master.PRM*       
 
- -bos or -bod   -  binary single or double precision output 
+	Parameter file for master image and points to LED orbit file 
+
+*input_table*      
+
+	Longitude, latitude, elevation((m) above ellipsoid) [ASCII] 
+
+*output_table*     
+
+	Longitude, latitude, elevation((m) above reference radius in PRM), look_East, look_North, look_Up, [ASCII default] 
+
+
+Optional Argument
+-----------------
+
+*-bos*  or  *-bod*   
+
+	Binary single (s) or double (d) precision output 
 
 
 
 Example
 -------
-    **SAT_look** master.PRM < topo.llt > topo.lltn 
+ ::
+
+    SAT_look master.PRM < topo.llt > topo.lltn 
