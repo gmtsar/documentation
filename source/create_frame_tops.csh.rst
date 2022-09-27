@@ -6,7 +6,7 @@ create_frame_tops.csh
 
 Synopsis
 --------
-**create_frame_tops.csh** *SAFE_filelist ****.EOF two_pins.ll [mode]*
+**create_frame_tops.csh** *SAFE_filelist file.EOF two_pins.ll [mode]*
 
 Description
 -----------
