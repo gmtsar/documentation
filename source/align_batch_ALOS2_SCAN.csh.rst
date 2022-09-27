@@ -1,8 +1,8 @@
 .. index:: ! align_batch_ALOS2_SCAN.csh
 
-******************
+**************************
 align_batch_ALOS2_SCAN.csh
-******************
+**************************
 
 Synopsis
 --------

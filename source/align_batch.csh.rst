@@ -1,8 +1,8 @@
 .. index:: ! align_batch.csh      
 
-************      
+***************      
 align_batch.csh   
-************      
+***************      
 
 Synopsis
 --------

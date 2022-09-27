@@ -1,8 +1,8 @@
 .. index:: ! align_ALOS_SLC.csh   
 
-************      
+******************      
 align_ALOS_SLC.csh
-************      
+******************      
 
 Synopsis
 --------

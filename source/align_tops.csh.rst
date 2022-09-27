@@ -1,8 +1,8 @@
 .. index:: ! align_tops.csh       
 
-************      
+**************      
 align_tops.csh    
-************      
+**************      
 
 Synopsis
 --------

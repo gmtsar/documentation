@@ -1,8 +1,8 @@
 .. index:: ! align_tops_esd.csh   
 
-************      
+******************      
 align_tops_esd.csh
-************      
+******************      
 
 Synopsis
 --------
