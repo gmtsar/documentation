@@ -12,11 +12,15 @@ Synopsis
 Description
 -----------
 **find_auxi.pl**                       
-    
+
+Required Arguments
+------------------    
 
 Example
 -------
-    **find_auxi.pl** 
+ ::
+
+    find_auxi.pl 
 
 
 

@@ -1,8 +1,8 @@
 .. index:: ! fitoffset.csh        
 
-************      
+*************     
 fitoffset.csh     
-************      
+*************     
 
 Synopsis
 --------
@@ -12,18 +12,35 @@ Synopsis
 Description
 -----------
 **fitoffset.csh**                       
+
+
+Required Arguments
+------------------
     
-        npar_rng    - number of parameters to fit in range 
+*npar_rng*      
 
-        npar_aiz    - number of parameters to fit in azimuth 
+	Number of parameters to fit in range 
 
-        xcorr.dat   - files of range and azimuth offset estimates 
+*npar_aiz*      
 
-        SNR         - optional SNR cutoff (default 20)
+	Number of parameters to fit in azimuth 
+
+*xcorr.dat*     
+
+	Files of range and azimuth offset estimates 
+
+Optional Argument
+-----------------
+
+*SNR*           
+
+	Optional SNR cutoff (default 20)
 
 Example
 -------
-    **fitoffset.csh** 3 3 freq_xcorr.dat 
+ ::
+
+    fitoffset.csh 3 3 freq_xcorr.dat 
 
 
 

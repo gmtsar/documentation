@@ -1,8 +1,8 @@
 .. index:: ! fitoffset            
 
-************      
+*********      
 fitoffset         
-************      
+*********      
 
 Synopsis
 --------
@@ -12,11 +12,31 @@ Synopsis
 Description
 -----------
 **fitoffset**                    
-    
+
+Required Arguments
+------------------
+
+*npar_rng*
+
+
+*npar_azi*
+
+
+*xcorr.dat*
+
+
+*prmfile.PRM* 
+
+Optional Argument
+-----------------
+
+*SNR*   
 
 Example
 -------
-    **fitoffset** 
+ ::
+
+    fitoffset 
 
 
 
