@@ -28,7 +28,6 @@ Required Arguments
 	 	
 		absolutepathto/filename2.SAFE
 
-		......
 
 *mode*
 

@@ -11,7 +11,7 @@ Synopsis
 
 Description
 -----------
-**ext_orb_s1a**  Create *.LED file
+**ext_orb_s1a**  Create a .LED file
 
 Requires Arguments
 ------------------

@@ -10,7 +10,7 @@ Synopsis
 
 Description
 -----------
-**download_sentinel_orbits.csh** Downloads precise or restituted orbits for specific Sentinel-1 *.SAFE data files
+**download_sentinel_orbits.csh** Downloads precise or restituted orbits for specific Sentinel-1 .SAFE data files
 
 Precise orbits are generally the final calculated satellite orbits (and the preferred orbital information), while Restituted orbits are the preliminary and less precise orbit files. Only use restituted orbit files if the precise files are not yet available (there is generally a lag time of ~14 days).
 
@@ -28,7 +28,6 @@ Required Arguments
 	 	
 		absolutepathto/filename2.SAFE
 
-		......
 
 *mode*
 
