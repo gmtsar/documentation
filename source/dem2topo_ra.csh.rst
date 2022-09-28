@@ -1,8 +1,8 @@
 .. index:: ! dem2topo_ra.csh
 
-**************
+***************
 dem2topo_ra.csh
-**************
+***************
 
 Synopsis
 --------
@@ -14,6 +14,26 @@ Description
 
 Note: Works for TSX,ALOS,ERS,ENVISAT
 
+Required Arguments
+------------------
+
+*master.PRM*
+
+	Parameter (PRM) file for the master or reference image
+
+*dem.grd*
+
+	DEM grid file
+
+Optional Argument
+-----------------
+
+*xmin/xmax/ymin/ymax*
+
+	If a you want to apply a region cut to your DEM/topo_ra grid, apply it here
+
 Example
 -------
-    **dem2topo_ra.csh** supermaster.PRM dem.grd 
+ ::
+
+    dem2topo_ra.csh supermaster.PRM dem.grd 

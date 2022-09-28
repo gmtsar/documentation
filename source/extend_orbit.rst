@@ -12,17 +12,28 @@ Synopsis
 Description
 -----------
 **extend_orbit**                      
+
+Required Arguments
+------------------
     
-    orig.LED   - original LED file 
+*orig.LED*     
 
-    extend.LED - extended LED file 
+	Original LED file 
 
-    frac       - fraction of frame length to add to each end (e.g. 0.25) 
+*extend.LED*   
+
+	Extended LED file 
+
+*frac*         
+
+	Fraction of frame length to add to each end (e.g. 0.25) 
 
 
 Example
 -------
-    **extend_orbit** 
+ ::
+
+   extend_orbit 
 
 
 

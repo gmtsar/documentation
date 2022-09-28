@@ -1,8 +1,8 @@
 .. index:: ! ers_line_fixer       
 
-************      
+**************      
 ers_line_fixer    
-************      
+**************      
 
 Synopsis
 --------
@@ -12,19 +12,42 @@ Synopsis
 Description
 -----------
 **ers_line_fixer**                       
-   
-    -a near_range    - align near_range 
-    -h header        - set the header length (bytes)
-    -l line          - set the line length (bytes)
-    -s station       - set processing station
-    raw file         - input filename
-    fixed file       - output filename 
 
-Stations: DPAF/ESRIN, CO, EIC, UK, CCRS, ASF, Unknown
+Required Arguments
+------------------
+
+*raw file*          
+
+	Input filename
+
+*fixed file*       
+
+	Output filename 
+
+Optional Arguments
+------------------
+   
+**-a**  *near_range*      
+
+	Align near_range 
+
+**-h**  *header*         
+
+	Set the header length (bytes)
+
+**-l**  *line*           
+
+	Set the line length (bytes)
+
+**-s**  *station*        
+
+	Set processing station. Station options: DPAF/ESRIN, CO, EIC, UK, CCRS, ASF, Unknown
 
 Example
 -------
-    **ers_line_fixer** 
+ ::
+
+    ers_line_fixer 
 
 
 
