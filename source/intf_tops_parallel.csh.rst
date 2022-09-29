@@ -1,8 +1,8 @@
 .. index:: ! intf_tops_parallel.csh
 
-*******
+**********************
 intf_tops_parallel.csh
-*******
+**********************
 
 Synopsis
 --------
@@ -10,29 +10,42 @@ Synopsis
 
 Description
 -----------
-**intf_tops_parallel.csh**  generate interferograms for a set of TOPS images in intf.in, in parallel using the user-specified number of cores; dem required in ./topo, and supermaster's name is required in batch_tops.config  
+**intf_tops_parallel.csh**  generate interferograms for a set of TOPS mode images listed in intf.in. A dem.grd file is required in a local ./topo directory, and the supermaster file name is required to be listed in batch_tops.config  
 
-  Run interferogram jobs in parallel. Need to install GNU parallel first (e.g. sudo port install parallel).
+This runs several interferograms in parallel processing. Need to install GNU parallel first (e.g. sudo port install parallel).
 
-  **Warning**: Familiarize yourself with how many cores your machine has (start with a small number first). 
+**Warning**: Familiarize yourself with how many cores your machine has (start with a small number first).
 
-  format of intf.in:
+Final interferograms are output to a date1_date2 directory (YYYYDDD_YYYYDDD) inside the intf_all directory and each interferogram produces a .in and a .log file for each date pair run. 
 
-    master_image_stem:aligned_image_stem
+Required Arguments
+------------------
+
+*intf.in*
+
+	List of image pairs for which to calculate interferograms
+
+	Format of intf.in:
+
+		master_image_stem:aligned_image_stem
 
 
-  example of intf.in
+	*example of intf.in*
 
-    S1_20150628_ALL_F1:S1_20150720_ALL_F1
+		S1_20150628_ALL_F1:S1_20150720_ALL_F1
 
-    S1_20150720_ALL_F1:S1_20150809_ALL_F1
+		S1_20150720_ALL_F1:S1_20150809_ALL_F1
 
-  outputs:
+*batch_tops.config*
 
-    to ./intf_all
+	Configuration file for running interferograms. A default batch_tops.config can be created using :doc:`pop_config.csh` with S1_TOPS as the satellite type. Make sure to edit the batch_tops.config file to contain the chosen supermaster image name stem 
 
-Note: batch_tops.config can be created using :doc:`pop_config.csh` with S1_TOPS as the satellite type
+*Ncores*
+
+	Number of threads/jobs to run at one time. Be aware of how many cores your machine has before starting a parallel job. In addition, processing interferograms involves lots of reading in and writing out, so a larger number isn't always going to run faster, depending on your machine.
 
 Example
 -------
-    **intf_tops_parallel.csh** intf.in batch_tops.config 5 
+ ::
+
+    intf_tops_parallel.csh intf.in batch_tops.config 5 

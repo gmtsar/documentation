@@ -1,8 +1,8 @@
 .. index:: ! make_s1a_tops
 
-*******
+*************
 make_s1a_tops
-*******
+*************
 
 Synopsis
 --------
@@ -12,17 +12,32 @@ Description
 -----------
 **make_s1a_tops**  
 
-         xml_file    - name of xml file 
+Required Arguments
+------------------
 
-         tiff_file   - name of tiff file 
+*xml_file*      
 
-         output      - stem name of output files .PRM, .LED, .SLC 
+	Name of xml file 
 
-         mode        - (0) no SLC; (1) center SLC; (2) high SLCH and low SLCL 
+*tiff_file*     
 
-         dr.grd      - range shift table to be read in 
+	Name of tiff file 
 
-         da.grd      - azimuth shift table to be read in 
+*output*        
+
+	Stem name of output files .PRM, .LED, .SLC 
+
+*mode*          
+
+	(0) no SLC; (1) center SLC; (2) high SLCH and low SLCL 
+
+*dr.grd*        
+
+	Range shift table to be read in 
+
+*da.grd*        
+
+	Azimuth shift table to be read in 
 
 
 Note: if dr and da are not given, SLCs will be written with no shifts.
@@ -36,9 +51,12 @@ Note: if dr and da are not given, SLCs will be written with no shifts.
 
 Example
 -------
-       **make_slc_s1a_tops** s1a-s1-slc-vv-20140807.xml s1a-s1-slc-vv-20140807.tiff S1A20140807 1 dr.grd da.grd
+ ::
 
-       **make_slc_s1a_tops** s1a-s1-slc-vv-20140807.xml s1a-s1-slc-vv-20140807.tiff S1A20140807 1
+       make_slc_s1a_tops s1a-s1-slc-vv-20140807.xml s1a-s1-slc-vv-20140807.tiff S1A20140807 1 dr.grd da.grd
+
+       make_slc_s1a_tops s1a-s1-slc-vv-20140807.xml s1a-s1-slc-vv-20140807.tiff S1A20140807 1
+
 
 Output: mode 1: S1A20140807.PRM S1A20140807.LED S1A20140807.SLC
 

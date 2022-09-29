@@ -12,11 +12,20 @@ Description
 -----------
 **m2s.csh** Convert pixel dimension in meters to dx/dy in arc seconds at mean latitude 
 
- pixel_size_in_meters  -  Input pixel dimension in meters
+Required Arguments
+------------------
 
- llpfile   - lon lat phase binary float file
+*pixel_size_in_meters*    
+
+	Input pixel dimension in meters
+
+*llpfile*   
+
+	Longitude, latitude, phase binary float file
 
 
 Example
 -------
-    **m2s.csh** 150 input.llp 
+ ::
+
+    m2s.csh 150 input.llp 

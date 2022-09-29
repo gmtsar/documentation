@@ -1,8 +1,8 @@
 .. index:: ! intf.csh             
 
-************      
+********      
 intf.csh          
-************      
+********      
 
 Synopsis
 --------
@@ -11,24 +11,39 @@ Synopsis
 
 Description
 -----------
-**intf.csh** calculates an interferogram between two images
+**intf.csh** calculates an interferogram between two SLC images
 
-Input:
+Required Arguments
+------------------
  
-     ref.PRM   -   reference.PRM file 
+*ref.PRM*      
 
-     rep.PRM   -   repeat/secondary PRM file
+	Reference or master image .PRM file 
 
-     [-topo topogrid]  -  (optional) topo grid in radar coordinates (topo_ra.grd)
+*rep.PRM*      
 
-     [-model modelgrd] -  (optional) mode grid file
+	Repeat/secondary image .PRM file
+
+
+Optional Arguments
+------------------
+
+**-topo**  *topogrid*    
+
+	Topo grid in radar coordinates (topo_ra.grd)
+
+**-model**  *modelgrd*   
+
+	Mode grid file
     
 The dimensions of topogrd and modelgrd should be compatible with SLC file.
 
 
 Example
 -------
-    **intf.csh** IMG-HH-ALPSRP055750660-H1.0__A.PRM IMG-HH-ALPSRP049040660-H1.0__A.PRM -topo topo_ra.grd 
+ ::
+
+    intf.csh IMG-HH-ALPSRP055750660-H1.0__A.PRM IMG-HH-ALPSRP049040660-H1.0__A.PRM -topo topo_ra.grd 
 
 
 

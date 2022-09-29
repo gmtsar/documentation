@@ -1,8 +1,8 @@
 .. index:: ! landmask_ALOS2.csh
 
-**************
+******************
 landmask_ALOS2.csh
-**************
+******************
 
 Synopsis
 --------
@@ -14,6 +14,15 @@ Description
 
 Note: The region_cut can be specified in batch.config file
 
+Required Arguments
+------------------
+
+*region_cut*
+
+        Specify the range/azimuth of the grid you are making a landmask for.
+
 Example
 -------
-**landmask_ALOS2.csh** 0/10600/0/27648
+ ::
+
+    landmask_ALOS2.csh 0/10600/0/27648
