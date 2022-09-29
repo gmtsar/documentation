@@ -1,8 +1,8 @@
 .. index:: ! make_s1a_tops_6par
 
-*******
+******************
 make_s1a_tops_6par
-*******
+******************
 
 Synopsis
 --------
@@ -12,30 +12,55 @@ Description
 -----------
 **make_s1a_tops_6par**  
 
-         xml_file    - name of xml file 
+Required Arguments
+------------------
 
-         tiff_file   - name of tiff file 
+*xml_file*     
 
-         output      - stem name of output files .PRM, .LED, .SLC 
+	Name of xml file 
 
-         mode        - (0) no SLC; (1) center SLC; (2) high SLCH and low SLCL 
+*tiff_file*    
 
-         rng_shift   - fractional part of desired range shift 
+	Name of tiff file 
 
-         azi_shift   - fractional part of desired azimuth shift 
+*output*       
 
-         stretch_a   - additional azimuth shift in range dir 
+	Stem name of output files .PRM, .LED, .SLC 
 
-         a_stretch_a - additional azimuth shift in azimuth dir 
+*mode*         
 
-         stretch_r   - additional range shift in range dir 
+	(0) no SLC; (1) center SLC; (2) high SLCH and low SLCL 
 
-         a_stretch_r - additional range shift in azimuth dir
+*rng_shift*    
+
+	Fractional part of desired range shift 
+
+*azi_shift*    
+
+	Fractional part of desired azimuth shift 
+
+*stretch_a*    
+
+	Additional azimuth shift in range dir 
+
+*a_stretch_a*  
+
+	Additional azimuth shift in azimuth dir 
+
+*stretch_r*    
+
+	Additional range shift in range dir 
+
+*a_stretch_r*  
+
+	Additional range shift in azimuth dir
 
 
 Example
 -------
-       **make_slc_s1a_tops_6par** s1a-s1-slc-vv-20140807.xml s1a-s1-slc-vv-20140807.tiff S1A20140807 1 0.4596 .9109 2.18065e-06 -3.63255e-06 1.37343e-05 -3.13352e-05
+ ::
+
+       make_slc_s1a_tops_6par s1a-s1-slc-vv-20140807.xml s1a-s1-slc-vv-20140807.tiff S1A20140807 1 0.4596 .9109 2.18065e-06 -3.63255e-06 1.37343e-05 -3.13352e-05
 
 Output: S1A20140807.PRM S1A20140807.LED S1A20140807.SLC
 

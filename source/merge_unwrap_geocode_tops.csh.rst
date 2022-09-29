@@ -1,8 +1,8 @@
 .. index:: ! merge_unwrap_geocode_tops.csh
 
-**************
+*****************************
 merge_unwrap_geocode_tops.csh
-**************
+*****************************
 
 Synopsis
 --------
@@ -10,26 +10,40 @@ Synopsis
 
 Description
 -----------
-**merge_unwrap_geocode_tops.csh** config file for :doc:`p2p_processing.csh` with default parameters for each satellite.
+**merge_unwrap_geocode_tops.csh** merges subswaths together 
 
-Note: Inputfiles should be as following:
+This script is called inside :doc:`merge_batch.csh` 
 
-      Swath1_Path:Swath1_master.PRM:Swath1_repeat.PRM
+Required Arguments
+------------------
 
-      Swath2_Path:Swath2_master.PRM:Swath2_repeat.PRM
+*inputfile*
 
-      Swath3_Path:Swath3_master.PRM:Swath3_repeat.PRM
+	List of files needed for merging subswaths.
 
-      (Use the repeat PRM which contains the shift information.)
+	Inputfiles should be as following:
 
-      e.g. ../F1/intf/2015016_2015030/:S1A20151012_134357_F1.PRM
+		Swath1_Path:Swath1_master.PRM:Swath1_repeat.PRM
 
-      Make sure under each path, the processed phasefilt.grd, corr.grd and mask.grd exist.
+		Swath2_Path:Swath2_master.PRM:Swath2_repeat.PRM
 
-      Also make sure the dem.grd is linked. 
+		Swath3_Path:Swath3_master.PRM:Swath3_repeat.PRM
 
-      config_file is the same one used for processing.
+	(Use the repeat PRM which contains the shift information.)
+
+	e.g. ../F1/intf/2015016_2015030/:S1A20151012_134357_F1.PRM
+
+	Make sure under each path, the processed phasefilt.grd, corr.grd and mask.grd exist.
+
+	Also make sure the dem.grd is linked. 
+
+
+*config_file* 
+
+	The same batch.config file as used in processing
 
 Example
 -------
-  **merge_unwrap_geocode_tops.csh** filelist batch.config 
+ ::
+
+    merge_unwrap_geocode_tops.csh filelist batch.config 

@@ -1,8 +1,8 @@
 .. index:: ! offset_topo          
 
-************      
+***********      
 offset_topo       
-************      
+***********      
 
 Synopsis
 --------
@@ -13,21 +13,38 @@ Description
 -----------
 **offset_topo** Determine topography offset                      
 
-   amp_master.grd - amplitude image of master 
+Required Arguments
+------------------
 
-   topo_ra.grd    - topo in range/azimuth coordinates of master 
+*amp_master.grd*  
 
-   rshift         - guess at integer range shift 
+	Amplitude image of master 
 
-   ashift         - guess at integer azimuth shift 
+*topo_ra.grd*     
 
-   ns             - integer search radius 
+	Topo in range/azimuth coordinates of master 
 
-   topo_shift.grd - shifted topo_ra - optional, will be shifted by rshift, ashift     
+*rshift*          
+
+	Guess at integer range shift 
+
+*ashift*          
+
+	Guess at integer azimuth shift 
+
+*ns*              
+
+	Integer search radius 
+
+*topo_shift.grd*  
+
+	Shifted topo_ra - optional, will be shifted by rshift, ashift     
 
 Example
 -------
-    **offset_topo** 
+ ::
+
+    offset_topo 
 
 
 

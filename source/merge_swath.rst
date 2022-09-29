@@ -1,8 +1,8 @@
 .. index:: ! merge_swath          
 
-************      
+***********      
 merge_swath       
-************      
+***********      
 
 Synopsis
 --------
@@ -12,16 +12,28 @@ Synopsis
 Description
 -----------
 **merge_swath** Merging subswaths                       
-    
-inputlist example: F1/intf/2015036_2015060/S1A_20150609.PRM:F1/intf/2015036_2015060/phasefilt.grd
 
-                   F2/intf/2015036_2015060/S1A_20150609.PRM:F2/intf/2015036_2015060/phasefilt.grd
+Required Arguments
+------------------
+   
+ 
+*inputlist*
 
-                   F3/intf/2015036_2015060/S1A_20150609.PRM:F3/intf/2015036_2015060/phasefilt.grd
+	List of input files per subswath 
 
-note: use the aligned PRM which contains the shift information
+	Format example: 
 
-output: output.grd [stem.PRM]
+		F1/intf/2015036_2015060/S1A_20150609.PRM:F1/intf/2015036_2015060/phasefilt.grd
+
+                F2/intf/2015036_2015060/S1A_20150609.PRM:F2/intf/2015036_2015060/phasefilt.grd
+
+                F3/intf/2015036_2015060/S1A_20150609.PRM:F3/intf/2015036_2015060/phasefilt.grd
+
+	Note: use the aligned PRM which contains the shift information
+
+*output*
+
+	output.grd [stem.PRM]
 
 note: please put the files to stem.in in the order of swath numbers.
 
@@ -35,7 +47,9 @@ note: please put the files to stem.in in the order of swath numbers.
 
 Example
 -------
-    **merge_swath** 
+ ::
+
+    merge_swath  
 
 
 
