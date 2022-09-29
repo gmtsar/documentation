@@ -13,7 +13,6 @@ Description
 -----------
 **intf_batch.csh** make a stack of interferograms listed in intf.in
 
-SAT can be ALOS ENVI(ENVISAT) ENVI_SLC and  ERS
 
 Required Arguments
 ------------------
