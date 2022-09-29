@@ -10,7 +10,7 @@ Synopsis
 
 Description
 -----------
-**get_baseline_table.csh** Produce a time series baseline_table.dat file from a batch list of *.PRM files 
+**get_baseline_table.csh** Produce a time series baseline_table.dat file from a batch list of .PRM files 
 
 Required Arguments
 ------------------
