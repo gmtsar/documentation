@@ -1,8 +1,8 @@
 .. index:: ! grd2kml.csh
 
-*******
+***********
 grd2kml.csh
-*******
+***********
 
 Synopsis
 --------
@@ -12,18 +12,29 @@ Description
 -----------
 **grd2kml.csh** converts a given grid (.grd) file into a Google Earth KML file using a user-specified color palette.
 
-Input:
-
-    grd_file_stem  -  the name (without file extension) of your grd file (must be in geocoded (lat/lon) coordinates)
-
-    cptfile        -  color palette file (can be created using `gmt makecpt`, see usage)
-
-Output:
+This outputs a PNG file which contains the grid information, and a .KML file which is the Google Earth display file. These output files both are named with the user-specified file_stem, and they must be stored together in the same directory in order to display properly in Googe Earth.
  
-    grd_file_stem.png  - PNG file of grid information
-   
-    grd_file_stem.kml  - Google Earth file; this file and the above png file must be stored together to be read in by Google Earth
 
+Required Arguments
+------------------
+
+*grd_file_stem*     
+
+	The name (without file extension) of your grd file (must be in geocoded (lat/lon) coordinates)
+
+*cptfile*           
+
+	Color palette file (can be created using GMT tool makecpt, see usage here: https://docs.generic-mapping-tools.org/dev/makecpt.html )
+
+Optional Argument
+-----------------
+
+*-R<west>/<east>/<south>/<north>*
+
+	Range if you wish to output only a subarea of your grid file
+ 
 Example
 -------
-    **grd2kml.csh** phase phase.cpt   
+ ::
+
+    grd2kml.csh phase phase.cpt   

@@ -1,8 +1,8 @@
 .. index:: ! gmtsar_sharedir.csh
 
-*******
+*******************
 gmtsar_sharedir.csh
-*******
+*******************
 
 Synopsis
 --------
@@ -14,4 +14,6 @@ Description
 
 Example
 -------
-    **gmtsar_sharedir.csh** 
+ ::
+
+    gmtsar_sharedir.csh 

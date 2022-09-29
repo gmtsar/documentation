@@ -1,8 +1,8 @@
 .. index:: ! geocode.csh
 
-*******
+***********
 geocode.csh
-*******
+***********
 
 Synopsis
 --------
@@ -12,8 +12,15 @@ Description
 -----------
 **geocode.csh** projects given grid files into geographic coordinates from radar coordinates   
 
-    correlation_threshold  -  phase is masked when correlation is less than correlation_threshold
+Required Argument
+-----------------
+
+*correlation_threshold*  
+
+	Phase is masked when correlation is less than correlation_threshold
 
 Example
 -------
-    **geocode.csh** .12 
+ ::
+
+    geocode.csh .12 

@@ -37,7 +37,9 @@ Required Arguments
 Optional Arguments
 ------------------
 
-*m_rng* and *m_azi*     -  is the number of pixels to be averaged for output, default is 5 5
+*m_rng* and *m_azi*       
+
+	The number of pixels to be averaged for output, default is 5 5
 
 
 Example

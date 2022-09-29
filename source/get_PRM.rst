@@ -1,8 +1,8 @@
 .. index:: ! get_PRM              
 
-************      
+*******      
 get_PRM           
-************      
+*******      
 
 Synopsis
 --------
@@ -11,12 +11,25 @@ Synopsis
 
 Description
 -----------
-**get_PRM** Perpendicular baseline processing                      
-    
+**get_PRM**                    
+   
+Required Arguments
+------------------
+
+*file.PRM*
+
+	Parameter file
+
+*param*
+
+	Parameter to be retrieved
+	 
 
 Example
 -------
-    **get_PRM** IMG-HH-ALPSRP049040660-H1.0__A.PRM rshift
+ ::
+
+    get_PRM IMG-HH-ALPSRP049040660-H1.0__A.PRM rshift
 
 
 

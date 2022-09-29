@@ -1,8 +1,8 @@
 .. index:: ! gmtsar_uninstall.sh
 
-*******
+*******************
 gmtsar_uninstall.sh
-*******
+*******************
 
 Synopsis
 --------
@@ -14,4 +14,6 @@ Description
 
 Example
 -------
-    **gmtsar_uninstall.sh** 
+ ::
+
+    gmtsar_uninstall.sh 
