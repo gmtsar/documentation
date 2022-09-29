@@ -10,7 +10,7 @@ Synopsis
 
 Description
 -----------
-**organize_files_tops_linux.csh** organize one track of S1A TOPS data, redefine frames, auto-download precise orbits; if restituted orbits are required, user must download separately 
+**organize_files_tops_linux.csh** organize one track of S1A TOPS data, redefine frames, auto-download precise orbits on a linux machine; if restituted orbits are required, user must download separately 
 
 To download restituted orbit files for Sentinel-1 data, use :doc:`download_sentinel_orbits.csh` or :doc:`download_sentinel_orbits_linux.csh` 
 
