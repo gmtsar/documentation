@@ -1,8 +1,8 @@
 .. index:: ! organize_files_tops_linux.csh
 
-**************
+*****************************
 organize_files_tops_linux.csh
-**************
+*****************************
 
 Synopsis
 --------
