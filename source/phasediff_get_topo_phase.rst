@@ -1,8 +1,8 @@
 .. index:: ! phasediff_get_topo_phase
 
-************      
+************************      
 phasediff_get_topo_phase
-************      
+************************      
 
 Synopsis
 --------
@@ -15,9 +15,35 @@ Description
 
 Note: topo_ra and model in GMT grd format    
 
+
+Required Arguments
+------------------
+
+*ref.PRM*
+
+	Parameter (PRM) file for the reference or master image
+
+*rep.PRM*
+
+	Parameter (PRM) file for the repeat or secondary image
+
+Optional Arguments
+------------------
+
+**-topo** *topo_ra.grd*
+
+	Topography	
+
+**-model** *modelphase.grd*
+
+	Modeled phase
+
+
 Example
 -------
-    **phasediff_get_topo_phase**
+ ::
+
+    phasediff_get_topo_phase
 
 
 

@@ -1,8 +1,8 @@
 .. index:: ! phase2topo           
 
-************      
+**********      
 phase2topo        
-************      
+**********      
 
 Synopsis
 --------
@@ -13,20 +13,33 @@ Description
 -----------
 **phase2topo** Compute residual topography  
 
-    master.PRM    - master PRM files used for mapping 
+Note the residual phase should be scaled by the perpendicular baseline (see :doc:`bperp`).    
 
-    topo_in.grd   - name of input topography in the radar co-ordinates of the master. 
+Required Arguments
+------------------
 
-    res_phase.grd - name of input phase per unit baseline
+*master.PRM*      
 
-    topo_out.grd  - name of output corrected topography in the radar co-ordinates of the master. 
+	Master PRM files used for mapping 
 
-    Note the residual phase should be scaled by the perpendicular baseline (see :doc:`bperp`).    
- 
+*topo_in.grd*     
+
+	Name of input topography in the radar co-ordinates of the master. 
+
+*res_phase.grd*   
+
+	Name of input phase per unit baseline
+
+*topo_out.grd*    
+
+	Name of output corrected topography in the radar co-ordinates of the master. 
+
 
 Example
 -------
-    **phase2topo**
+ ::
+
+    phase2topo
 
 
 
