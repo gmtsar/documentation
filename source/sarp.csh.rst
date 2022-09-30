@@ -1,8 +1,8 @@
 .. index:: ! sarp.csh       
 
-**************
+********
 sarp.csh      
-**************
+********
 
 Synopsis
 --------
@@ -12,6 +12,15 @@ Description
 -----------
 **sarp.csh** 
 
+Required Argument
+-----------------
+
+*file.PRM*
+
+	Parameter (PRM) file
+
 Example
 -------
-  **sarp.csh** IMG-HH-ALPSRP049040660-H1.0__A.PRM
+ ::
+
+    sarp.csh IMG-HH-ALPSRP049040660-H1.0__A.PRM

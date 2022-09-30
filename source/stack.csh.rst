@@ -1,8 +1,8 @@
 .. index:: ! stack.csh      
 
-**************
+*********
 stack.csh     
-**************
+*********
 
 Synopsis
 --------
@@ -12,16 +12,27 @@ Description
 -----------
 **stack.csh** compute the mean and standard deviations of a give stack of grid files
 
-  grid.list   --  a list of grd file names
+Required Arguments
+------------------
 
-  scale       --  a scale factor put 1 if not scale
+*grid.list*    
 
-  mean.grd    --  output file name of the mean grid 
+	A list of grd file names. The grid of the grd files must be consistent.
 
-  std.grd     --  output file name of the standard deviation grid  
+*scale*         
 
-note that the grid of the grd files must be consistent
+	A scale factor put 1 if not scale
+
+*mean.grd*      
+
+	Specify the output file name of the mean grid 
+
+*std.grd*       
+
+	Specify the output file name of the standard deviation grid  
 
 Example
 -------
-  **stack.csh** corr_grid.list 1 corr_stack.grd corr_stack_std.grd
+ ::
+
+    stack.csh corr_grid.list 1 corr_stack.grd corr_stack_std.grd

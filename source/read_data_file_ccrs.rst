@@ -1,8 +1,8 @@
 .. index:: ! read_data_file_ccrs  
 
-************      
+*******************      
 read_data_file_ccrs
-************      
+*******************      
 
 Synopsis
 --------
@@ -12,11 +12,19 @@ Synopsis
 Description
 -----------
 **read_data_file_ccrs**                       
-    
+   
+Required Arguments
+------------------
+
+*datafile*
+
+	Input datafile 
 
 Example
 -------
-    **read_data_file_ccrs**
+ ::
+
+    read_data_file_ccrs inputfile
 
 
 

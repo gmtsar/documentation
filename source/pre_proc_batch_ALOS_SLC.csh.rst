@@ -1,8 +1,8 @@
 .. index:: ! pre_proc_batch_ALOS_SLC.csh
 
-**************
+***************************
 pre_proc_batch_ALOS_SLC.csh
-**************
+***************************
 
 Synopsis
 --------
@@ -12,25 +12,34 @@ Description
 -----------
 **pre_proc_batch_ALOS_SLC.csh** Preprocess a set of ALOS images using a common rear_range and radius 
 
+Required Arguments
+------------------
 
-       format of data.in is:
- 
-         line 1: master_name 
- 
-         line 2 and below: aligned_name
+*data.in*
 
+	List of input data for alignment processing. Ensure that the first line in your list is your chosen master or reference image.
 
-       example of data.in for ALOS is:
+	Format of data.in is:
  
-         IMG-HH-ALPSRP096010650-H1.0__A
+		line 1: master_name 
  
-         IMG-HH-ALPSRP089300650-H1.0__A
- 
-         IMG-HH-ALPSRP236920650-H1.0__A
+		line 2 and on: aligned_name
 
 
-Note: If you need to create a default config file, use :doc:`pop_config.csh`
+	*example of data.in for ALOS is:*
+ 
+		IMG-HH-ALPSRP096010650-H1.0__A
+ 
+		IMG-HH-ALPSRP089300650-H1.0__A
+ 
+		IMG-HH-ALPSRP236920650-H1.0__A
+
+*batch.config*
+
+	Configuration file. If you need to create a default config file, use :doc:`pop_config.csh`
 
 Example
 -------
-  **pre_proc_batch_ALOS_SLC.csh** data.in batch.config 
+ ::
+
+    pre_proc_batch_ALOS_SLC.csh data.in batch.config 

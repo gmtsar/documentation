@@ -1,8 +1,8 @@
 .. index:: ! split_spectrum       
 
-************      
+**************      
 split_spectrum    
-************      
+**************      
 
 Synopsis
 --------
@@ -15,17 +15,27 @@ Description
 
 SLCs are bandpassed and then shifted to the center of the spectrum
 
-split_half is build for ALOS FBD FBS cases, put 1 for using half the spectrum
+Outputs **SLCH** and **SLCL**
 
-Output:
 
-    SLCH SLCL
-    
+Required Arguments
+------------------
+
+*prm1*
+
+	Parameter file
+
+*split_half*
+
+	 Built for ALOS FBD FBS cases, put 1 for using half the spectrum
+
 
 
 Example
 -------
-    **split_spectrum**
+ ::
+
+    split_spectrum
 
 
 

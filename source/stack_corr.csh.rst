@@ -12,14 +12,19 @@ Description
 -----------
 **stack_corr.csh** compute the mean correlation from a stack of correlation grid files   
 
-  list            --      a list of corr.grd file names
+Required Arguments
+------------------
+
+*list*                  
+
+	A list of corr.grd file names. The grid of the grd files must be consistent
   
-  meancorr.grd    --      output file name of the mean correlation grid 
+*meancorr.grd*          
 
-  note that the grid of the grd files must be consistent
-
-
+	Specify the output file name of the mean correlation grid 
 
 Example
 -------
-  **stack_corr.csh** corr_grid.list corr_mean_stack.grd 
+ ::
+
+    stack_corr.csh corr_grid.list corr_mean_stack.grd 

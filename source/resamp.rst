@@ -1,8 +1,8 @@
 .. index:: ! resamp               
 
-************      
+******      
 resamp            
-************      
+******      
 
 Synopsis
 --------
@@ -13,19 +13,34 @@ Description
 -----------
 **resamp**                   
 
-   master.PRM       - PRM for master imagea 
+Required Arguments
+------------------
 
-   aligned.PRM        - PRM for aligned image 
+*master.PRM*        
 
-   new_aligned.PRM    - PRM for aligned aligned image 
+	PRM for master image 
 
-   new_aligned.SLC    - SLC for aligned aligned image 
+*aligned.PRM*         
 
-   intrp            - interpolation method: 1-nearest; 2-bilinear; 3-biquadratic; 4-bisinc    
+	PRM for aligned image 
+
+*new_aligned.PRM*     
+
+	PRM for aligned image 
+
+*new_aligned.SLC*     
+
+	SLC for aligned image 
+
+*intrp*             
+
+	Interpolation method: 1-nearest; 2-bilinear; 3-biquadratic; 4-bisinc    
 
 Example
 -------
-    **resamp** 
+ ::
+
+    resamp master.PRM aligned.PRM aligned_new.PRM aligned_new.SLC 1 
 
 
 

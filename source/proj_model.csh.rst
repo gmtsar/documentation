@@ -12,20 +12,34 @@ Description
 -----------
 **proj_model.csh** project a simulated crust motion model into radar look directions (the radar look direction is spatial variable) 
 
-  SAT             --  can be ALOS or ERS or ENVI or generic SAT
+The grid of the grd files must be consistent. In addition, the master.PRM and its LED file must be present in the working directory.
 
-  ve, vn, vu.grd  --  input: east, north, vertical motion simulated from numerical model 
+Required Arguments
+------------------
 
-  master.PRM      --  PRM file of the radar image
+*SAT*              
 
-  dem.grd         --  DEM grid (wider than the coverage of the radar image)
+	Can be ALOS or ERS or ENVI or generic SAT
 
-  los.grd         --  output: file name of the LOS grid 
+*ve.grd, vn.grd, vu.grd*      
 
-  note that the grid of the grd files must be consistent
-  note the program need master.PRM and its LED file
+	Input: east, north, vertical motion simulated from numerical model 
+
+*master.PRM*          
+
+	PRM file of the radar image
+
+*dem.grd*             
+
+	DEM grid (wider than the coverage of the radar image)
+
+*los.grd*             
+
+	Specify output file name of the LOS grid 
 
 
 Example
 -------
-  **proj_model.csh** SAT ve.grd vn.grd vu.grd supermaster.PRM dem.grd output_los.grd  
+ ::
+
+    proj_model.csh SAT ve.grd vn.grd vu.grd supermaster.PRM dem.grd output_los.grd  

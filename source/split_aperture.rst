@@ -1,8 +1,8 @@
 .. index:: ! split_aperture       
 
-************      
+**************    
 split_aperture    
-************      
+**************    
 
 Synopsis
 --------
@@ -15,9 +15,18 @@ Description
    
 SLCs are bandpassed output is SLCF (forward) SLCB (backward) 
 
+Required Argument
+-----------------
+
+*prm_file*
+
+	Input parameter (PRM) file
+
 Example
 -------
-    **split_aperture** 
+ ::
+
+    split_aperture 
 
 
 

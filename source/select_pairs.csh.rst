@@ -1,8 +1,8 @@
 .. index:: ! select_pairs.csh
 
-**************
+****************
 select_pairs.csh
-**************
+****************
 
 Synopsis
 --------
@@ -12,18 +12,26 @@ Description
 -----------
 **select_pairs.csh** generate the input file for intf_tops.csh with given threshold of time and baseline.
 
-Input:
+This outputs an **intf.in** file, which is the primary input file for :doc:`intf_tops.csh` or :doc:`intf_tops_parallel.csh`
 
-  baseline_table.dat -- table of calculated baselines for your images (if missing use :doc:`get_baseline_table.csh` to generate a new one)
+Required Arguments
+------------------
 
-  threshold_time     -- temporal baseline threshold in days
+*baseline_table.dat*  
 
-  threshold_baseline -- spatial perpendicular baseline in meters
+	Table of calculated baselines for your images (if missing use :doc:`get_baseline_table.csh` to generate a new one)
 
-Output:
+*threshold_time*      
 
-  intf.in            -- primary input file for `intf_tops.csh` or `intf_tops_parallel.csh`
+	Temporal baseline threshold in days
+
+*threshold_baseline*  
+
+	Spatial perpendicular baseline in meters
+
 
 Example
 -------
-  **select_pairs.csh** baseline_table.dat 90 150  
+ ::
+
+    select_pairs.csh baseline_table.dat 90 150  
