@@ -21,7 +21,8 @@ Required Arguments
 
 *phase_ll.xyz*  
 
-	An ASCII file of phase or anything in lon/lat-coordinates
+	An ASCII file of phase or anything in lon/lat-coordinates (must have at least four points)
+	If you are interested in projecting a single point to radar coordinates see :doc:`SAT_llt2rat`
 
 *phase_ra.xyz*  
 
