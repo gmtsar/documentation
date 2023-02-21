@@ -12,6 +12,15 @@ How to add a module:
 4) go to `documentation/` and run `make html`, then check build/html/index.html
 5) from `documentation/` copy the built html files to `docs/` to update the github pages build: `cp build/html/*.html docs/ `
 
+How to edit a module: 
+1) git pull the current version to your local
+2) edit the .rst file for the tool you want to edit inside the `source/` directory
+3) go to `documentation/` and run `make html`, then check build/html/index.html
+4) from `documentation/` copy the built html files to `docs/` to update the github pages build: `cp build/html/*.html docs/ `
+3) git add the file you changed (git add source/file.rst) and git add the html file change (git add docs/file.html)
+4) git commit the changes
+5) git push
+
 ## Formatting Structure
 
 Check out source/ALOS_merge.rst as an example of formatting for each documentation page (.rst file).
