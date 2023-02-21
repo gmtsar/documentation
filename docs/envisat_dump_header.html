@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>envisat_dump_header &mdash; GMTSAR 6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ers_line_fixer" href="ers_line_fixer.html" />
+    <link rel="prev" title="envisat_dump_data" href="envisat_dump_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GMTSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Core Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ALOS_fbd2fbs.html">ALOS_fbd2fbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_fbd2fbs_SLC.html">ALOS_fbd2fbs_SLC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_fbd2ss.html">ALOS_fbd2ss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_merge.html">ALOS_merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_mosaic_ss.html">ALOS_mosaic_ss[_2frames]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_pre_process.html">ALOS_pre_process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_pre_process_SLC.html">ALOS_pre_process_SLC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ALOS_pre_process_SS.html">ALOS_pre_process_SS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asa_cat.html">asa_cat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asa_im_decode.html">asa_im_decode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assemble_tops.html">assemble_tops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bperp.html">bperp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calc_dop_orb.html">calc_dop_orb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calc_dop_orb_envi.html">calc_dop_orb_envi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conv.html">conv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cut_slc.html">cut_slc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ENVI_SLC_pre_process.html">ENVI_SLC_pre_process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ENVI_pre_process.html">ENVI_pre_process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ERS_pre_process.html">ERS_pre_process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envi_slc_decode.html">envi_slc_decode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envisat_dump_data.html">envisat_dump_data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">envisat_dump_header</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-argument">Required Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ers_line_fixer.html">ers_line_fixer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="esarp.html">esarp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ext_orb_s1a.html">ext_orb_s1a</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extend_orbit.html">extend_orbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitoffset.html">fitoffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geocode_slc.html">geocode_slc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_PRM.html">get_PRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_gaussian_filter.html">make_gaussian_filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_raw_csk.html">make_raw_csk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_s1a_tops.html">make_s1a_tops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_s1a_tops_6par.html">make_s1a_tops_6par</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_slc_csk.html">make_slc_csk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_slc_rs2.html">make_slc_rs2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_slc_s1a.html">make_slc_s1a</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_slc_tsx.html">make_slc_tsx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_swath.html">merge_swath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nearest_grid.html">nearest_grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offset_topo.html">offset_topo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p_scatter.html">p_scatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phase2topo.html">phase2topo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phasediff.html">phasediff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phasediff_get_topo_phase.html">phasediff_get_topo_phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phasefilt.html">phasefilt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="read_data_file_ccrs.html">read_data_file_ccrs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="read_data_file_dpaf.html">read_data_file_dpaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="read_sarleader_dpaf.html">read_sarleader_dpaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resamp.html">resamp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SAT_baseline.html">SAT_baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SAT_llt2rat.html">SAT_llt2rat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SAT_look.html">SAT_look</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sbas.html">sbas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sbas_parallel.html">sbas_parallel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snaphu.html">snaphu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid_tide.html">solid_tide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectral_diversity.html">spectral_diversity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="split_aperture.html">split_aperture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="split_spectrum.html">split_spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stitch_tops.html">stitch_tops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_PRM.html">update_PRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xcorr.html">xcorr</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#scripts">Scripts</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GMTSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">Core Modules</a> &raquo;</li>
+      <li>envisat_dump_header</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/envisat_dump_header.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="envisat-dump-header">
+<span id="index-0"></span><h1>envisat_dump_header<a class="headerlink" href="#envisat-dump-header" title="Permalink to this heading"></a></h1>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<p><strong>envisat_dump_header</strong> <em>envisat-product</em></p>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p><strong>envisat_dump_header</strong></p>
+<p><em>envisat_dump_header by Bert Kampes</em></p>
+</section>
+<section id="required-argument">
+<h2>Required Argument<a class="headerlink" href="#required-argument" title="Permalink to this heading"></a></h2>
+<p><em>envisat-product</em></p>
+<blockquote>
+<div><p>Data file to operated on</p>
+</div></blockquote>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">envisat_dump_header</span> <span class="n">ASA_IMS_1PNDPA20021025_175208_000000162010_00356_03416_0005</span><span class="o">.</span><span class="n">N1</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="envisat_dump_data.html" class="btn btn-neutral float-left" title="envisat_dump_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ers_line_fixer.html" class="btn btn-neutral float-right" title="ers_line_fixer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Xiaohua Xu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
