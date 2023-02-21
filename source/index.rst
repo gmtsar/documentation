@@ -3,14 +3,39 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GMTSAR's documentation!
-==================================
+GMTSAR Documentation
+====================
+
+Welcome to the documentation page for GMTSAR software!
+
+Quick Links (TEST)
+------------------
+
+.. hlist::
+   :columns: 3
+
+   - :doc:`sbas`
+   - :doc:`sbas_parallel`
+   - :doc:`SAT_look`
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
-   modules
+.. panels::
+
+    .. toctree::
+        :maxdepth: 1
+        :caption: Resources      
+
+        Times Series Example <https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf>
+
+    ---
+
+    .. toctree::
+        :maxdepth: 1
+        :caption: Contents
+
+        modules
 
 
 Indices and tables
