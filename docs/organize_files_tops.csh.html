@@ -7,6 +7,9 @@
   <title>organize_files_tops.csh &mdash; GMTSAR 6.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,7 +17,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -38,7 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Core Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html#scripts">Scripts</a><ul class="current">
@@ -163,18 +169,18 @@
            <div itemprop="articleBody">
              
   <section id="organize-files-tops-csh">
-<span id="index-0"></span><h1>organize_files_tops.csh<a class="headerlink" href="#organize-files-tops-csh" title="Permalink to this heading"></a></h1>
+<span id="index-0"></span><h1>organize_files_tops.csh<a class="headerlink" href="#organize-files-tops-csh" title="Permalink to this headline"></a></h1>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
 <p><strong>organize_files_tops.csh</strong> <em>filelist pins.ll mode</em></p>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p><strong>organize_files_tops.csh</strong> organize one track of S1A TOPS data, redefine frames, auto-download precise orbits; if restituted orbits are required, user must download separately</p>
 <p>To download restituted orbit files for Sentinel-1 data, use <a class="reference internal" href="download_sentinel_orbits.csh.html"><span class="doc">download_sentinel_orbits.csh</span></a> or <a class="reference internal" href="download_sentinel_orbits_linux.csh.html"><span class="doc">download_sentinel_orbits_linux.csh</span></a></p>
 </section>
 <section id="required-arguments">
-<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
 <p><em>filelist</em></p>
 <blockquote>
 <div><p>List of SAFE files to be stitched, with absolute path, in time order</p>
@@ -195,7 +201,7 @@
 </div></blockquote>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">organize_files_tops</span><span class="o">.</span><span class="n">csh</span> <span class="n">SAFEfile</span><span class="o">.</span><span class="n">list</span> <span class="n">T035_pins</span><span class="o">.</span><span class="n">ll</span> <span class="mi">1</span>
 </pre></div>

@@ -7,6 +7,9 @@
   <title>SAT_look &mdash; GMTSAR 6.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,7 +17,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -38,7 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Core Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ALOS_fbd2fbs.html">ALOS_fbd2fbs</a></li>
@@ -141,19 +147,19 @@
            <div itemprop="articleBody">
              
   <section id="sat-look">
-<span id="index-0"></span><h1>SAT_look<a class="headerlink" href="#sat-look" title="Permalink to this heading"></a></h1>
+<span id="index-0"></span><h1>SAT_look<a class="headerlink" href="#sat-look" title="Permalink to this headline"></a></h1>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
 <p><strong>SAT_look</strong> <em>master.PRM</em> [-bo[s|d]] &lt; <em>input_table</em> &gt; <em>output_table</em></p>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p><strong>SAT_look</strong> reads in parameters specified in <em>master.PRM</em> (from the radar image as your reference
 for alignment), the corresponding <em>led_file</em>, the 3-column <em>input_table</em>, and create 6-column output
 to <em>output_table</em></p>
 </section>
 <section id="required-arguments">
-<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
 <p><em>master.PRM</em></p>
 <blockquote>
 <div><p>Parameter file for master image and points to LED orbit file</p>
@@ -168,14 +174,14 @@ to <em>output_table</em></p>
 </div></blockquote>
 </section>
 <section id="optional-argument">
-<h2>Optional Argument<a class="headerlink" href="#optional-argument" title="Permalink to this heading"></a></h2>
+<h2>Optional Argument<a class="headerlink" href="#optional-argument" title="Permalink to this headline"></a></h2>
 <p><em>-bos</em>  or  <em>-bod</em></p>
 <blockquote>
 <div><p>Binary single (s) or double (d) precision output</p>
 </div></blockquote>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SAT_look</span> <span class="n">master</span><span class="o">.</span><span class="n">PRM</span> <span class="o">&lt;</span> <span class="n">topo</span><span class="o">.</span><span class="n">llt</span> <span class="o">&gt;</span> <span class="n">topo</span><span class="o">.</span><span class="n">lltn</span>
 </pre></div>

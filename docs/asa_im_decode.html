@@ -7,6 +7,9 @@
   <title>asa_im_decode &mdash; GMTSAR 6.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,7 +17,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -38,7 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Core Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ALOS_fbd2fbs.html">ALOS_fbd2fbs</a></li>
@@ -141,18 +147,18 @@
            <div itemprop="articleBody">
              
   <section id="asa-im-decode">
-<span id="index-0"></span><h1>asa_im_decode<a class="headerlink" href="#asa-im-decode" title="Permalink to this heading"></a></h1>
+<span id="index-0"></span><h1>asa_im_decode<a class="headerlink" href="#asa-im-decode" title="Permalink to this headline"></a></h1>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
 <p><strong>asa_im_decode</strong> <em>&lt;asa_im&gt; &lt;asa_ins&gt; &lt;out&gt; &lt;outType&gt; &lt;near_range&gt;</em></p>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p><strong>asa_im_decode</strong> Decodes Envisat ASAR Image Mode Level 0 data.</p>
 <p><em>asa_im_decode v1.1 by smb</em></p>
 </section>
 <section id="required-arguments">
-<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
 <p><em>asa_im</em></p>
 <blockquote>
 <div><p>Input image file(s) (multiple files if merging along-track)</p>
@@ -175,7 +181,7 @@
 </div></blockquote>
 </section>
 <section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline"></a></h2>
 <p>Starting range computed as (rank*pri+windowStartTime)*c/2 where rank is the number of pri between transmitted pulse and return echo</p>
 <p>Calibration/noise lines are replaced with previous echo data line</p>
 <p>Missing lines within a data set and between adjacent along-track data sets are filled with zeroes in float mode and 0.*127.5+127.5 + .5 = 128 for byte mode</p>
@@ -183,7 +189,7 @@
 <p>Envisat ASAR Product Handbook, Issue 1.1, 1 December 2002 can be found at <a class="reference external" href="http://envisat.esa.int/dataproducts/asar/CNTR6-3-6.htm#eph.asar.asardf.0pASA_IM__0P">http://envisat.esa.int/dataproducts/asar/CNTR6-3-6.htm#eph.asar.asardf.0pASA_IM__0P</a></p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asa_im_decode</span>
 </pre></div>

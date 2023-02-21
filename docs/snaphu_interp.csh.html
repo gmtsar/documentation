@@ -7,6 +7,9 @@
   <title>snaphu_interp.csh &mdash; GMTSAR 6.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,7 +17,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -38,7 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Core Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html#scripts">Scripts</a><ul class="current">
@@ -165,17 +171,17 @@
            <div itemprop="articleBody">
              
   <section id="snaphu-interp-csh">
-<span id="index-0"></span><h1>snaphu_interp.csh<a class="headerlink" href="#snaphu-interp-csh" title="Permalink to this heading"></a></h1>
+<span id="index-0"></span><h1>snaphu_interp.csh<a class="headerlink" href="#snaphu-interp-csh" title="Permalink to this headline"></a></h1>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
 <p><strong>snaphu_interp.csh</strong> <em>correlation_threshold maximum_discontinuity [&lt;rng0&gt;/&lt;rngf&gt;/&lt;azi0&gt;/&lt;azif&gt;]</em></p>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p><strong>snaphu_interp.csh</strong> Unwrap the phase while interpolating around NaN pixels</p>
 </section>
 <section id="required-arguments">
-<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
 <p><em>correlation_threshold</em></p>
 <blockquote>
 <div><p>Correlation is set to zero is less than the set threshold (if unsure what threshold to start with, try creating a coherence mask first to check)</p>
@@ -186,14 +192,14 @@
 </div></blockquote>
 </section>
 <section id="optional-arguments">
-<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this heading"></a></h2>
+<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline"></a></h2>
 <p><em>optional range</em></p>
 <blockquote>
 <div><p>If you wish to only process a subarea of your input, specify minrange/maxrange/minazimuth/maxazimuth</p>
 </div></blockquote>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snaphu_interp</span><span class="o">.</span><span class="n">csh</span> <span class="mf">.12</span> <span class="mi">40</span> <span class="mi">1000</span><span class="o">/</span><span class="mi">3000</span><span class="o">/</span><span class="mi">24000</span><span class="o">/</span><span class="mi">27000</span>
 </pre></div>
@@ -201,7 +207,7 @@
 </div></blockquote>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
 <p>Chen C. W. and H. A. Zebker, Network approaches to two-dimensional phase unwrapping: intractability and two new algorithms, Journal of the Optical Society of America A, vol. 17, pp. 401-414 (2000).</p>
 <p>Agram, P. S., &amp; Zebker, H. A. (2009). Sparse two-dimensional phase unwrapping using regular-grid methods. IEEE Geoscience and Remote Sensing Letters, 6(2), 327-331.</p>
 </section>

@@ -7,6 +7,9 @@
   <title>align_tops_esd.csh &mdash; GMTSAR 6.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,7 +17,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -38,7 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Core Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html#scripts">Scripts</a><ul class="current">
@@ -164,18 +170,18 @@
            <div itemprop="articleBody">
              
   <section id="align-tops-esd-csh">
-<span id="index-0"></span><h1>align_tops_esd.csh<a class="headerlink" href="#align-tops-esd-csh" title="Permalink to this heading"></a></h1>
+<span id="index-0"></span><h1>align_tops_esd.csh<a class="headerlink" href="#align-tops-esd-csh" title="Permalink to this headline"></a></h1>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
 <p><strong>align_tops_esd.csh</strong> <em>master_prefix master_orb_file aligned_s1a_prefix aligned_orb_file dem.grd [mode]</em></p>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p><strong>align_tops_esd.csh</strong> aligns TOPS-mode data (like Sentinel-1) with the ability to apply Enhanced Spectral Diversity
 Be sure the tiff, xml, orbit and dem files are available in the local directory.</p>
 </section>
 <section id="required-arguments">
-<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
 <p><em>master_prefix</em></p>
 <blockquote>
 <div><p>The name stem of the master <em>.tiff/</em>.xml file, without the suffix</p>
@@ -200,14 +206,14 @@ Be sure the tiff, xml, orbit and dem files are available in the local directory.
 </div></blockquote>
 </section>
 <section id="optional-arguments">
-<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this heading"></a></h2>
+<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline"></a></h2>
 <p><em>mode</em></p>
 <blockquote>
 <div><p>set mode = 0 for constant sum correction, set mode = 1 for constant median correction, set mode = 2 for non-constant correction with mapping the residual azimuth shift</p>
 </div></blockquote>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">align_tops_esd</span><span class="o">.</span><span class="n">csh</span> <span class="n">s1a</span><span class="o">-</span><span class="n">iw3</span><span class="o">-</span><span class="n">slc</span><span class="o">-</span><span class="n">vv</span><span class="o">-</span><span class="mi">20150526</span><span class="n">t014937</span><span class="o">-</span><span class="mi">20150526</span><span class="n">t015002</span><span class="o">-</span><span class="mi">006086</span><span class="o">-</span><span class="mf">007e23</span><span class="o">-</span><span class="mi">003</span> <span class="n">S1A_OPER_AUX_POEORB_OPOD_20150615T155109_V20150525T225944_20150527T005944</span><span class="o">.</span><span class="n">EOF</span><span class="o">.</span><span class="n">txt</span> <span class="n">s1a</span><span class="o">-</span><span class="n">iw3</span><span class="o">-</span><span class="n">slc</span><span class="o">-</span><span class="n">vv</span><span class="o">-</span><span class="mi">20150607</span><span class="n">t014937</span><span class="o">-</span><span class="mi">20150607</span><span class="n">t015003</span><span class="o">-</span><span class="mi">006261</span><span class="o">-</span><span class="mf">00832e-006</span> <span class="n">S1A_OPER_AUX_POEORB_OPOD_20150627T155155_V20150606T225944_20150608T005944</span><span class="o">.</span><span class="n">EOF</span><span class="o">.</span><span class="n">txt</span> <span class="n">dem</span><span class="o">.</span><span class="n">grd</span>
 </pre></div>

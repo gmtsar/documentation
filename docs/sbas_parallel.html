@@ -7,6 +7,9 @@
   <title>sbas_parallel &mdash; GMTSAR 6.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,7 +17,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -38,7 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Core Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ALOS_fbd2fbs.html">ALOS_fbd2fbs</a></li>
@@ -141,13 +147,13 @@
            <div itemprop="articleBody">
              
   <section id="sbas-parallel">
-<span id="index-0"></span><h1>sbas_parallel<a class="headerlink" href="#sbas-parallel" title="Permalink to this heading"></a></h1>
+<span id="index-0"></span><h1>sbas_parallel<a class="headerlink" href="#sbas-parallel" title="Permalink to this headline"></a></h1>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
 <p><strong>sbas_parallel</strong> <em>intf.tab scene.tab N S xdim ydim [-atm ni] [-smooth sf] [-wavelength wl] [-incidence inc] [-range -rng] [-rms] [-dem]</em></p>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p><strong>sbas_parallel</strong> Coherence-based Small Baseline Subset time series processing (see references for theory) in parallel</p>
 <p>FOR PARALLEL PROCESSING: Before run: set the environment variable OMP_NUM_THREADS to a proper number that fits your machine (you need to know how many cores and threads you have on your machine, as this process can easily overload the memory and processing capability of a machine).</p>
 <p>This command sometimes needs to be compiled separately; see <a class="reference external" href="https://github.com/gmtsar/gmtsar/wiki/parallel-sbas-code">https://github.com/gmtsar/gmtsar/wiki/parallel-sbas-code</a> for compiling information</p>
@@ -156,7 +162,7 @@
 <p>If you choose to include the optional outputs <strong>-dem</strong> or <strong>-rms</strong> these will output additional products, i.e. the dem error estimate and the velocity rms estimate respectively (see below).</p>
 </section>
 <section id="required-arguments">
-<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
 <p><em>intf.tab</em></p>
 <blockquote>
 <div><p>List of unwrapped (filtered) interferograms (can be created with <a class="reference internal" href="prep_sbas.csh.html"><span class="doc">prep_sbas.csh</span></a>)</p>
@@ -211,7 +217,7 @@
 </div></blockquote>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbas_parallel</span> <span class="n">intf</span><span class="o">.</span><span class="n">tab</span> <span class="n">scene</span><span class="o">.</span><span class="n">tab</span> <span class="mi">88</span> <span class="mi">28</span> <span class="mi">700</span> <span class="mi">1000</span>
 </pre></div>
@@ -219,7 +225,7 @@
 </div></blockquote>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
 <p>Berardino P., G. Fornaro, R. Lanari, and E. Sansosti, “A new algorithm for surface deformation monitoring based on small baseline differential SAR interferograms,” IEEE Trans. Geosci. Remote Sensing, vol. 40, pp. 2375–2383, Nov. 2002.</p>
 <p>Schmidt, D. A., and R. Bürgmann 2003, Time-dependent land uplift and subsidence in the Santa Clara valley, California, from a large interferometric synthetic aperture radar data set, J. Geophys. Res., 108, 2416, doi:10.1029/2002JB002267, B9.</p>
 <p>Tong, X. and Schmidt, D., 2016. Active movement of the Cascade landslide complex in Washington from a coherence-based InSAR time series method. Remote Sensing of Environment, 186, pp.405-415.</p>
