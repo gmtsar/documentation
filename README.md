@@ -9,7 +9,8 @@ How to add a module:
 1) go to source, copy an exisiting module to a new_module_name.rst
 2) edit the file, change names, add description, usage, examples
 3) add this new_module_name to module.rst
-4) go to documentation and run `make html`, then check build/html/index.html
+4) go to documentation/ and run `make html`, then check build/html/index.html
+5) from documentation/ copy the built html files to docs/ to update the github pages build: `cp build/html/*.html docs/ `
 
 ## Formatting Structure
 
