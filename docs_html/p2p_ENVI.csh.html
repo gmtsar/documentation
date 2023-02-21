@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>p2p_ENVI.csh &mdash; GMTSAR 6.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="p2p_ERS.csh" href="p2p_ERS.csh.html" />
+    <link rel="prev" title="p2p_ALOS2_SCAN_SLC.csh" href="p2p_ALOS2_SCAN_SLC.csh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GMTSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Core Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#scripts">Scripts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="align.csh.html">align.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_ALOS2_SCAN.csh.html">align_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_ALOS_SLC.csh.html">align_ALOS_SLC.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_SAT.csh.html">align_SAT.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_batch.csh.html">align_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_batch_ALOS2_SCAN.csh.html">align_batch_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_batch_ALOS_SLC.csh.html">align_batch_ALOS_SLC.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_tops.csh.html">align_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_tops_esd.csh.html">align_tops_esd.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baseline_table.csh.html">baseline_table.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cleanup.csh.html">cleanup.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="correct_insar_with_gnss.csh.html">correct_insar_with_gnss.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="correct_merge_offset.csh.html">correct_merge_offset.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_frame_tops.csh.html">create_frame_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_merge_input.csh.html">create_merge_input.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dem2topo_ra.csh.html">dem2topo_ra.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dem2topo_ra_ALOS2.csh.html">dem2topo_ra_ALOS2.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download_sentinel_orbits.csh.html">download_sentinel_orbits.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download_sentinel_orbits_linux.csh.html">download_sentinel_orbits_linux.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dump_orbit_envi.pl.html">dump_orbit_envi.pl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dump_orbit_ers.pl.html">dump_orbit_ers.pl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dump_time_envi.pl.html">dump_time_envi.pl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimate_ionospheric_phase.csh.html">estimate_ionospheric_phase.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract_one_time_series.csh.html">extract_one_time_series.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fetchOrbit.py.html">fetchOrbit.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter.csh.html">filter.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_auxi.pl.html">find_auxi.pl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fit_planar_trend.py.html">fit_planar_trend.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitoffset.csh.html">fitoffset.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geocode.csh.html">geocode.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_baseline_table.csh.html">get_baseline_table.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsar.csh.html">gmtsar.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsar_sharedir.csh.html">gmtsar_sharedir.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gmtsar_uninstall.sh.html">gmtsar_uninstall.sh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnss_enu2los.csh.html">gnss_enu2los.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2geotiff.csh.html">grd2geotiff.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grd2kml.csh.html">grd2kml.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf.csh.html">intf.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_batch.csh.html">intf_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_batch_ALOS2_SCAN.csh.html">intf_batch_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_tops.csh.html">intf_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_tops_parallel.csh.html">intf_tops_parallel.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landmask.csh.html">landmask.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="landmask_ALOS2.csh.html">landmask_ALOS2.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="m2s.csh.html">m2s.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MAI_processing.csh.html">MAI_processing.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_a_offset.csh.html">make_a_offset.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_dem.csh.html">make_dem.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_los_ascii.csh.html">make_los_ascii.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_batch.csh.html">merge_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_unwrap_geocode_tops.csh.html">merge_unwrap_geocode_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organize_files_tops.csh.html">organize_files_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organize_files_tops_linux.csh.html">organize_files_tops_linux.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2p_ALOS2_SCAN_Frame.csh.html">p2p_ALOS2_SCAN_Frame.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2p_ALOS2_SCAN_SLC.csh.html">p2p_ALOS2_SCAN_SLC.csh</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">p2p_ENVI.csh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-arguments">Required Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="p2p_ERS.csh.html">p2p_ERS.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2p_S1_TOPS_Frame.csh.html">p2p_S1_TOPS_Frame.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2p_processing.csh.html">p2p_processing.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pop_config.csh.html">pop_config.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc.csh.html">pre_proc.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc_batch.csh.html">pre_proc_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc_batch_ALOS2_SCAN.csh.html">pre_proc_batch_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc_batch_ALOS_SLC.csh.html">pre_proc_batch_ALOS_SLC.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prep_data.csh.html">prep_data.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prep_data_linux.csh.html">prep_data_linux.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prep_sbas.csh.html">prep_sbas.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preproc_batch_tops.csh.html">preproc_batch_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preproc_batch_tops_esd.csh.html">preproc_batch_tops_esd.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj_ll2ra.csh.html">proj_ll2ra.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj_ll2ra_ascii.csh.html">proj_ll2ra_ascii.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj_model.csh.html">proj_model.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj_ra2ll.csh.html">proj_ra2ll.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj_ra2ll_ascii.csh.html">proj_ra2ll_ascii.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samp_slc.csh.html">samp_slc.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sarp.csh.html">sarp.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="select_pairs.csh.html">select_pairs.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shift_atime_PRM.csh.html">shift_atime_PRM.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slc2amp.csh.html">slc2amp.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snaphu.csh.html">snaphu.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snaphu_interp.csh.html">snaphu_interp.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.csh.html">stack.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack_corr.csh.html">stack_corr.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tide_correction.csh.html">tide_correction.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unwrap_parallel.csh.html">unwrap_parallel.csh</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GMTSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">Core Modules</a> &raquo;</li>
+      <li>p2p_ENVI.csh</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/p2p_ENVI.csh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="p2p-envi-csh">
+<span id="index-0"></span><h1>p2p_ENVI.csh<a class="headerlink" href="#p2p-envi-csh" title="Permalink to this heading"></a></h1>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<p><strong>p2p_ENVI.csh</strong> <em>master_stem aligned_stem configuration_file</em></p>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p><strong>p2p_ENVI.csh</strong> is a processing script for producing an interferogram from ENVISAT data</p>
+<p>Place the raw data in a directory called <strong>raw</strong> and a dem.grd file in a parallel directory called <strong>topo</strong>. The two files of raw data must have a suffix .baq</p>
+<p>Execute this command at the directory location above <strong>raw</strong> and <strong>topo</strong>.</p>
+<p>The file dem.grd is a dem that completely covers the SAR frame, or is larger than the SAR frame. If the dem is omitted then an interferogram will still be created, but there will not be a geocoded output. A custom dem.grd file can be made at the website: <a class="reference external" href="http://topex.ucsd.edu/gmtsar">http://topex.ucsd.edu/gmtsar</a></p>
+</section>
+<section id="required-arguments">
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this heading"></a></h2>
+<p><em>master_stem</em></p>
+<blockquote>
+<div><p>Name stem of master or reference image</p>
+</div></blockquote>
+<p><em>aligned_stem</em></p>
+<blockquote>
+<div><p>Name stem of aligned or secondary image</p>
+</div></blockquote>
+<p><em>configuration_file</em></p>
+<blockquote>
+<div><p>Name of the configuration file for interferogram processing. A default can be generated using <a class="reference internal" href="pop_config.csh.html"><span class="doc">pop_config.csh</span></a></p>
+</div></blockquote>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p2p_ENVI</span><span class="o">.</span><span class="n">csh</span> <span class="n">ENV1_2_077_0639_0657_41714</span> <span class="n">ENV1_2_077_0639_0657_42716</span> <span class="n">config</span><span class="o">.</span><span class="n">envi</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="p2p_ALOS2_SCAN_SLC.csh.html" class="btn btn-neutral float-left" title="p2p_ALOS2_SCAN_SLC.csh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="p2p_ERS.csh.html" class="btn btn-neutral float-right" title="p2p_ERS.csh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Xiaohua Xu.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
