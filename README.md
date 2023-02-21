@@ -1,7 +1,7 @@
 # Documentation
 GMTSAR documentation
 
-First install sphinx and rtd theme through pip.
+First install sphinx, rtd theme, and sphinx-panels through pip.
 
 Check out Sphinx Documentation Docs: https://www.sphinx-doc.org/en/master/
 
