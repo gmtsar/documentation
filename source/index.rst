@@ -8,15 +8,6 @@ GMTSAR Documentation
 
 Welcome to the documentation page for GMTSAR software!
 
-Quick Links 
------------
-
-.. hlist::
-   :columns: 2
-
-   - GMTSAR GitHub Page <https://github.com/gmtsar/gmtsar> 
-   - GMTSAR Webpage <https://topex.ucsd.edu/gmtsar/downloads/>
-
 .. toctree::
    :hidden:
 
@@ -24,9 +15,11 @@ Quick Links
 
     .. toctree::
         :maxdepth: 1
-        :caption: Getting Started
+        :caption: Quick Links 
 
+        GMTSAR GitHub <https://github.com/gmtsar/gmtsar>
         Installation <https://github.com/gmtsar/gmtsar/wiki/GMTSAR-Wiki-Page>
+        GMTSAR Webpage <https://topex.ucsd.edu/gmtsar/> 
 
     ---
     .. toctree::
@@ -35,7 +28,8 @@ Quick Links
 
         RADARSAT2 Single Interferogram <https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_rs2_demo.ipynb>
         Times Series Example <https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf>
-        Correcting An Interferogram with GPS <https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_correcting_intf_with_gps_example.ipynb> 
+        Correcting An Interferogram with GPS <https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_correcting_intf_with_gps_example.ipynb>
+        Package Examples <https://topex.ucsd.edu/gmtsar/downloads/> 
 
     ---
     .. toctree::
