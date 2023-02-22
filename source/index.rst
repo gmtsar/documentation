@@ -24,7 +24,7 @@ Welcome to the documentation page for GMTSAR software!
     ---
     .. toctree::
         :maxdepth: 1
-        :caption: Examples       
+        :caption: Real Examples       
 
         RADARSAT2 Single Interferogram <https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_rs2_demo.ipynb>
         Times Series Example <https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf>

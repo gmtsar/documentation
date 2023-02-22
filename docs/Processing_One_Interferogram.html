@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Processing One Interferogram &mdash; GMTSAR 6.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ALOS_fbd2fbs" href="ALOS_fbd2fbs.html" />
+    <link rel="prev" title="Examples" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GMTSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar">GMTSAR GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/wiki/GMTSAR-Wiki-Page">Installation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/">GMTSAR Webpage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_rs2_demo.ipynb">RADARSAT2 Single Interferogram</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_correcting_intf_with_gps_example.ipynb">Correcting An Interferogram with GPS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/downloads/">Package Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/GMTSAR_2ND_TEX.pdf">GMTSAR Textbook</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Processing One Interferogram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-do-i-need-to-process-an-interferogram">What do I need to process an interferogram?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-tool-can-i-use-to-process-my-interferogram">What tool can I use to process my interferogram?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-can-i-set-up-my-processing">How can I set up my processing?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-change-the-default-processing-settings">How do I change the default processing settings?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-modules">Core Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#scripts">Scripts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GMTSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">Examples</a> &raquo;</li>
+      <li>Processing One Interferogram</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Processing_One_Interferogram.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="processing-one-interferogram">
+<span id="index-0"></span><h1>Processing One Interferogram<a class="headerlink" href="#processing-one-interferogram" title="Permalink to this headline"></a></h1>
+<section id="what-do-i-need-to-process-an-interferogram">
+<h2>What do I need to process an interferogram?<a class="headerlink" href="#what-do-i-need-to-process-an-interferogram" title="Permalink to this headline"></a></h2>
+<dl>
+<dt><em>Input SAR Data</em></dt><dd><p>To process an interferogram you need to download two SAR images from the
+same satellite, same satellite track, and that overlap in space</p>
+</dd>
+<dt><em>Input Orbit Files</em></dt><dd><p>You will need to provide the orbital information for each of the SAR images
+you wish to process. This information is usually available from the same place
+you downloaded data. You will need one orbit file for each image.</p>
+<p>For Sentinel-1 Orbit files (precise or restituted) check out the tool <a class="reference internal" href="download_sentinel_orbits.csh.html"><span class="doc">download_sentinel_orbits.csh</span></a> or <a class="reference internal" href="download_sentinel_orbits_linux.csh.html"><span class="doc">download_sentinel_orbits_linux.csh</span></a></p>
+</dd>
+<dt><em>Digital Elevation Model data</em></dt><dd><p>You will need a digital elevation model (DEM) that covers the spatial extent of your SAR images.
+You can visit this website to generate one: <a class="reference external" href="https://topex.ucsd.edu/gmtsar/demgen/">https://topex.ucsd.edu/gmtsar/demgen/</a></p>
+</dd>
+</dl>
+</section>
+<section id="what-tool-can-i-use-to-process-my-interferogram">
+<h2>What tool can I use to process my interferogram?<a class="headerlink" href="#what-tool-can-i-use-to-process-my-interferogram" title="Permalink to this headline"></a></h2>
+<p><strong>p2p_processing.csh</strong></p>
+<p>This tool ingests multiples kinds of SAR satellite data, all with the same set up. The user must specify
+the satellite type, provide the raw data and orbit files, and supply the DEM file.</p>
+<p>Check out the <a class="reference internal" href="p2p_processing.csh.html"><span class="doc">p2p_processing.csh</span></a> page to read more.</p>
+</section>
+<section id="how-can-i-set-up-my-processing">
+<h2>How can I set up my processing?<a class="headerlink" href="#how-can-i-set-up-my-processing" title="Permalink to this headline"></a></h2>
+<p>To use <a class="reference internal" href="p2p_processing.csh.html"><span class="doc">p2p_processing.csh</span></a> you need to set up a directory structure. Let’s walk through a step by step guide.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">MyInterferogram</span>
+<span class="n">cd</span> <span class="n">MyInterferogram</span>
+<span class="n">mkdir</span> <span class="n">raw</span>
+<span class="n">mkdir</span> <span class="n">topo</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Move your DEM file into topo/ and change its name to dem.grd
+Move your two SAR images and their two respective orbit files into raw/
+From the directory MyInterferogram, run the <a class="reference internal" href="p2p_processing.csh.html"><span class="doc">p2p_processing.csh</span></a> command.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p2p_processing</span><span class="o">.</span><span class="n">csh</span> <span class="n">ALOS</span> <span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP055750660</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span> <span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP049040660</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span> <span class="n">config</span><span class="o">.</span><span class="n">alos</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;&amp;</span> <span class="n">p2p_process_feb22</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Always save your command to a log file. This makes it much easier to debug if something goes awry.</p>
+<p>You can follow your log file with the tail command, for example</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">p2p_process_feb22</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="how-do-i-change-the-default-processing-settings">
+<h2>How do I change the default processing settings?<a class="headerlink" href="#how-do-i-change-the-default-processing-settings" title="Permalink to this headline"></a></h2>
+<p>The <a class="reference internal" href="p2p_processing.csh.html"><span class="doc">p2p_processing.csh</span></a> command creates a default config.txt file for the given satellite.
+This configuration file uses only default values for all interferogram processing, such as a default
+filter wavelength, decimation size, and a default assumption not to unwrap the interferogram.</p>
+<p>To change these and any other settings, create a new config.txt file with
+the tool <a class="reference internal" href="pop_config.csh.html"><span class="doc">pop_config.csh</span></a> and edit your configuration file as desired.</p>
+<p>Common setting questions:</p>
+<p><em>How do I turn on unwrapping?</em>  Change the threshold_snaphu value to a nonzero value (try 0.1)</p>
+<p><em>I turned on unwrapping and the coherence threshold is too small! How do I change it?</em> Change the threshold_snaphu value to a larger value. This is the threshold of coherence for accepting and processing pixels in your interferogram.</p>
+<p><em>I don’t want all the geocoded products right now. How do I turn it off?</em> Change threshold_geocode to zero</p>
+<p><em>For the region cut, how do I choose what values to use?</em> It’s written in minrange/maxrange/minazimuth/maxazimuth. You can check out one of your corr.pdf phase.pdf or phasefilt.pdf files to determine what area you want to isolate.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ALOS_fbd2fbs.html" class="btn btn-neutral float-right" title="ALOS_fbd2fbs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
