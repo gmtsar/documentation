@@ -22,13 +22,16 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = u'GMTSAR'
-copyright = u'2022, Xiaohua Xu'
-author = u'Xiaohua Xu'
+# KG added a custom.css file in build/html/_static/css that ignores
+# the default copyright statement below. To change the text, update the file
+# build/html/_static/css/custom.css
+#copyright = u'2023'
+author = u'GMTSAR Team'
 
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u'6.0'
+release = u'6.2'
 
 
 # -- General configuration ---------------------------------------------------
@@ -99,6 +102,11 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['static']
+# KG added a custom.css file below in build/html/_static/css that ignores
+# the default copyright statement below. To change the text, update the file
+# build/html/_static/css/custom.css
+def setup(app):
+    app.add_css_file('css/custom.css')  
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
