@@ -22,7 +22,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="modules.html" /> 
+    <link rel="next" title="Quick Start Guide" href="Quick_Start_Guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,33 +40,38 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Quick Links</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar">GMTSAR GitHub</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/wiki/GMTSAR-Wiki-Page">Installation</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/">GMTSAR Webpage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Real Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_rs2_demo.ipynb">RADARSAT2 Single Interferogram</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_correcting_intf_with_gps_example.ipynb">Correcting An Interferogram with GPS</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/downloads/">Package Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/GMTSAR_2ND_TEX.pdf">GMTSAR Textbook</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html#core-modules">Core Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html#scripts">Scripts</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Development</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#additional-scripts">Additional Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-c-modules">Core C Modules</a></li>
 </ul>
 
         </div>
@@ -96,73 +101,88 @@
   <section id="gmtsar-documentation">
 <h1>GMTSAR Documentation<a class="headerlink" href="#gmtsar-documentation" title="Permalink to this headline"></a></h1>
 <p>Welcome to the documentation page for GMTSAR software!</p>
+<p>GMTSAR is an open-source SAR processing system that enables users
+to complete data preparation, processing, and post-processing presentation
+all within one workflow system. This website contains searchable documentation
+for all active GMTSAR scripts and modules, as well as examples and
+recommended workflows for processing interferograms from multiple
+satellite sources, as well as processing InSAR time series.</p>
+<p>Explore the tools, workflows and resources below!</p>
 <div class="toctree-wrapper compound">
 </div>
-<div class="sphinx-bs container pb-4 docutils">
+<div class="sphinx-bs container-lg pb-3 docutils">
 <div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="d-flex col-lg-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
+<img alt="img-top" class="card-img-top" src="_static/01_rc_intf_header.png" />
 <div class="card-body docutils">
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Quick Links</span></p>
+<p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar">GMTSAR GitHub</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/wiki/GMTSAR-Wiki-Page">Installation</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/">GMTSAR Webpage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="d-flex col-lg-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
+<img alt="img-top" class="card-img-top" src="_static/02_batch_proc_header.png" />
 <div class="card-body docutils">
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Real Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_rs2_demo.ipynb">RADARSAT2 Single Interferogram</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_correcting_intf_with_gps_example.ipynb">Correcting An Interferogram with GPS</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/downloads/">Package Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="d-flex col-lg-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
+<img alt="img-top" class="card-img-top" src="_static/03_presentation_header.png" />
 <div class="card-body docutils">
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/GMTSAR_2ND_TEX.pdf">GMTSAR Textbook</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Times Series Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="d-flex col-lg-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-body docutils">
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html#core-modules">Core Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html#scripts">Scripts</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Development</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#additional-scripts">Additional Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-c-modules">Core C Modules</a></li>
 </ul>
 </div>
 </div>
@@ -184,7 +204,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Quick_Start_Guide.html" class="btn btn-neutral float-right" title="Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

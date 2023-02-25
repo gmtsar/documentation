@@ -1,3 +1,18 @@
+Resources
+=========
+.. toctree::
+   :maxdepth: 1
+
+   Frequently_Asked_Questions
+   Citation_and_Funding_Information
+   Learning_More_About_InSAR
+   Installation
+   Quick_Start_Guide
+   Batch_Processing_Guide
+   Interferogram_Examples
+   Time_Series_Examples
+   Guide_To_Interferogram_Corrections
+
 Examples
 ========
 
@@ -6,8 +21,115 @@ Examples
 
    Processing_One_Interferogram
 
-Core Modules
-============
+Core Processing Scripts
+=======================
+
+.. toctree::
+   :maxdepth: 1
+
+   p2p_processing.csh
+   p2p_ALOS2_SCAN_Frame.csh
+   p2p_ALOS2_SCAN_SLC.csh
+   p2p_ENVI.csh
+   p2p_ERS.csh
+   p2p_S1_TOPS_Frame.csh
+   pop_config.csh
+   pre_proc.csh
+   sarp.csh
+   align.csh
+   align_ALOS2_SCAN.csh
+   align_ALOS_SLC.csh
+   align_SAT.csh
+   align_tops.csh
+   align_tops_esd.csh
+   fitoffset.csh
+   dem2topo_ra.csh
+   dem2topo_ra_ALOS2.csh
+   intf.csh
+   intf_tops.csh
+   filter.csh
+   snaphu.csh
+   snaphu_interp.csh
+   landmask.csh
+   landmask_ALOS2.csh
+   geocode.csh
+   proj_ra2ll.csh
+   grd2kml.csh
+   estimate_ionospheric_phase.csh
+   MAI_processing.csh
+   tide_correction.csh
+   create_frame_tops.csh
+   samp_slc.csh
+
+Core Batch Processing Scripts
+=============================
+
+.. toctree::
+   :maxdepth: 1
+
+   align_batch.csh
+   align_batch_ALOS2_SCAN.csh
+   align_batch_ALOS_SLC.csh
+   pre_proc_batch.csh
+   pre_proc_batch_ALOS2_SCAN.csh
+   pre_proc_batch_ALOS_SLC.csh
+   preproc_batch_tops.csh
+   preproc_batch_tops_esd.csh
+   select_pairs.csh
+   intf_batch.csh
+   intf_batch_ALOS2_SCAN.csh
+   intf_tops_parallel.csh
+   unwrap_parallel.csh
+   merge_batch.csh
+   merge_unwrap_geocode_tops.csh
+   prep_data.csh
+   prep_data_linux.csh
+   prep_sbas.csh
+   stack.csh
+   stack_corr.csh
+   organize_files_tops.csh
+   organize_files_tops_linux.csh
+   create_merge_input.csh
+   get_baseline_table.csh
+   download_sentinel_orbits.csh
+   download_sentinel_orbits_linux.csh
+
+
+Additional Scripts
+==================
+
+.. toctree::
+   :maxdepth: 1
+
+   baseline_table.csh
+   cleanup.csh
+   correct_insar_with_gnss.csh
+   correct_merge_offset.csh
+   dump_orbit_envi.pl
+   dump_orbit_ers.pl
+   dump_time_envi.pl
+   extract_one_time_series.csh
+   fetchOrbit.py
+   find_auxi.pl
+   fit_planar_trend.py
+   gmtsar.csh
+   gmtsar_sharedir.csh
+   gmtsar_uninstall.sh
+   gnss_enu2los.csh
+   grd2geotiff.csh
+   m2s.csh
+   make_a_offset.csh
+   make_dem.csh
+   make_los_ascii.csh
+   proj_ll2ra.csh
+   proj_ll2ra_ascii.csh
+   proj_model.csh
+   proj_ra2ll_ascii.csh
+   shift_atime_PRM.csh
+   slc2amp.csh
+
+Core C Modules
+==============
 
 .. toctree::
    :maxdepth: 1
@@ -74,95 +196,3 @@ Core Modules
    stitch_tops
    update_PRM
    xcorr
-
-Scripts
-=======
-
-.. toctree::
-   :maxdepth: 1
-
-   align.csh
-   align_ALOS2_SCAN.csh
-   align_ALOS_SLC.csh
-   align_SAT.csh
-   align_batch.csh
-   align_batch_ALOS2_SCAN.csh
-   align_batch_ALOS_SLC.csh
-   align_tops.csh
-   align_tops_esd.csh
-   baseline_table.csh
-   cleanup.csh
-   correct_insar_with_gnss.csh
-   correct_merge_offset.csh
-   create_frame_tops.csh
-   create_merge_input.csh
-   dem2topo_ra.csh
-   dem2topo_ra_ALOS2.csh
-   download_sentinel_orbits.csh
-   download_sentinel_orbits_linux.csh
-   dump_orbit_envi.pl
-   dump_orbit_ers.pl
-   dump_time_envi.pl
-   estimate_ionospheric_phase.csh
-   extract_one_time_series.csh
-   fetchOrbit.py
-   filter.csh
-   find_auxi.pl
-   fit_planar_trend.py
-   fitoffset.csh
-   geocode.csh
-   get_baseline_table.csh
-   gmtsar.csh
-   gmtsar_sharedir.csh
-   gmtsar_uninstall.sh
-   gnss_enu2los.csh
-   grd2geotiff.csh
-   grd2kml.csh
-   intf.csh
-   intf_batch.csh
-   intf_batch_ALOS2_SCAN.csh
-   intf_tops.csh
-   intf_tops_parallel.csh
-   landmask.csh
-   landmask_ALOS2.csh
-   m2s.csh
-   MAI_processing.csh
-   make_a_offset.csh
-   make_dem.csh
-   make_los_ascii.csh
-   merge_batch.csh
-   merge_unwrap_geocode_tops.csh
-   organize_files_tops.csh
-   organize_files_tops_linux.csh
-   p2p_ALOS2_SCAN_Frame.csh
-   p2p_ALOS2_SCAN_SLC.csh
-   p2p_ENVI.csh
-   p2p_ERS.csh
-   p2p_S1_TOPS_Frame.csh
-   p2p_processing.csh
-   pop_config.csh
-   pre_proc.csh
-   pre_proc_batch.csh
-   pre_proc_batch_ALOS2_SCAN.csh
-   pre_proc_batch_ALOS_SLC.csh
-   prep_data.csh
-   prep_data_linux.csh
-   prep_sbas.csh
-   preproc_batch_tops.csh
-   preproc_batch_tops_esd.csh
-   proj_ll2ra.csh
-   proj_ll2ra_ascii.csh
-   proj_model.csh
-   proj_ra2ll.csh
-   proj_ra2ll_ascii.csh
-   samp_slc.csh
-   sarp.csh
-   select_pairs.csh
-   shift_atime_PRM.csh
-   slc2amp.csh
-   snaphu.csh
-   snaphu_interp.csh
-   stack.csh
-   stack_corr.csh
-   tide_correction.csh
-   unwrap_parallel.csh
