@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Time Series Examples" href="Time_Series_Examples.html" />
-    <link rel="prev" title="Batch Processing Guide" href="Batch_Processing_Guide.html" /> 
+    <link rel="next" title="Batch Processing Guide" href="Batch_Processing_Guide.html" />
+    <link rel="prev" title="samp_slc.csh" href="samp_slc.csh.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,12 +42,25 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
-<ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interferogram Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#where-can-i-find-a-pre-packaged-example">Where can I find a Pre-Packaged Example?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-run-the-one-of-the-pre-packaged-examples">How to Run the One of the Pre-Packaged Examples</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -58,22 +71,8 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Interferogram Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#placeholder">Placeholder</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
@@ -95,7 +94,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">Resources</a> &raquo;</li>
       <li>Interferogram Examples</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Interferogram_Examples.rst.txt" rel="nofollow"> View page source</a>
@@ -108,17 +106,23 @@
              
   <section id="interferogram-examples">
 <span id="index-0"></span><h1>Interferogram Examples<a class="headerlink" href="#interferogram-examples" title="Permalink to this headline"></a></h1>
-<dl class="simple">
-<dt><em>Placeholder</em></dt><dd><p>To process an interferogram you need to download two SAR images from the
-same satellite, same satellite track, and that overlap in space</p>
-</dd>
-<dt><em>Placeholder</em></dt><dd><p>You will need to provide the orbital information for each of the SAR images
-you wish to process. This information is usually available from the same place
-you downloaded data. You will need one orbit file for each image.</p>
-</dd>
-</dl>
-<section id="placeholder">
-<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline"></a></h2>
+<p>The GMTSAR team has pre-packaged Interferogram examples, complete with
+pre-downloaded data, orbits, and README files, for a variety of satellites
+and study area locations around the world.</p>
+<section id="where-can-i-find-a-pre-packaged-example">
+<h2>Where can I find a Pre-Packaged Example?<a class="headerlink" href="#where-can-i-find-a-pre-packaged-example" title="Permalink to this headline"></a></h2>
+<p>Check out <a class="reference external" href="https://topex.ucsd.edu/gmtsar/downloads/">https://topex.ucsd.edu/gmtsar/downloads/</a> and scroll to “Sample InSAR data”
+to see the available options.</p>
+</section>
+<section id="how-to-run-the-one-of-the-pre-packaged-examples">
+<h2>How to Run the One of the Pre-Packaged Examples<a class="headerlink" href="#how-to-run-the-one-of-the-pre-packaged-examples" title="Permalink to this headline"></a></h2>
+<p>The pre-packaged examples can be processed by running the README file that is included
+inside each example package:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">README</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;&amp;</span> <span class="n">logfile</span><span class="o">.</span><span class="n">txt</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </section>
 </section>
 
@@ -126,8 +130,8 @@ you downloaded data. You will need one orbit file for each image.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Batch_Processing_Guide.html" class="btn btn-neutral float-left" title="Batch Processing Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Time_Series_Examples.html" class="btn btn-neutral float-right" title="Time Series Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="samp_slc.csh.html" class="btn btn-neutral float-left" title="samp_slc.csh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Batch_Processing_Guide.html" class="btn btn-neutral float-right" title="Batch Processing Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

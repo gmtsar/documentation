@@ -4,19 +4,27 @@
 Interferogram Examples  
 **********************
 
-*Placeholder*
-        To process an interferogram you need to download two SAR images from the
-        same satellite, same satellite track, and that overlap in space
+The GMTSAR team has pre-packaged Interferogram examples, complete with
+pre-downloaded data, orbits, and README files, for a variety of satellites
+and study area locations around the world. 
 
-*Placeholder*
-        You will need to provide the orbital information for each of the SAR images
-        you wish to process. This information is usually available from the same place
-        you downloaded data. You will need one orbit file for each image.
+Where can I find a Pre-Packaged Example?
+----------------------------------------
+
+Check out https://topex.ucsd.edu/gmtsar/downloads/ and scroll to "Sample InSAR data"
+to see the available options.
+
+How to Run the One of the Pre-Packaged Examples
+-----------------------------------------------
+
+The pre-packaged examples can be processed by running the README file that is included
+inside each example package:
+
+ ::
+
+    ./README.txt >& logfile.txt &
+
+
+
         
-
-Placeholder 
------------
-
-
-
 
