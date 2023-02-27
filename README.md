@@ -1,6 +1,8 @@
 # Documentation
 GMTSAR documentation
 
+To access GMTSAR Documentation page: https://gmtsar.github.io/documentation/
+
 First install sphinx, rtd theme, and sphinx-panels through pip.
 
 Check out Sphinx Documentation Docs: https://www.sphinx-doc.org/en/master/
