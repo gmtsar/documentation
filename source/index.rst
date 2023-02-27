@@ -29,6 +29,7 @@ Explore the tools, workflows and resources below!
         :maxdepth: 1
         :caption: Processing An Interferogram
 
+        Installation
         Quick_Start_Guide  
         Core_Processing_Scripts 
         Interferogram_Examples 
