@@ -64,13 +64,13 @@ Stage 2: Alignment
     ^^^^^^^
     
     * :doc:`sarp.csh`
-    * :doc:`align.csh`
-    * :doc:`align_ALOS2_SCAN.csh`
-    * :doc:`align_ALOS_SLC.csh`
-    * :doc:`align_SAT.csh`
-    * :doc:`align_tops.csh`
-    * :doc:`align_tops_esd.csh`
     * :doc:`fitoffset.csh`
+    * :doc:`align.csh` 
+    * :doc:`align_ALOS2_SCAN.csh` 
+    * :doc:`align_ALOS_SLC.csh` 
+    * :doc:`align_SAT.csh`
+    * :doc:`align_tops.csh` 
+    * :doc:`align_tops_esd.csh` 
 
     ---
 
