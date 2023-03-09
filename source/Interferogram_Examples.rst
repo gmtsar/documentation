@@ -28,7 +28,7 @@ inside each example package:
 Jupyter Notebook Example
 ------------------------
 
-To read through a step-by-step processing example, check out our Jupyter notebook
+To work through a step-by-step processing example, check out our Jupyter notebook
 that uses RADARSAT2 data: 
 
     * https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_rs2_demo.ipynb
