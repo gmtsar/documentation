@@ -40,6 +40,11 @@ Example
 
     correct_insar_with_gnss.csh supermaster.PRM unwrap_dsamp.grd gnss_los.rad 40000
 
+
+To see a detailed example, check out the Jupyter notebook:
+
+  * https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_correcting_intf_with_gps_example.ipynb
+
 References
 ----------
 
