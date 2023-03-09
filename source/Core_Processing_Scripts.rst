@@ -12,9 +12,6 @@ process in one run, depending on your dataset.
 
    * :doc:`p2p_processing.csh`
    * :doc:`p2p_ALOS2_SCAN_Frame.csh`
-   * :doc:`p2p_ALOS2_SCAN_SLC.csh`
-   * :doc:`p2p_ENVI.csh`
-   * :doc:`p2p_ERS.csh`
    * :doc:`p2p_S1_TOPS_Frame.csh`
    * :doc:`pop_config.csh`
 
@@ -68,7 +65,6 @@ Stage 2: Alignment
     * :doc:`align.csh` 
     * :doc:`align_ALOS2_SCAN.csh` 
     * :doc:`align_ALOS_SLC.csh` 
-    * :doc:`align_SAT.csh`
     * :doc:`align_tops.csh` 
     * :doc:`align_tops_esd.csh` 
 

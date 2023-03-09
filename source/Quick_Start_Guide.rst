@@ -13,6 +13,10 @@ and run GMTSAR:
   * (3) Download Supporting Data
   * (4) Run p2p_processing 
 
+To see a detailed step-by-step preparation for Sentinel-1 data, check out
+our Jupyter notebook:
+ 
+  * https://github.com/gmtsar/2022-unavco-course-gmtsar/blob/main/Jupyter/gmtsar_download_prep_sentinel-1_data.ipynb
 
 Step 1: Set Up Working Directory
 --------------------------------

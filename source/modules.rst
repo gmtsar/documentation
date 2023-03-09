@@ -39,7 +39,6 @@ Core Processing Scripts
    align.csh
    align_ALOS2_SCAN.csh
    align_ALOS_SLC.csh
-   align_SAT.csh
    align_tops.csh
    align_tops_esd.csh
    fitoffset.csh
