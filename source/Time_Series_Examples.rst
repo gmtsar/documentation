@@ -4,18 +4,28 @@
 Time Series Examples     
 ********************
 
-*Placeholder*
-        To process an interferogram you need to download two SAR images from the
-        same satellite, same satellite track, and that overlap in space
+Step-by-Step Guide for Sentinel-1 Time Series
+---------------------------------------------
 
-*Placeholder*
-        You will need to provide the orbital information for each of the SAR images
-        you wish to process. This information is usually available from the same place
-        you downloaded data. You will need one orbit file for each image.
+We currently have a time series documentation written in the form of an
+example working with data that spans the deformation around the Kilauea volcano
+on the big island of Hawaii. This guide takes a user step by step through each
+necessary piece of the workflow, from downloading your data and supporting data,
+to directory structure, to each of the GMTSAR tools you will need to use.
+
+   * Check out the document here: https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf 
+
+Sample Datasets for Time Series
+-------------------------------
+
+Check out our examples page for the example datasets for download specifically labeled
+with "Time Series" at https://topex.ucsd.edu/gmtsar/downloads/
+
+   * ALOS-1 stack for time series test
+   * Sentinel-1 TOPS time series
+
         
 
-Placeholder 
------------
 
 
 

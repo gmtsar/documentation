@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Guide To Interferogram Corrections" href="Guide_To_Interferogram_Corrections.html" />
-    <link rel="prev" title="Interferogram Examples" href="Interferogram_Examples.html" /> 
+    <link rel="prev" title="Core Batch Processing Scripts" href="Core_Batch_Processing_Scripts.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,11 +43,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
-<ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time Series Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-guide-for-sentinel-1-time-series">Step-by-Step Guide for Sentinel-1 Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-datasets-for-time-series">Sample Datasets for Time Series</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -58,22 +71,8 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Time Series Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#placeholder">Placeholder</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
@@ -95,7 +94,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">Resources</a> &raquo;</li>
       <li>Time Series Examples</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Time_Series_Examples.rst.txt" rel="nofollow"> View page source</a>
@@ -108,17 +106,29 @@
              
   <section id="time-series-examples">
 <span id="index-0"></span><h1>Time Series Examples<a class="headerlink" href="#time-series-examples" title="Permalink to this headline"></a></h1>
-<dl class="simple">
-<dt><em>Placeholder</em></dt><dd><p>To process an interferogram you need to download two SAR images from the
-same satellite, same satellite track, and that overlap in space</p>
-</dd>
-<dt><em>Placeholder</em></dt><dd><p>You will need to provide the orbital information for each of the SAR images
-you wish to process. This information is usually available from the same place
-you downloaded data. You will need one orbit file for each image.</p>
-</dd>
-</dl>
-<section id="placeholder">
-<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline"></a></h2>
+<section id="step-by-step-guide-for-sentinel-1-time-series">
+<h2>Step-by-Step Guide for Sentinel-1 Time Series<a class="headerlink" href="#step-by-step-guide-for-sentinel-1-time-series" title="Permalink to this headline"></a></h2>
+<p>We currently have a time series documentation written in the form of an
+example working with data that spans the deformation around the Kilauea volcano
+on the big island of Hawaii. This guide takes a user step by step through each
+necessary piece of the workflow, from downloading your data and supporting data,
+to directory structure, to each of the GMTSAR tools you will need to use.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Check out the document here: <a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="sample-datasets-for-time-series">
+<h2>Sample Datasets for Time Series<a class="headerlink" href="#sample-datasets-for-time-series" title="Permalink to this headline"></a></h2>
+<p>Check out our examples page for the example datasets for download specifically labeled
+with “Time Series” at <a class="reference external" href="https://topex.ucsd.edu/gmtsar/downloads/">https://topex.ucsd.edu/gmtsar/downloads/</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ALOS-1 stack for time series test</p></li>
+<li><p>Sentinel-1 TOPS time series</p></li>
+</ul>
+</div></blockquote>
 </section>
 </section>
 
@@ -126,7 +136,7 @@ you downloaded data. You will need one orbit file for each image.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Interferogram_Examples.html" class="btn btn-neutral float-left" title="Interferogram Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Core_Batch_Processing_Scripts.html" class="btn btn-neutral float-left" title="Core Batch Processing Scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="Guide_To_Interferogram_Corrections.html" class="btn btn-neutral float-right" title="Guide To Interferogram Corrections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
