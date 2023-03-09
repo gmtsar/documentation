@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Frequently Asked Questions" href="Frequently_Asked_Questions.html" />
-    <link rel="prev" title="Installation" href="Installation.html" /> 
+    <link rel="prev" title="Guide To Interferogram Corrections" href="Guide_To_Interferogram_Corrections.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,27 +43,29 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Quick Start Guide (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Core Scripts (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Examples (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Batch Processing Guide (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Core Batch Processing Scripts (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Examples (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Presenting Your Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Presentation Guide (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Core Geocoding Scripts (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Examples (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Learning More About InSAR</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#placeholder">Placeholder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sar-insar-concepts">SAR &amp; InSAR Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-sensing-concepts">Remote Sensing Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#review-style-journal-articles">Review Style Journal Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#take-a-short-course">Take a Short Course</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
@@ -74,8 +76,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html#core-modules">Core Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html#scripts">Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#additional-scripts">Additional Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-c-modules">Core C Modules</a></li>
 </ul>
 
         </div>
@@ -104,17 +108,52 @@
              
   <section id="learning-more-about-insar">
 <span id="index-0"></span><h1>Learning More About InSAR<a class="headerlink" href="#learning-more-about-insar" title="Permalink to this headline"></a></h1>
-<dl class="simple">
-<dt><em>Placeholder</em></dt><dd><p>To process an interferogram you need to download two SAR images from the
-same satellite, same satellite track, and that overlap in space</p>
-</dd>
-<dt><em>Placeholder</em></dt><dd><p>You will need to provide the orbital information for each of the SAR images
-you wish to process. This information is usually available from the same place
-you downloaded data. You will need one orbit file for each image.</p>
-</dd>
-</dl>
-<section id="placeholder">
-<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline"></a></h2>
+<p>There are many resources available for those who want to learn more about
+SAR data and InSAR processing. The list below includes helpful websites,
+papers, and textbooks, but is by no means a comprehensive list.</p>
+<section id="sar-insar-concepts">
+<h2>SAR &amp; InSAR Concepts<a class="headerlink" href="#sar-insar-concepts" title="Permalink to this headline"></a></h2>
+<p>Since the SAR field has been in development for decades, there is a wide variety
+of literature concerning every aspect of SAR data collection, processing, and
+results from InSAR analyses.</p>
+<p>NASA Earthdata has an overview page for SAR (with more resources at the bottom of the page):
+<a class="reference external" href="https://earthdata.nasa.gov/learn/backgrounders/what-is-sar">https://earthdata.nasa.gov/learn/backgrounders/what-is-sar</a></p>
+<p>In depth (all the nitty gritty details) Handbook on InSAR processing from the European Space Agency:
+<a class="reference external" href="http://www.esa.int/About_Us/ESA_Publications/InSAR_Principles_Guidelines_for_SAR_Interferometry_Processing_and_Interpretation_br_ESA_TM-19">http://www.esa.int/About_Us/ESA_Publications/InSAR_Principles_Guidelines_for_SAR_Interferometry_Processing_and_Interpretation_br_ESA_TM-19</a></p>
+</section>
+<section id="remote-sensing-concepts">
+<h2>Remote Sensing Concepts<a class="headerlink" href="#remote-sensing-concepts" title="Permalink to this headline"></a></h2>
+<p>If you’ve never taken or participated in a remote sensing class, it is often helpful
+to begin with reviewing the essentials of remote sensing particulars:</p>
+<p>Natural Resources Canada provides a detailed review of remote sensing principles
+in their online materials (both html and pdf available):
+<a class="reference external" href="https://www.nrcan.gc.ca/maps-tools-publications/satellite-imagery-air-photos/tutorial-fundamentals-remote-sensing/9309">https://www.nrcan.gc.ca/maps-tools-publications/satellite-imagery-air-photos/tutorial-fundamentals-remote-sensing/9309</a></p>
+<p>NASA has a great (and shorter) web-based overview of the most important remote sensing
+concepts on their Earthdata website:
+<a class="reference external" href="https://earthdata.nasa.gov/learn/backgrounders/remote-sensing">https://earthdata.nasa.gov/learn/backgrounders/remote-sensing</a></p>
+<p>NASA also provides training courses for remote sensing applications through their
+Applied Remote Sensing Training program (ARSET) that are open to all – there is a
+“Fundamentals of Remote Sensing” course, as well as a variety of use-specific trainings
+(some courses are also available in Spanish):
+<a class="reference external" href="https://appliedsciences.nasa.gov/what-we-do/capacity-building/arset">https://appliedsciences.nasa.gov/what-we-do/capacity-building/arset</a></p>
+</section>
+<section id="review-style-journal-articles">
+<h2>Review Style Journal Articles<a class="headerlink" href="#review-style-journal-articles" title="Permalink to this headline"></a></h2>
+<p>Bürgmann, R., Rosen, P., Fielding, E. (2000). Synthetic Aperture Radar Interferometry
+to Measure Earth’s Surface Topography and Its Deformation. Annual Review of Earth and
+Planetary Sciences, 28, 169 - 209, <a class="reference external" href="https://doi.org/10.1146/annurev.earth.28.1.169">https://doi.org/10.1146/annurev.earth.28.1.169</a></p>
+<p>Rosen, P.A., Hensley, S., Joughin, I.R., Li, F.K., Madsen, S.N., Rodriguez, E., and
+Goldstein, R.M. (2000). Synthetic aperture radar interferometry. Proceedings of the
+IEEE, 88(3), 333-382, <a class="reference external" href="https://doi.org/10.1109/5.838084">https://doi.org/10.1109/5.838084</a></p>
+<p>Biggs, J. &amp; Wright, T.J. (2020). How satellite InSAR has grown from opportunistic
+science to routine monitoring over the last decade. Nature Communications, 11,
+3863(2020), <a class="reference external" href="https://doi.org/10.1038/s41467-020-17587-6">https://doi.org/10.1038/s41467-020-17587-6</a></p>
+</section>
+<section id="take-a-short-course">
+<h2>Take a Short Course<a class="headerlink" href="#take-a-short-course" title="Permalink to this headline"></a></h2>
+<p>Interested in learning how to process InSAR data yourself? Check out UNAVCO (now EarthScope
+Consortium | SAGE/GAGE Facilities) short courses for the GMTSAR processing course in order to
+learn to how to use GMTSAR software through group instruction.</p>
 </section>
 </section>
 
@@ -122,7 +161,7 @@ you downloaded data. You will need one orbit file for each image.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Guide_To_Interferogram_Corrections.html" class="btn btn-neutral float-left" title="Guide To Interferogram Corrections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="Frequently_Asked_Questions.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
