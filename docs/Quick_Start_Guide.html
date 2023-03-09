@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Processing One Interferogram" href="Processing_One_Interferogram.html" />
-    <link rel="prev" title="Resources" href="modules.html" /> 
+    <link rel="next" title="Core Processing Scripts" href="Core_Processing_Scripts.html" />
+    <link rel="prev" title="Installation" href="Installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,22 +42,27 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Quick Start Guide (Placeholder)</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-set-up-working-directory">Step 1: Set Up Working Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-download-sar-data">Step 2: Download SAR Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-download-supporting-data">Step 3: Download Supporting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-run-p2p-processing">Step 4: Run p2p_processing</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Examples (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Batch Processing Guide (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Examples (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Guide to Interferogram Corrections (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Data Presentation Tips (Placeholder)</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://topex.ucsd.edu/gmtsar/tar/sentinel_time_series_5.pdf">Examples (Placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -68,18 +73,8 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Quick Start Guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#placeholder">Placeholder</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
@@ -101,7 +96,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">Resources</a> &raquo;</li>
       <li>Quick Start Guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Quick_Start_Guide.rst.txt" rel="nofollow"> View page source</a>
@@ -114,17 +108,108 @@
              
   <section id="quick-start-guide">
 <span id="index-0"></span><h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline"></a></h1>
-<dl class="simple">
-<dt><em>Placeholder</em></dt><dd><p>To process an interferogram you need to download two SAR images from the
-same satellite, same satellite track, and that overlap in space</p>
-</dd>
-<dt><em>Placeholder</em></dt><dd><p>You will need to provide the orbital information for each of the SAR images
-you wish to process. This information is usually available from the same place
-you downloaded data. You will need one orbit file for each image.</p>
-</dd>
-</dl>
-<section id="placeholder">
-<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline"></a></h2>
+<p>This guide is meant as a starting place for using GMTSAR software to
+process a single interferogram. There are four steps needed to set up
+and run GMTSAR:</p>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Set up working directory</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Download SAR Data</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Download Supporting Data</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Run p2p_processing</p></li>
+</ol>
+</li>
+</ul>
+</div></blockquote>
+<section id="step-1-set-up-working-directory">
+<h2>Step 1: Set Up Working Directory<a class="headerlink" href="#step-1-set-up-working-directory" title="Permalink to this headline"></a></h2>
+<p>To ensure all files are in their proper locations, we need a specific directory
+structure for processing an interferogram. In your desired location on your machine
+create a top level directory with a name of your choice, such as “MyInterferogram”</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">MyInterferogram</span><span class="o">/</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Inside your directory, create two new directories called <strong>topo/</strong> and <strong>raw/</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">MyInterferogram</span><span class="o">/</span>
+<span class="n">mkdir</span> <span class="n">topo</span>
+<span class="n">mkdir</span> <span class="n">raw</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Now you are ready to grab your data.</p>
+</section>
+<section id="step-2-download-sar-data">
+<h2>Step 2: Download SAR Data<a class="headerlink" href="#step-2-download-sar-data" title="Permalink to this headline"></a></h2>
+<p>To process an interferogram, you will need to download two SAR images taken at different times
+and that cover the same area. These images need to be from the same track of data and the same
+orbit direction (e.g., both need to be ascending or both need to be descending).</p>
+<p>No matter what satellite data you are using, you should download the SAR data files
+and place them inside the <strong>raw/</strong> directory inside your top level directory.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>To choose and download Sentinel-1 L1-SLC images visit: <a class="reference external" href="https://search.asf.alaska.edu/#/">https://search.asf.alaska.edu/#/</a></p></li>
+<li><p>Additionally, for Sentinel-1 L1-SLC images, check out: <a class="reference external" href="https://scihub.copernicus.eu/dhus/#/home">https://scihub.copernicus.eu/dhus/#/home</a></p></li>
+<li><p>For available data from multiple satellites check out: <a class="reference external" href="https://web-services.unavco.org/brokered/ssara/gui">https://web-services.unavco.org/brokered/ssara/gui</a></p></li>
+<li><p><em>Note: You may need to make an account to download data from the above sites</em></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="step-3-download-supporting-data">
+<h2>Step 3: Download Supporting Data<a class="headerlink" href="#step-3-download-supporting-data" title="Permalink to this headline"></a></h2>
+<p>All SAR data processing requires two primary supporting data files:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Orbital information (orbit files)</p></li>
+<li><p>Topography information for your area (a Digital Elevation Model (DEM) file)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Orbit Files</strong></p>
+<p>For orbit files, you need the specific orbit files that correspond to each of your chosen
+SAR images. Most often, you will want the “precise” orbit files for your data, as
+those will contain the final orbital parameters of the satellite motion (resituted orbit files
+contain the temporary/preliminary orbital parameters before they are finalized).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For Sentinel-1 data, check out <a class="reference internal" href="download_sentinel_orbits.csh.html"><span class="doc">download_sentinel_orbits.csh</span></a> or <a class="reference internal" href="download_sentinel_orbits_linux.csh.html"><span class="doc">download_sentinel_orbits_linux.csh</span></a></p></li>
+<li><p>For ERS or Envisat data, download the full orbits tar file: <a class="reference external" href="https://topex.ucsd.edu/gmtsar/downloads/">https://topex.ucsd.edu/gmtsar/downloads/</a></p></li>
+</ul>
+</div></blockquote>
+<p>When you have your appropriate orbit files, place them in the <strong>raw/</strong> directory inside your top level directory.</p>
+<p><strong>DEM file</strong></p>
+<p>Your DEM file must cover the entire area of your SAR image (it is better to cover more area
+than necessary than to cover too little area).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>To download a DEM from SRTM1, SRTM3, or ASTER1 visit: <a class="reference external" href="https://topex.ucsd.edu/gmtsar/demgen/">https://topex.ucsd.edu/gmtsar/demgen/</a></p></li>
+</ul>
+</div></blockquote>
+<p>When you have your DEM file downloaded, place the <strong>dem.grd</strong> file into the <strong>topo/</strong> directory.</p>
+</section>
+<section id="step-4-run-p2p-processing">
+<h2>Step 4: Run p2p_processing<a class="headerlink" href="#step-4-run-p2p-processing" title="Permalink to this headline"></a></h2>
+<p>Once you have your SAR data and your supporting data placed in your directory structure, you are
+ready to process your interferogram! Call the program <a class="reference internal" href="p2p_processing.csh.html"><span class="doc">p2p_processing.csh</span></a> from your toplevel directory
+to see its usage and inputs. To run with default parameter choices, leave the configuration_file input empty.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p2p_processing</span><span class="o">.</span><span class="n">csh</span> <span class="n">S1A_IW_SLC__1SDV_20190704T135158_20190704T135225_027968_032877_1C4D</span><span class="o">.</span><span class="n">SAFE</span> <span class="n">S1A_IW_SLC__1SDV_20190716T135159_20190716T135226_028143_032DC3_512B</span><span class="o">.</span><span class="n">SAFE</span> <span class="n">config</span><span class="o">.</span><span class="n">tops</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">txt</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>If you want to change the default processing parameters use <a class="reference internal" href="pop_config.csh.html"><span class="doc">pop_config.csh</span></a> to create a
+default configuration file, and edit as necessary.</p>
 </section>
 </section>
 
@@ -132,8 +217,8 @@ you downloaded data. You will need one orbit file for each image.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-left" title="Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Processing_One_Interferogram.html" class="btn btn-neutral float-right" title="Processing One Interferogram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Core_Processing_Scripts.html" class="btn btn-neutral float-right" title="Core Processing Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
