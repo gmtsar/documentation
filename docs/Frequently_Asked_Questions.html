@@ -63,8 +63,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-questions">General Questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#interferogram-related-questions">Interferogram-related Questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#time-series-questions">Time Series Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-questions">Data Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
@@ -108,6 +110,64 @@
 <span id="index-0"></span><h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline"></a></h1>
 <p>Here, we have compiled some of the most commonly asked questions, and
 we have grouped them by catagory.</p>
+<section id="general-questions">
+<h2>General Questions<a class="headerlink" href="#general-questions" title="Permalink to this headline"></a></h2>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+How can I get East/North/Up from my interferogram(s)?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">There is no easy way to do this due to the fact that at most we only have
+two look directions from our interferograms (we cannot go from 2D to 3D without
+another source of information).</p>
+<p class="card-text">One can calculate approximate East-West and Vertical displacements by
+completing a decomposition of both ascending and descending data.</p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+How can I convert longitude/latitude to radar coordinates?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">Points or Lists of Points: Use <a class="reference internal" href="SAT_llt2rat.html"><span class="doc">SAT_llt2rat</span></a> and note that you should
+extract height information from your DEM file.</p>
+<p class="card-text">Grids:  Use <a class="reference internal" href="proj_ll2ra.csh.html"><span class="doc">proj_ll2ra.csh</span></a> and note that you will need to locate
+your <strong>trans.dat</strong> file to accomplish this coversion.</p>
+<p class="card-text">To go the opposite direction, check out <a class="reference internal" href="proj_ra2ll.csh.html"><span class="doc">proj_ra2ll.csh</span></a> or the ascii
+version <a class="reference internal" href="proj_ra2ll_ascii.csh.html"><span class="doc">proj_ra2ll_ascii.csh</span></a>.</p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+How can I combine data from multiple tracks?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">There is no current way to do this, unless you complete a decomposition into
+approximate East-West/Vertical components.</p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+What is this “if: Badly formed number” error I’m seeing?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">This is usually caused by having some hidden special characters in your run
+script (a common culprit is the “^M” from Windows systems).</p>
+<p class="card-text">As a possible fix, try eliminating the special characters in the specific script.
+For example, if the local script “prep_sbas.csh” was spitting out this error, try:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">perl</span> <span class="o">-</span><span class="n">pe</span> <span class="s1">&#39;s/</span><span class="se">\r</span><span class="s1">/</span><span class="se">\n</span><span class="s1">/&#39;</span><span class="n">g</span> <span class="n">prep_sbas</span><span class="o">.</span><span class="n">csh</span> <span class="o">&gt;</span> <span class="n">edit_prep_sbas</span><span class="o">.</span><span class="n">csh</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="card-text">to remove the special characters at the ends of the lines.</p>
+</div>
+</details></section>
 <section id="interferogram-related-questions">
 <h2>Interferogram-related Questions<a class="headerlink" href="#interferogram-related-questions" title="Permalink to this headline"></a></h2>
 <details class="sphinx-bs dropdown card mb-3">
@@ -138,10 +198,49 @@ some other displacement), represented by fringes, and some element of noise (usu
 atmospheric effects). The noise can often completely mask small displacement signals,
 so take care in interpreting possible signals.</p>
 </div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+How do I correct for atmospheric noise in my interferogram?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">There is no one-size-fits-all answer to this question because correcting and/or
+removing noise caused by atmosperic delay is an area of active research. The amount
+or magnitude of atmospheric noise depends heavily on where your interferogram is.</p>
+<p class="card-text">One possible choice is to use outside data or weather models to try correcting it.
+There are a variety of these corrects available, but a common one to try is the
+GACOS correction: <a class="reference external" href="http://www.gacos.net/">http://www.gacos.net/</a></p>
+<p class="card-text">Correcting with GNSS data can also remove long-wavelength atmospheric noise
+(see <a class="reference internal" href="correct_insar_with_gnss.csh.html"><span class="doc">correct_insar_with_gnss.csh</span></a> to learn how to use), but depends on the
+amount and distribution of GNSS stations in your study area (you will likely need ~4
+or more stations to perform the correction well).</p>
+</div>
 </details></section>
 <section id="time-series-questions">
 <h2>Time Series Questions<a class="headerlink" href="#time-series-questions" title="Permalink to this headline"></a></h2>
 <details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Why is my vel.grd blank?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">This often happens because there is single NaN pixel in the first column of your
+input data to the sbas program. To fix this, instead of using a single threshold
+for your coherence (snaphu_threshold), calculate a correlation grid stack (average
+all your correlation grids (corr.grd)) and compute the mean (see <a class="reference internal" href="stack_corr.csh.html"><span class="doc">stack_corr.csh</span></a> )
+and then create a mask to mask out any pixels that do not meet the threshold you want.
+Once you create a mask, copy that mask to the name <strong>mask_def.grd</strong> and ensure it is
+linked to your interferogram directories before you unwrap.</p>
+<p class="card-text">To make a mask with a chosen coherence threshold of 0.075:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gmt</span> <span class="n">grdmath</span> <span class="n">corr_stack</span><span class="o">.</span><span class="n">grd</span> <span class="mf">0.075</span> <span class="n">GE</span> <span class="mi">0</span> <span class="n">NAN</span> <span class="o">=</span> <span class="n">mask_def</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 How do I set a reference point in my time series?<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
@@ -178,6 +277,73 @@ done
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+</details></section>
+<section id="data-questions">
+<h2>Data Questions<a class="headerlink" href="#data-questions" title="Permalink to this headline"></a></h2>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+How do I get the right orbit file?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">If you are working with Sentinel-1 data, check out the tool <a class="reference internal" href="download_sentinel_orbits.csh.html"><span class="doc">download_sentinel_orbits.csh</span></a>
+or <a class="reference internal" href="download_sentinel_orbits_linux.csh.html"><span class="doc">download_sentinel_orbits_linux.csh</span></a> which will download either the
+precise orbits (preferred and recommended) or the resituted orbits (preliminary orbits,
+necessary for only most recent data in the last ~10 days).</p>
+<p class="card-text">The trick to ensuring you have the correct orbit files is to compare the
+data coverage time delineated by the last two dates in the filename (the first
+date in the file name is when the file was uploaded to the database). These
+second two dates (and times in UTC!) must cover the collection time of your SAR
+image (the collection time is listed in the filename for Sentinel-1 data).</p>
+<p class="card-text">For example, if you have this SAR data file:
+S1A_IW_SLC__1SSV_20150526T014935_20150526T015002_006086_007E23_679A.SAFE</p>
+<p class="card-text">You would need to download an orbit file with these dates in the last two dates in the filename:
+S1A_OPER_AUX_POEORB_OPOD_20210307T064730_V20150525T225944_20150527T005944.EOF</p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Where can I get GNSS data?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">There are multiple locations where you can obtain GNSS time series
+or velocities. For newer users we recommend using a map-based application
+to select GNSS stations in your study area and then downloading the time
+series or velocities for each station. Check out the following links.
+Different catalogs can have different station datasets available, so feel
+free to check both for your area:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="card-text">NASA MEaSUREs ESESES MGViz GNSS catalog map:</p></li>
+<li><p class="card-text"><a class="reference external" href="http://mgviz.ucsd.edu/?mission=ESESES">http://mgviz.ucsd.edu/?mission=ESESES</a></p></li>
+<li><p class="card-text">University of Nevada Reno (UNR) Nevada Geodetic Laboratory MAGNET map:</p></li>
+<li><p class="card-text"><a class="reference external" href="http://geodesy.unr.edu/NGLStationPages/gpsnetmap/GPSNetMap.html">http://geodesy.unr.edu/NGLStationPages/gpsnetmap/GPSNetMap.html</a></p></li>
+</ul>
+</div></blockquote>
+<p class="card-text">For downloading MEaSUREs time series, visit the SOPAC Displacement time
+series webpage at <a class="reference external" href="http://sopac-csrc.ucsd.edu/index.php/displacements/">http://sopac-csrc.ucsd.edu/index.php/displacements/</a> .
+Here you can learn about the various products available. Click on Western
+North America (WNAM) if your study area is in North America and Global if you’re
+working internationally to get to the direct download product listing. You may
+have to enter a username= “anonymous” and password= [your email address]
+There are many choices, but we recommend using the
+Clean_TrendNeuTimeSeries_comb_YYYYMMDD.tar.gz or
+Filter_TrendNeuTimeSeries_comb_YYYYMMDD.tar.gz for comparing to InSAR time series.
+When you download this file, it will contain all stations in the WNAM/Global network(s),
+and you can select the particular station files you are interested in and unzip them.
+Each station file contains the displacement time series, as well as the estimated
+parameters, which are listed in the header at the top (including the velocity).</p>
+<p class="card-text">The MEaSUREs time series also has a list of velocities for all the stations they
+process, located here: <a class="reference external" href="http://sopac-csrc.ucsd.edu/index.php/velocities/">http://sopac-csrc.ucsd.edu/index.php/velocities/</a>
+(click on “Station Velocities”)</p>
+<p class="card-text">For downloading from UNR MAGNET, see their documentation page:
+<a class="reference external" href="http://geodesy.unr.edu/index.php">http://geodesy.unr.edu/index.php</a></p>
+<p class="card-text"><em>One word of warning–make sure to read the documentation provided by whatever</em>
+<em>data center you are using, so you understand, for example, which column is which</em>
+<em>and what reference frame the data are processed in].</em></p>
 </div>
 </details></section>
 </section>

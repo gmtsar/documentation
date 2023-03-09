@@ -7,6 +7,50 @@ Frequently Asked Questions
 Here, we have compiled some of the most commonly asked questions, and
 we have grouped them by catagory.
 
+General Questions
+-----------------
+
+.. dropdown:: How can I get East/North/Up from my interferogram(s)?
+
+    There is no easy way to do this due to the fact that at most we only have 
+    two look directions from our interferograms (we cannot go from 2D to 3D without
+    another source of information).
+
+    One can calculate approximate East-West and Vertical displacements by 
+    completing a decomposition of both ascending and descending data.
+
+.. dropdown:: How can I convert longitude/latitude to radar coordinates?
+
+    Points or Lists of Points: Use :doc:`SAT_llt2rat` and note that you should
+    extract height information from your DEM file.
+
+    Grids:  Use :doc:`proj_ll2ra.csh` and note that you will need to locate
+    your **trans.dat** file to accomplish this coversion. 
+
+    To go the opposite direction, check out :doc:`proj_ra2ll.csh` or the ascii
+    version :doc:`proj_ra2ll_ascii.csh`.
+
+.. dropdown:: How can I combine data from multiple tracks? 
+
+    There is no current way to do this, unless you complete a decomposition into
+    approximate East-West/Vertical components.
+
+
+.. dropdown:: What is this "if: Badly formed number" error I'm seeing?
+
+    This is usually caused by having some hidden special characters in your run  
+    script (a common culprit is the "^M" from Windows systems).
+
+    As a possible fix, try eliminating the special characters in the specific script.
+    For example, if the local script "prep_sbas.csh" was spitting out this error, try:
+
+     ::
+
+        perl -pe 's/\r/\n/'g prep_sbas.csh > edit_prep_sbas.csh
+
+    to remove the special characters at the ends of the lines.
+
+
 Interferogram-related Questions
 -------------------------------
 
@@ -30,8 +74,42 @@ Interferogram-related Questions
     atmospheric effects). The noise can often completely mask small displacement signals,
     so take care in interpreting possible signals.
 
+.. dropdown:: How do I correct for atmospheric noise in my interferogram?
+
+    There is no one-size-fits-all answer to this question because correcting and/or
+    removing noise caused by atmosperic delay is an area of active research. The amount
+    or magnitude of atmospheric noise depends heavily on where your interferogram is.
+
+    One possible choice is to use outside data or weather models to try correcting it.
+    There are a variety of these corrects available, but a common one to try is the
+    GACOS correction: http://www.gacos.net/  
+
+    Correcting with GNSS data can also remove long-wavelength atmospheric noise
+    (see :doc:`correct_insar_with_gnss.csh` to learn how to use), but depends on the
+    amount and distribution of GNSS stations in your study area (you will likely need ~4
+    or more stations to perform the correction well).
+
+
 Time Series Questions
 ---------------------
+
+.. dropdown:: Why is my vel.grd blank? 
+
+    This often happens because there is single NaN pixel in the first column of your 
+    input data to the sbas program. To fix this, instead of using a single threshold
+    for your coherence (snaphu_threshold), calculate a correlation grid stack (average
+    all your correlation grids (corr.grd)) and compute the mean (see :doc:`stack_corr.csh` )
+    and then create a mask to mask out any pixels that do not meet the threshold you want.
+    Once you create a mask, copy that mask to the name **mask_def.grd** and ensure it is 
+    linked to your interferogram directories before you unwrap. 
+
+    To make a mask with a chosen coherence threshold of 0.075:
+ 
+     ::
+   
+        gmt grdmath corr_stack.grd 0.075 GE 0 NAN = mask_def.grd
+
+     
 
 .. dropdown:: How do I set a reference point in my time series?
 
@@ -68,4 +146,67 @@ Time Series Questions
            point=$( gmt grdtrack refpoint.ra -G${line}/unwrap.grd | awk '{print $3}' )
            gmt grdmath ${line}/unwrap.grd ${point} SUB = ${line}/ref_unwrap.grd
        done
+
+Data Questions
+--------------
+
+.. dropdown:: How do I get the right orbit file?
+
+    If you are working with Sentinel-1 data, check out the tool :doc:`download_sentinel_orbits.csh`
+    or :doc:`download_sentinel_orbits_linux.csh` which will download either the 
+    precise orbits (preferred and recommended) or the resituted orbits (preliminary orbits,
+    necessary for only most recent data in the last ~10 days).
+
+    The trick to ensuring you have the correct orbit files is to compare the 
+    data coverage time delineated by the last two dates in the filename (the first
+    date in the file name is when the file was uploaded to the database). These
+    second two dates (and times in UTC!) must cover the collection time of your SAR
+    image (the collection time is listed in the filename for Sentinel-1 data).
+
+    For example, if you have this SAR data file:
+    S1A_IW_SLC__1SSV_20150526T014935_20150526T015002_006086_007E23_679A.SAFE
+
+    You would need to download an orbit file with these dates in the last two dates in the filename:
+    S1A_OPER_AUX_POEORB_OPOD_20210307T064730_V20150525T225944_20150527T005944.EOF
+
+.. dropdown:: Where can I get GNSS data?
+
+    There are multiple locations where you can obtain GNSS time series 
+    or velocities. For newer users we recommend using a map-based application
+    to select GNSS stations in your study area and then downloading the time 
+    series or velocities for each station. Check out the following links. 
+    Different catalogs can have different station datasets available, so feel
+    free to check both for your area:
+
+         * NASA MEaSUREs ESESES MGViz GNSS catalog map:
+         * http://mgviz.ucsd.edu/?mission=ESESES
+
+         * University of Nevada Reno (UNR) Nevada Geodetic Laboratory MAGNET map:
+         * http://geodesy.unr.edu/NGLStationPages/gpsnetmap/GPSNetMap.html
+
+    For downloading MEaSUREs time series, visit the SOPAC Displacement time 
+    series webpage at http://sopac-csrc.ucsd.edu/index.php/displacements/ . 
+    Here you can learn about the various products available. Click on Western 
+    North America (WNAM) if your study area is in North America and Global if you’re 
+    working internationally to get to the direct download product listing. You may 
+    have to enter a username= “anonymous” and password= [your email address] 
+    There are many choices, but we recommend using the 
+    Clean_TrendNeuTimeSeries_comb_YYYYMMDD.tar.gz or 
+    Filter_TrendNeuTimeSeries_comb_YYYYMMDD.tar.gz for comparing to InSAR time series. 
+    When you download this file, it will contain all stations in the WNAM/Global network(s), 
+    and you can select the particular station files you are interested in and unzip them. 
+    Each station file contains the displacement time series, as well as the estimated 
+    parameters, which are listed in the header at the top (including the velocity). 
+
+    The MEaSUREs time series also has a list of velocities for all the stations they
+    process, located here: http://sopac-csrc.ucsd.edu/index.php/velocities/ 
+    (click on “Station Velocities”)
+
+    For downloading from UNR MAGNET, see their documentation page: 
+    http://geodesy.unr.edu/index.php  
+
+    *One word of warning--make sure to read the documentation provided by whatever* 
+    *data center you are using, so you understand, for example, which column is which* 
+    *and what reference frame the data are processed in].*
+
 
