@@ -123,7 +123,26 @@ How can I get East/North/Up from my interferogram(s)?<div class="summary-down do
 two look directions from our interferograms (we cannot go from 2D to 3D without
 another source of information).</p>
 <p class="card-text">One can calculate approximate East-West and Vertical displacements by
-completing a decomposition of both ascending and descending data.</p>
+completing a decomposition of both ascending and descending data. This can be done
+in a few different ways (check the literature for different methods), but a simple
+approximation can be accomplished like the following:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p class="card-text">Obtain the ascencing and descending data for, say, a LOS velocity map</p></li>
+<li><p class="card-text">Use gmt grdsample to coregister them to the same grid size</p></li>
+<li><p class="card-text">Use the following gmt grdmath equations to calculate approximate vertical and east-west:</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gmt grdmath asc.grd des.grd ADD 2 DIV $cos_v DIV = vert.grd
+gmt grdmath des.grd asc.grd SUB 2 DIV $cos_e DIV = horizontal.grd
+</pre></div>
+</div>
+<p class="card-text">where <strong>$cos_v</strong> is the cosine of your average vertical look angle and
+<strong>$cos_e</strong> is the cosine of your average east look angle (check out <a class="reference internal" href="SAT_look.html"><span class="doc">SAT_look</span></a> to
+help calculate look angles)</p>
+<p class="card-text">For a more exact decomposition, you may have to do things pixel-by-pixel in an inversion.</p>
+</div></blockquote>
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -146,8 +165,10 @@ How can I combine data from multiple tracks?<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">There is no current way to do this, unless you complete a decomposition into
-approximate East-West/Vertical components.</p>
+<p class="card-text">Since look angle changes from track to track, it is normal to have some jumps
+from one track to another. There isn’t a simple way to combine tracks together, but
+the best way to do a combination is to do so on a modeling level (e.g., complete a fault
+slip inversion).</p>
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -221,7 +242,7 @@ or more stations to perform the correction well).</p>
 <h2>Time Series Questions<a class="headerlink" href="#time-series-questions" title="Permalink to this headline"></a></h2>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-Why is my vel.grd blank?<div class="summary-down docutils">
+Why is my sbas time-series (disp_YYYYDOY.grd and vel.grd) blank?<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>

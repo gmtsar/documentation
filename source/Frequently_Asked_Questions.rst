@@ -17,7 +17,25 @@ General Questions
     another source of information).
 
     One can calculate approximate East-West and Vertical displacements by 
-    completing a decomposition of both ascending and descending data.
+    completing a decomposition of both ascending and descending data. This can be done
+    in a few different ways (check the literature for different methods), but a simple
+    approximation can be accomplished like the following:
+
+       * Obtain the ascencing and descending data for, say, a LOS velocity map
+       * Use gmt grdsample to coregister them to the same grid size
+       * Use the following gmt grdmath equations to calculate approximate vertical and east-west:
+
+     ::
+   
+        gmt grdmath asc.grd des.grd ADD 2 DIV $cos_v DIV = vert.grd
+        gmt grdmath des.grd asc.grd SUB 2 DIV $cos_e DIV = horizontal.grd 
+
+     where **$cos_v** is the cosine of your average vertical look angle and 
+     **$cos_e** is the cosine of your average east look angle (check out :doc:`SAT_look` to
+     help calculate look angles)
+
+     For a more exact decomposition, you may have to do things pixel-by-pixel in an inversion. 
+
 
 .. dropdown:: How can I convert longitude/latitude to radar coordinates?
 
@@ -32,9 +50,10 @@ General Questions
 
 .. dropdown:: How can I combine data from multiple tracks? 
 
-    There is no current way to do this, unless you complete a decomposition into
-    approximate East-West/Vertical components.
-
+    Since look angle changes from track to track, it is normal to have some jumps
+    from one track to another. There isn't a simple way to combine tracks together, but
+    the best way to do a combination is to do so on a modeling level (e.g., complete a fault
+    slip inversion).
 
 .. dropdown:: What is this "if: Badly formed number" error I'm seeing?
 
@@ -93,7 +112,7 @@ Interferogram-related Questions
 Time Series Questions
 ---------------------
 
-.. dropdown:: Why is my vel.grd blank? 
+.. dropdown:: Why is my sbas time-series (disp_YYYYDOY.grd and vel.grd) blank?
 
     This often happens because there is single NaN pixel in the first column of your 
     input data to the sbas program. To fix this, instead of using a single threshold
