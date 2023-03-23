@@ -4,18 +4,34 @@
 Batch Processing Guide  
 **********************
 
-*Placeholder*
-        To process an interferogram you need to download two SAR images from the
-        same satellite, same satellite track, and that overlap in space
+This is the page to visit if you are interested in batch processing of
+interferograms, or preparing a batch process for time series. 
 
-*Placeholder*
-        You will need to provide the orbital information for each of the SAR images
-        you wish to process. This information is usually available from the same place
-        you downloaded data. You will need one orbit file for each image.
-        
+What type of data are you processing?
+-------------------------------------
+.. panels::
 
-Placeholder 
------------
+    Sentinel-1
+    ^^^^^^^^^^
+    
+    * :doc:`S1_Batch_Preprocessing`   
+    * :doc:`S1_Batch_Interferograms` 
+    * :doc:`S1_Batch_Merging`     
+    * :doc:`Batch_Unwrapping`  
+    * :doc:`Time_Series_Processing_SBAS`  
+
+
+    ---
+
+    Non-Sentinel-1 (ALOS/ALOS2/Envisat/ERS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    * :doc:`Batch_Preprocessing`   
+    * :doc:`Batch_Interferograms` 
+    * :doc:`Batch_Unwrapping`  
+    * :doc:`Time_Series_Processing_SBAS`  
+
+
 
 
 

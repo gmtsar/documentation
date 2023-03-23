@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Batch Processing Guide &mdash; GMTSAR 6.2 documentation</title>
+  <title>Batch_Unwrapping &mdash; GMTSAR 6.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Core Batch Processing Scripts" href="Core_Batch_Processing_Scripts.html" />
-    <link rel="prev" title="Interferogram Examples" href="Interferogram_Examples.html" /> 
+    <link rel="next" title="S1_Batch_Interferograms" href="Batch_Interferograms.html" />
+    <link rel="prev" title="Batch_Preprocessing" href="Batch_Preprocessing.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +49,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Batch Processing Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#what-type-of-data-are-you-processing">What type of data are you processing?</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 </ul>
@@ -70,8 +67,29 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Batch_Unwrapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#checking-merge-process-post-merge">Checking Merge Process, Post-merge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Preprocessing.html">S1_Batch_Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Time_Series_Processing_SBAS.html">Time_Series_Processing_SBAS</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
@@ -93,9 +111,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Batch Processing Guide</li>
+          <li><a href="modules.html">Resources</a> &raquo;</li>
+      <li>Batch_Unwrapping</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Batch_Processing_Guide.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Batch_Unwrapping.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -103,47 +122,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="batch-processing-guide">
-<span id="index-0"></span><h1>Batch Processing Guide<a class="headerlink" href="#batch-processing-guide" title="Permalink to this headline"></a></h1>
-<p>This is the page to visit if you are interested in batch processing of
-interferograms, or preparing a batch process for time series.</p>
-<section id="what-type-of-data-are-you-processing">
-<h2>What type of data are you processing?<a class="headerlink" href="#what-type-of-data-are-you-processing" title="Permalink to this headline"></a></h2>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-header docutils">
-<p class="card-text">Sentinel-1</p>
-</div>
-<div class="card-body docutils">
-<ul class="simple">
-<li><p class="card-text"><a class="reference internal" href="S1_Batch_Preprocessing.html"><span class="doc">S1_Batch_Preprocessing</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="S1_Batch_Interferograms.html"><span class="doc">S1_Batch_Interferograms</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="S1_Batch_Merging.html"><span class="doc">S1_Batch_Merging</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="Batch_Unwrapping.html"><span class="doc">Batch_Unwrapping</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="Time_Series_Processing_SBAS.html"><span class="doc">Time_Series_Processing_SBAS</span></a></p></li>
+  <section id="batch-unwrapping">
+<span id="index-0"></span><h1>Batch_Unwrapping<a class="headerlink" href="#batch-unwrapping" title="Permalink to this headline"></a></h1>
+<p>This page covers the necessary set up and details for each step of the
+batch processing unwrapping workflow for Sentinel-1 data:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Preparing to unwrap: Check your merging</p></li>
+<li><p>Preparing to unwrap: Check your coherence</p></li>
+<li><p>Tips for optimizing snaphu/snaphu_interp</p></li>
+<li><p>Preparing to run unwrap_intf.csh</p></li>
+<li><p>Running <a class="reference internal" href="unwrap_parallel.csh.html"><span class="doc">unwrap_parallel.csh</span></a></p></li>
+<li><p>Checking for issues post unwrapping</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-header docutils">
-<p class="card-text">Non-Sentinel-1 (ALOS/ALOS2/Envisat/ERS)</p>
-</div>
-<div class="card-body docutils">
-<ul class="simple">
-<li><p class="card-text"><a class="reference internal" href="Batch_Preprocessing.html"><span class="doc">Batch_Preprocessing</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="Batch_Interferograms.html"><span class="doc">S1_Batch_Interferograms</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="Batch_Unwrapping.html"><span class="doc">Batch_Unwrapping</span></a></p></li>
-<li><p class="card-text"><a class="reference internal" href="Time_Series_Processing_SBAS.html"><span class="doc">Time_Series_Processing_SBAS</span></a></p></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
+</div></blockquote>
+<section id="checking-merge-process-post-merge">
+<h2>Checking Merge Process, Post-merge<a class="headerlink" href="#checking-merge-process-post-merge" title="Permalink to this headline"></a></h2>
+<p><em>Page in progress</em></p>
 </section>
 </section>
 
@@ -151,8 +146,8 @@ interferograms, or preparing a batch process for time series.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Interferogram_Examples.html" class="btn btn-neutral float-left" title="Interferogram Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Core_Batch_Processing_Scripts.html" class="btn btn-neutral float-right" title="Core Batch Processing Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Batch_Preprocessing.html" class="btn btn-neutral float-left" title="Batch_Preprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Batch_Interferograms.html" class="btn btn-neutral float-right" title="S1_Batch_Interferograms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
