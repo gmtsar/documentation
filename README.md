@@ -6,7 +6,10 @@ To access GMTSAR Documentation page: https://gmtsar.github.io/documentation/
 
 ## Editing the Documentation
 
-First install sphinx, rtd theme, and sphinx-panels through pip.
+First install these using pip install:
+* sphinx 
+* sphinx_rtd_theme
+* sphinx-panels 
 
 Check out Sphinx Documentation Docs: https://www.sphinx-doc.org/en/master/
 
