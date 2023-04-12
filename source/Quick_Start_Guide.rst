@@ -77,9 +77,9 @@ When you have your appropriate orbit files, place them in the **raw/** directory
 **DEM file**
 
 Your DEM file must cover the entire area of your SAR image (it is better to cover more area 
-than necessary than to cover too little area).
+than necessary than to cover too little area). 
 
-   * To download a DEM from SRTM1, SRTM3, or ASTER1 visit: https://topex.ucsd.edu/gmtsar/demgen/
+   * Check out the :doc:`Generating_DEM` page to see how to obtain DEM files 
 
 When you have your DEM file downloaded, place the **dem.grd** file into the **topo/** directory.
  

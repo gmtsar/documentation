@@ -11,6 +11,7 @@ Resources
    Batch_Processing_Guide
    Interferogram_Examples
    Time_Series_Examples
+   Generating_DEM
    Guide_To_Interferogram_Corrections
    Batch_Preprocessing 
    Batch_Unwrapping   
