@@ -77,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
@@ -85,6 +86,10 @@
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">S1_Batch_Preprocessing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#directory-setup">Directory Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organizing-data-coverage-clipping-stitching">Organizing Data &amp; Coverage Clipping &amp; Stitching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linking-data">Linking Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing-mode-i">Preprocessing Mode I</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing-mode-ii">Preprocessing Mode II</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Processing_SBAS.html">Time_Series_Processing_SBAS</a></li>
@@ -137,6 +142,152 @@ batch processing workflow for Sentinel-1 data:</p>
 </div></blockquote>
 <section id="directory-setup">
 <h2>Directory Setup<a class="headerlink" href="#directory-setup" title="Permalink to this headline"></a></h2>
+<p>The first thing to do to prepare for batch processing is to organize your
+directory structure into the following path tree, for example, a descending track:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                        <span class="p">[</span><span class="n">des</span><span class="p">]</span>
+                          <span class="o">|</span>
+  <span class="n">________________________</span><span class="o">|</span><span class="n">________________________________</span>
+  <span class="o">|</span>       <span class="o">|</span>        <span class="o">|</span>        <span class="o">|</span>     <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>
+<span class="p">[</span><span class="n">data</span><span class="p">]</span> <span class="p">[</span><span class="n">orbit</span><span class="p">]</span> <span class="p">[</span><span class="n">reframed</span><span class="p">]</span> <span class="p">[</span><span class="n">topo</span><span class="p">]</span> <span class="p">[</span><span class="n">F1</span><span class="p">]</span> <span class="p">[</span><span class="n">F2</span><span class="p">]</span> <span class="p">[</span><span class="n">F3</span><span class="p">]</span> <span class="p">[</span><span class="n">SBAS</span><span class="p">]</span> <span class="p">[</span><span class="n">merge</span><span class="p">]</span>
+                                  <span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>
+                          <span class="n">________</span><span class="o">|</span><span class="n">_________________________</span>
+                          <span class="o">|</span>     <span class="o">|</span>       <span class="o">|</span>       <span class="o">|</span>          <span class="o">|</span>
+                        <span class="p">[</span><span class="n">raw</span><span class="p">]</span> <span class="p">[</span><span class="n">SLC</span><span class="p">]</span> <span class="p">[</span><span class="n">intf_in</span><span class="p">]</span> <span class="p">[</span><span class="n">topo</span><span class="p">]</span> <span class="n">batch_tops</span><span class="o">.</span><span class="n">config</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The directories are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[data] is where you store your .SAFE files downloaded from ASF or Copernicus</p></li>
+<li><p>[orbit] is where you store your orbit (.EOF) files</p></li>
+<li><p>[reframed] is where you store your coverage area pins if you want to clip or stitch frames together</p></li>
+<li><p>[topo] is where you store your downloaded DEM file</p></li>
+<li><p>[F1], [F2], and [F3] are your subswath-specific processing directories (where you will preprocess your data and calculate your interferograms). Each should share the same subdirectory structure.</p></li>
+<li><p>[SBAS] is where you will eventually process your time series (at a later point)</p></li>
+<li><p>[merge] is where you will merge and store you merged interferograms (unless you choose to process only one subswath of Sentinel-1 data over you area)</p></li>
+</ul>
+</div></blockquote>
+<p>The structure of the [F1], [F2], and [F3] subdirectories should be the same in each:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[raw] is where you store your prepared raw data and orbit files, and where you will process your raw data into coregistered SLC files</p></li>
+<li><p>[SLC] is where you can store final SLC files</p></li>
+<li><p>[intf_in] is where interferograms will be calculated and stored</p></li>
+<li><p>[topo] is another directory where you will store a linked copy of your DEM file</p></li>
+<li><p>batch_tops.config: A copy needs to be stored in each F1/2/3 directory you want to process data for. This will be your main config file for interferogram processing. You can download one from the GMTSAR github if you do not have one already.</p></li>
+</ul>
+</div></blockquote>
+<p>Once your DEM file is stored in des/topo/ (check out <a class="reference internal" href="Generating_DEM.html"><span class="doc">Generating_DEM</span></a> to learn more), you can link it to your F1 directory:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">F1</span><span class="o">/</span><span class="n">topo</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../../</span><span class="n">topo</span><span class="o">/</span><span class="n">dem</span><span class="o">.</span><span class="n">grd</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>And do that for each F2 and F3 directory you plan to process.</p>
+</section>
+<section id="organizing-data-coverage-clipping-stitching">
+<h2>Organizing Data &amp; Coverage Clipping &amp; Stitching<a class="headerlink" href="#organizing-data-coverage-clipping-stitching" title="Permalink to this headline"></a></h2>
+<p>This is an <em>optional</em> step for anyone who wants to cover a larger area than one single Sentinel-1
+frame. Skip this step if you only want to process one frame.</p>
+<p><em>Choosing Stitch Points</em></p>
+<p>You can choose to stitch multiple frames from the same track together to make a larger coverage
+area. This only works for frames within the same track (and only the same ascending OR descending track,
+they cannot be mixed).</p>
+<p>First you must define your region of interest covered by the frames you want to stitch together.
+The most straightforward way to do this is to plot the .SAFE file preview KML files in Google Earth
+(Check inside your .SAFE file under preview/map_overlay.kml).</p>
+<p>One you have those loaded, pick your stitch point (pin) locations of where you want your coverage to start and stop.</p>
+<p><strong>CRITICAL</strong> When you pick your pin locations, they must be in the order of the satellite data collection. For instance, for a descending track set of frames, the first lon/lat point must be the point that is closest to the north, or top of the image, while the second point must be further south of the first pin point. For ascending data, the first point must be a point closest to the south of the image.</p>
+<p>When you pick your points, create a file called “pins.ll” and place your lon/lat locations in the correct
+ascending or descending order. Then place this pins.ll file into the reframed/ directory.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>TIP: If you are trying to cover a large area with many frames, you may need multiple stitch points (a rule of thumb is make sure to have one approximately every ~150 km).</p></li>
+<li><p>TIP: Pay attention to the projected bounds of your coverage. To pick a working pin location, it must be in a position that has data across the latitude along the entire data file (i.e., if you pick a pin location on a corner of the image it may not be successful unless the corner lines up with available data)</p></li>
+</ul>
+</div></blockquote>
+<p><em>Running organize_files_tops</em></p>
+<p>The tool that does the actual stitching of frames together is called <a class="reference internal" href="organize_files_tops.csh.html"><span class="doc">organize_files_tops.csh</span></a>.
+Note that there is both a unix and a linux version (<a class="reference internal" href="organize_files_tops_linux.csh.html"><span class="doc">organize_files_tops_linux.csh</span></a>)</p>
+<p>This script will download the precise orbit files for you if you have not previously downloaded them.</p>
+<p>Inside the data/ directory:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span># make a list of SAFE files with the absolute path
+ls -d $PWD/*.SAFE &gt; SAFE_filelist
+
+organize_files_tops.csh SAFE_filelist ../reframed/pins.ll 1 &gt;&amp; oft_mode1.log &amp;
+
+# or, if you are on a linux machine:
+organize_files_tops_linux.csh SAFE_filelist ../reframed/pins.ll 1 &gt;&amp; oft_mode1.log &amp;
+
+# optional: to watch the screen output, tail the log file
+tail -f oft_mode1.log
+
+# when finished, check the log file for any errors
+</pre></div>
+</div>
+</div></blockquote>
+<p>Mode 1 of <a class="reference internal" href="organize_files_tops.csh.html"><span class="doc">organize_files_tops.csh</span></a> will go through and make sure you have orbit files and will tell
+you which dates of SAFE files it will be able to re-organize and stitch together for you. Mode 2 is the
+part that actually completes the stitching.</p>
+<p>To run mode 2:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">organize_files_tops</span><span class="o">.</span><span class="n">csh</span> <span class="n">SAFE_filelist</span> <span class="o">../</span><span class="n">reframed</span><span class="o">/</span><span class="n">pins</span><span class="o">.</span><span class="n">ll</span> <span class="mi">2</span> <span class="o">&gt;&amp;</span> <span class="n">oft_mode2</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
+
+<span class="c1"># or, if you are on a linux machine:</span>
+<span class="n">organize_files_tops_linux</span><span class="o">.</span><span class="n">csh</span> <span class="n">SAFE_filelist</span> <span class="o">../</span><span class="n">reframed</span><span class="o">/</span><span class="n">pins</span><span class="o">.</span><span class="n">ll</span> <span class="mi">2</span> <span class="o">&gt;&amp;</span> <span class="n">oft_mode2</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once this is done running, there should be a new directory starting with F????_F???? (there may be multiple new directories). Inside these new directories are your stitched .SAFE files. You can move all files to a single
+F????_F???? directory if desired.</p>
+<p>Common Errors/Mishaps:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>Not using <em>absolute</em> path in the list of SAFE file names – you need absolute path, not relative path</p></li>
+<li><p>Stitch points/pins are backwards or not placed correctly (this may manifest as the log file telling you it cannot stitch the frames together)</p></li>
+<li><p>Precise orbits may not be available yet. If you want to process with restituted orbits instead, download them manually, place them in the reframed directory and then run this command for each SAFE file you have that requires a restituted orbit:</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">create_frame_tops</span><span class="o">.</span><span class="n">csh</span> <span class="s2">&quot;SAFE_file_absPath&quot;</span> <span class="s2">&quot;matching restituted orbit name&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Then you can move these final files to the same F????_F???? directory as your other .SAFE files.</p>
+</section>
+<section id="linking-data">
+<h2>Linking Data<a class="headerlink" href="#linking-data" title="Permalink to this headline"></a></h2>
+<p>The next step in preprocessing is to link your data to the raw directory for processing.</p>
+<p>For those interested in processing all three subswaths (F1,F2,F3), complete this step in each directory.
+For those interested in just processing one or two subswaths, just complete this in the desired subswaths directories.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># For users who stitched frames together:</span>
+<span class="n">cd</span> <span class="n">F1</span><span class="o">/</span><span class="n">raw</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../../</span><span class="n">data</span><span class="o">/</span><span class="n">F</span><span class="o">*/*.</span><span class="n">SAFE</span><span class="o">/*/*</span><span class="n">iw1</span><span class="o">*</span><span class="n">vv</span><span class="o">*</span><span class="n">xml</span> <span class="o">.</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../../</span><span class="n">data</span><span class="o">/</span><span class="n">F</span><span class="o">*/*.</span><span class="n">SAFE</span><span class="o">/*/*</span><span class="n">iw1</span><span class="o">*</span><span class="n">vv</span><span class="o">*</span><span class="n">tiff</span> <span class="o">.</span>
+
+<span class="c1"># For user who did not do any stitching, omit the stitched directory like so:</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../../</span><span class="n">data</span><span class="o">/*.</span><span class="n">SAFE</span><span class="o">/*/*</span><span class="n">iw1</span><span class="o">*</span><span class="n">vv</span><span class="o">*</span><span class="n">xml</span> <span class="o">.</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../../</span><span class="n">data</span><span class="o">/*.</span><span class="n">SAFE</span><span class="o">/*/*</span><span class="n">iw1</span><span class="o">*</span><span class="n">vv</span><span class="o">*</span><span class="n">tiff</span> <span class="o">.</span>
+
+<span class="c1"># For all:</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../../</span><span class="n">data</span><span class="o">/*.</span><span class="n">EOF</span> <span class="o">.</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../</span><span class="n">topo</span><span class="o">/</span><span class="n">dem</span><span class="o">.</span><span class="n">grd</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>NOTE: “iw1” files correspond to the F1 subswath. For F2, change the above to “iw2” and for F3, “iw3”.</p>
+</section>
+<section id="preprocessing-mode-i">
+<h2>Preprocessing Mode I<a class="headerlink" href="#preprocessing-mode-i" title="Permalink to this headline"></a></h2>
+<p><em>Page in progress</em></p>
+</section>
+<section id="preprocessing-mode-ii">
+<h2>Preprocessing Mode II<a class="headerlink" href="#preprocessing-mode-ii" title="Permalink to this headline"></a></h2>
 <p><em>Page in progress</em></p>
 </section>
 </section>
