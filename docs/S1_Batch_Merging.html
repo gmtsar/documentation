@@ -77,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
@@ -84,6 +85,7 @@
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">S1_Batch_Merging</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-merge-file">Preparing Merge File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-merge-batch-csh">Running merge_batch.csh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Preprocessing.html">S1_Batch_Preprocessing</a></li>
@@ -132,9 +134,47 @@ subwaths of Sentinel-1 TOPS data in batch form:</p>
 <li><p>Running <a class="reference internal" href="merge_batch.csh.html"><span class="doc">merge_batch.csh</span></a></p></li>
 </ul>
 </div></blockquote>
+<p>If you only processed one subswath, you do not need to merge anything.</p>
 <section id="preparing-merge-file">
 <h2>Preparing Merge File<a class="headerlink" href="#preparing-merge-file" title="Permalink to this headline"></a></h2>
-<p><em>Page in progress</em></p>
+<p>In order to merge the Sentinel-1 TOPS mode subswath data into one image, you first need to prepare
+a list of files that will be merged. You can do this using the <a class="reference internal" href="create_merge_input.csh.html"><span class="doc">create_merge_input.csh</span></a></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check out the tool usage page for specific features</span>
+<span class="c1"># remember to redirect the output to a merge.list file (otherwise it will print to screen)</span>
+
+<span class="n">create_merge_input</span><span class="o">.</span><span class="n">csh</span> <span class="n">intf</span><span class="o">.</span><span class="n">list</span> <span class="o">..</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="n">merge</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>CRITICAL NOTE</strong> In order to merge with respect to the correct reference image, edit the output
+merge.list by moving a line that contains your chosen reference image date to the first line in the file.
+For example, if your reference date is 2018127, make sure to move a merge.list line that contains that date
+as the first image in the pair (e.g., 2018127_2018133) to the first line. 2018127_2018133 would work fine, but
+note that 2018121_2018127 will not work (the reference date needs to be first).</p>
+<p>Once you have an edited merge.list file, you should copy over your batch_tops.config file to the merge directory</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">merge</span><span class="o">/</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">F1</span><span class="o">/</span><span class="n">batch_tops</span><span class="o">.</span><span class="n">config</span> <span class="o">.</span>
+<span class="c1"># also link the dem.grd file if it is not already linked</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">../</span><span class="n">topo</span><span class="o">/</span><span class="n">dem</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="running-merge-batch-csh">
+<h2>Running merge_batch.csh<a class="headerlink" href="#running-merge-batch-csh" title="Permalink to this headline"></a></h2>
+<p>From the merge directory, you can run the <a class="reference internal" href="merge_batch.csh.html"><span class="doc">merge_batch.csh</span></a> process:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run in the background to produce a log file</span>
+<span class="n">merge_batch</span><span class="o">.</span><span class="n">csh</span> <span class="n">merge</span><span class="o">.</span><span class="n">list</span> <span class="n">batch_tops</span><span class="o">.</span><span class="n">config</span> <span class="o">&gt;&amp;</span> <span class="n">merge_batch</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this process should be interferogram directories in the merge/ directory that contain
+merged coherence, mask (if relevant) and wrapped phase files (e.g., look for corr.grd, phase.grd, and phasefilt.grd).</p>
+<p><strong>NOTE:</strong> We recommend having a look at your merged grid products in order to make sure there are no merging errors
+or to check if there are data issues.</p>
 </section>
 </section>
 

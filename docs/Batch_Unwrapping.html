@@ -77,10 +77,13 @@
 <li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Batch_Unwrapping</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#checking-merge-process-post-merge">Checking Merge Process, Post-merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-to-unwrap">Preparing to Unwrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unwrapping">Unwrapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unwrapping-many-interferograms">Unwrapping Many Interferograms</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
@@ -125,20 +128,119 @@
   <section id="batch-unwrapping">
 <span id="index-0"></span><h1>Batch_Unwrapping<a class="headerlink" href="#batch-unwrapping" title="Permalink to this headline"></a></h1>
 <p>This page covers the necessary set up and details for each step of the
-batch processing unwrapping workflow for Sentinel-1 data:</p>
+batch processing unwrapping workflow for interferograms:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Preparing to unwrap: Check your merging</p></li>
-<li><p>Preparing to unwrap: Check your coherence</p></li>
-<li><p>Tips for optimizing snaphu/snaphu_interp</p></li>
+<li><p>Preparing to unwrap</p></li>
 <li><p>Preparing to run unwrap_intf.csh</p></li>
 <li><p>Running <a class="reference internal" href="unwrap_parallel.csh.html"><span class="doc">unwrap_parallel.csh</span></a></p></li>
-<li><p>Checking for issues post unwrapping</p></li>
 </ul>
 </div></blockquote>
-<section id="checking-merge-process-post-merge">
-<h2>Checking Merge Process, Post-merge<a class="headerlink" href="#checking-merge-process-post-merge" title="Permalink to this headline"></a></h2>
-<p><em>Page in progress</em></p>
+<section id="preparing-to-unwrap">
+<h2>Preparing to Unwrap<a class="headerlink" href="#preparing-to-unwrap" title="Permalink to this headline"></a></h2>
+<p>Unwrapping interferograms can be a time-consuming and computationally intensive process, so
+we recommend investing time on the front-end to make sure your unwrapping process goes smoothly
+the first time. We list a couple steps you can take to help set yourself up for success.</p>
+<p><em>Checking Coherence/Correlation</em></p>
+<p>One critical thing to determine before unwrapping is how coherence varies in your region of interest,
+as low coherence/correlation can lead to unwrapping errors and lower accuracy in displacement estimates.
+Areas of good coherence are generally those that have flat, dry, unvegetated landscapes, while areas of poor
+coherence can include areas with wet, highly vegetated landscapes (e.g., a rainforst, or area that experiences
+lots of rain/surface moisture).</p>
+<p>First, if you have large bodies of water in your SAR images, one step you can take is to mask these out, as correlation
+over water will be near zero. Check out <a class="reference internal" href="landmask.csh.html"><span class="doc">landmask.csh</span></a> to make a landmask using GMT coastlines and produce it in radar
+coordinates. You can then link this landmask_ra.grd file to all your interferogram directories.</p>
+<p>Second, if you have areas of low coherence in your study area, you can make a stacked coherence mask, which will mask out
+any areas below a certain chosen threshold of coherence. This process can also be helpful in areas of high coherence just to
+remove pixels with lower coherence. To make a stacked, average correlation grid, check out <a class="reference internal" href="stack.csh.html"><span class="doc">stack.csh</span></a> and see
+the example below.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># to make a stacked, average correlation grid</span>
+<span class="c1"># in your merge directory (for S1_TOPS mode), or in your directory with all your interferograms</span>
+<span class="n">ls</span> <span class="mi">20</span><span class="o">*/</span><span class="n">corr</span><span class="o">.</span><span class="n">grd</span> <span class="o">&gt;</span> <span class="n">corr</span><span class="o">.</span><span class="n">grd_list</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">csh</span> <span class="n">corr</span><span class="o">.</span><span class="n">grd_list</span> <span class="mi">1</span> <span class="n">corr_stack</span><span class="o">.</span><span class="n">grd</span> <span class="n">std</span><span class="o">.</span><span class="n">grd</span>  <span class="c1"># if you have a couple hundred interfergrams this will take a while</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>When you plot your corr_stack.grd, you can see the spatial patterns of average coherence across all your data. From
+this image, you can estimate a threshold that will work for your area. Once you choose a good threshold that excludes
+areas of low coherence and includes the areas of higher coherence, you can make a mask using GMT tools, for example:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0.075 in the following command is a threshold of a coherence of 0.075</span>
+<span class="c1"># As a starting place, you could try a coherence of 0.1</span>
+
+<span class="n">gmt</span> <span class="n">grdmath</span> <span class="n">corr_stack</span><span class="o">.</span><span class="n">grd</span> <span class="mf">0.075</span> <span class="n">GE</span> <span class="mi">0</span> <span class="n">NAN</span> <span class="o">=</span> <span class="n">mask_def</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Check what your mask looks like by plotting the mask_def.grd file. If it is masking out too much, lower the coherence
+threshold, and if it is not masking out enough, raise the threshold value.</p>
+<p>Once you settle on you chosen threshold, make a final mask_def.grd file, and link it to all your interferogram
+directories.</p>
+<p><em>Checking for Merging Issues (S1_TOPS)</em></p>
+<p>If you are using S1_TOPS data and have merged multiple subswaths, check your merged data files to make sure
+the merging process went smoothly, before trying to unwrap anything.</p>
+</section>
+<section id="unwrapping">
+<h2>Unwrapping<a class="headerlink" href="#unwrapping" title="Permalink to this headline"></a></h2>
+<p>When you unwrap your interferograms, you will need to write a basic unwrapping script that links the
+necessary files and calls the proper tools. This script can look like this:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vi unwrap_intf.csh
+#Include all lines between the lines
+--------------------------------
+
+#!/bin/csh -f
+# the input is a specific interferogram directory
+
+cd $1
+ln -s ../mask_def.grd .  #if you are not using a mask_def.grd, comment this out
+ln -s ../landmask.grd .  # if you are not using a landmask.grd, comment this out
+
+snaphu_interp.csh 0.001 0  # check the snaphu_interp.csh page to choose proper values
+
+cd ../
+
+--------------------------------
+</pre></div>
+</div>
+</div></blockquote>
+<p>This an example script that calls <a class="reference internal" href="snaphu_interp.csh.html"><span class="doc">snaphu_interp.csh</span></a> to complete unwrapping. To make sure
+it is executable, change its permissions:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the file to add &quot;+x&quot; executable to its permissions to be able to run it</span>
+
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">unwrap_intf</span><span class="o">.</span><span class="n">csh</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>If your system cannot “find” this script, make sure it is in your $PATH variable.</p>
+<p>Then, to run your unwrapping script, simply run:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># give it an interferogram directory name</span>
+<span class="n">unwrap_intf</span><span class="o">.</span><span class="n">csh</span> <span class="mi">2018127_2018133</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="unwrapping-many-interferograms">
+<h2>Unwrapping Many Interferograms<a class="headerlink" href="#unwrapping-many-interferograms" title="Permalink to this headline"></a></h2>
+<p>You can run your unwrap_intf.csh script in a for loop through all your interferogram directories.</p>
+<p>In addition, you can try running several unwrapping processes in parallel, with <a class="reference internal" href="unwrap_parallel.csh.html"><span class="doc">unwrap_parallel.csh</span></a> which
+will call “unwrap_intf.csh”. You will need to have GNU parallel installed, and you will need to have a machine that
+can handle the processing (make sure you know how many cores and how much memory you have). Allow ~1 core and 5-8GB
+of memory for each parallel thread you specify (if you have a lower memory machine, start low (2-3 threads)).</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unwrap_parallel</span><span class="o">.</span><span class="n">csh</span> <span class="n">intf</span><span class="o">.</span><span class="n">list</span> <span class="mi">4</span>  <span class="c1"># 4 threads, and a list of interferogram directories</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This process will likely take some time to complete.</p>
+<p><strong>NOTE</strong> If one interferogram has not finished processing within 24 hours, double check that you are not trying unwrap
+areas of bad data or large open areas of ocean as those can cause issues (check your phase.grd or phasefilt.grd).</p>
+<p><strong>TROUBLE-SHOOTING NOTE</strong>: If you are trouble-shooting, note that if you run unwrap_parallel.csh, it will produce a file
+called unwrap.cmd, which will not get overwritten if you run unwrap_parallel.csh again. Either delete it or move it to
+a new name to you run everything with the correct command file.</p>
 </section>
 </section>
 
