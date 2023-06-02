@@ -73,33 +73,8 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Quick Start Guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#step-1-set-up-working-directory">Step 1: Set Up Working Directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-download-sar-data">Step 2: Download SAR Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-3-download-supporting-data">Step 3: Download Supporting Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-4-run-p2p-processing">Step 4: Run p2p_processing</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Preprocessing.html">S1_Batch_Preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Time_Series_Processing_SBAS.html">Time_Series_Processing_SBAS</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
@@ -234,7 +209,8 @@ than necessary than to cover too little area).</p>
 <h2>Step 4: Run p2p_processing<a class="headerlink" href="#step-4-run-p2p-processing" title="Permalink to this headline"></a></h2>
 <p>Once you have your SAR data and your supporting data placed in your directory structure, you are
 ready to process your interferogram! Call the program <a class="reference internal" href="p2p_processing.csh.html"><span class="doc">p2p_processing.csh</span></a> from your toplevel directory
-to see its usage and inputs. To run with default parameter choices, leave the configuration_file input empty.</p>
+to see its usage and inputs. To run with default parameter choices, leave the configuration_file input name
+(config.tops.txt in the following example) empty.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p2p_processing</span><span class="o">.</span><span class="n">csh</span> <span class="n">S1A_IW_SLC__1SDV_20190704T135158_20190704T135225_027968_032877_1C4D</span><span class="o">.</span><span class="n">SAFE</span> <span class="n">S1A_IW_SLC__1SDV_20190716T135159_20190716T135226_028143_032DC3_512B</span><span class="o">.</span><span class="n">SAFE</span> <span class="n">config</span><span class="o">.</span><span class="n">tops</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">txt</span> <span class="o">&amp;</span>
 </pre></div>

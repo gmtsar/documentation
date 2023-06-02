@@ -89,7 +89,8 @@ Step 4: Run p2p_processing
 
 Once you have your SAR data and your supporting data placed in your directory structure, you are 
 ready to process your interferogram! Call the program :doc:`p2p_processing.csh` from your toplevel directory
-to see its usage and inputs. To run with default parameter choices, leave the configuration_file input empty.
+to see its usage and inputs. To run with default parameter choices, leave the configuration_file input name 
+(config.tops.txt in the following example) empty.
 
  ::
 

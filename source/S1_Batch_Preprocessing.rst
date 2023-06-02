@@ -160,7 +160,7 @@ For those interested in just processing one or two subswaths, just complete this
     ln -s ../../data/*.SAFE/*/*iw1*vv*xml .
     ln -s ../../data/*.SAFE/*/*iw1*vv*tiff .
 
-    # For all:
+    # Then all users should link orbit files and their DEM file:
     ln -s ../../data/*.EOF .
     ln -s ../topo/dem.grd .
 
@@ -170,9 +170,101 @@ NOTE: "iw1" files correspond to the F1 subswath. For F2, change the above to "iw
 Preprocessing Mode I
 --------------------
 
-*Page in progress*
+The first mode of preprocessing your Sentinel-1 data is to calculate and plot a baseline diagram
+showing the placement of all your chosen input images in your batch. To accomplish this, you first
+need to create a data.in file, which is the input file for :doc:`preproc_batch_tops.csh` . All preprocessing
+occurs in the specific subswath directories you plan to process (e.g., if you are processing all three
+subswaths, you need to preprocess each subswaths's raw data separately).
+
+As an example, start in the F1 directory and go to the **raw/** directory where you just linked all your data.
+
+ ::
+  
+   cd F1/raw
+
+*Creating data.in*
+
+The data.in file is a list of SAR tiff image namestems, listed with their corresponding orbit files and 
+separated by a colon. If you have done any stitching of multiple frames together, each frame that has been stitched
+needs to be listed. In addition, you make a separate data.in file for each subswath you are processing.
+
+For example, for one frame of data, the first few lines of data.in file will look like:
+
+ ::
+
+    s1a-iw1-slc-vv-20180207t043037-20180207t043048-020496-0230e3-005:S1A_OPER_AUX_POEORB_OPOD_20180227T120553_V20180206T225942_20180208T005942.EOF
+    s1a-iw1-slc-vv-20180219t043037-20180219t043048-020671-023679-005:S1A_OPER_AUX_POEORB_OPOD_20180311T120551_V20180218T225942_20180220T005942.EOF
+    s1a-iw1-slc-vv-20180303t043037-20180303t043048-020846-023c05-005:S1A_OPER_AUX_POEORB_OPOD_20180323T120847_V20180302T225942_20180304T005942.EOF
+
+while a data.in file with data that has been stitched together will look like:
+
+ :: 
+
+    s1a-iw1-slc-vv-20150911t014915-20150911t014946-007661-00aa13-004:s1a-iw1-slc-vv-20150911t014943-20150911t015013-007661-00aa13-004:s1a-iw1-slc-vv-20150911t015011-20150911t015024-007661-00aa13-004:S1A_OPER_AUX_POEORB_OPOD_20151001T122318_V20150910T225943_20150912T005943.EOF
+    s1b-iw1-slc-vv-20181230t014851-20181230t014922-014265-01a882-004:s1b-iw1-slc-vv-20181230t014919-20181230t014949-014265-01a882-004:s1b-iw1-slc-vv-20181230t014947-20181230t015000-014265-01a882-004:S1B_OPER_AUX_POEORB_OPOD_20190119T110617_V20181229T225942_20181231T005942.EOF
+    s1b-iw1-slc-vv-20190111t014851-20190111t014921-014440-01ae28-004:s1b-iw1-slc-vv-20190111t014919-20190111t014949-014440-01ae28-004:s1b-iw1-slc-vv-20190111t014946-20190111t014960-014440-01ae28-004:S1B_OPER_AUX_POEORB_OPOD_20190131T110643_V20190110T225942_20190112T005942.EOF
+
+You can either make your own data.in file, or you can use the tool :doc:`prep_data.csh` or :doc:`prep_data_linux.csh`
+which will only work for precise orbits (resituted orbits, if used, will need to be added manually).
+
+For example:
+
+ ::
+
+    # inside the F1/raw directory, will all data, orbits, and DEM files linked properly
+    prep_data.csh
+
+Next, use this data.in file to preprocess in mode 1.
+
+*Running preproc_batch_tops.csh*
+
+From the raw directory, we now want to calculate the temporal and spatial baselines of the images so that we can
+choose a reference image for our batch processing/time series processing. Mode 1 of :doc:`preproc_batch_tops.csh`
+does this calculation and produces a baseline_table.dat and a baseline.ps file as a preparation step.
+
+To run, make sure you are still in F1/raw (or whichever subswath you are processing):
+
+ ::
+
+    # This runs in the background and saves screen output to a log file
+    # use "tail -f pbt_mode1.log" to watch the screen out put as it prints
+
+    preproc_batch_tops.csh data.in dem.grd 1 >& pbt_mode1.log &
+
+Once Mode 1 has finished, you can open the baseline.ps file to see the distribution of baselines of
+your images. To choose a good reference image for your entire batch of images, pick one of the dates
+in the middle of the distribution of image dates. 
+
+To set your chosen date as your reference image, you then need to manually open the data.in file and 
+move the line that contains that image date *to the top of the data.in file list*. This way, the mode 2
+program will know to align all of your images to that chosen reference image. 
 
 Preprocessing Mode II
 ---------------------
 
-*Page in progress*
+Once you have chosen a reference image, and have moved that image line in data.in to the top of the file
+you can now run :doc:`preproc_batch_tops.csh` with mode 2, which will actually do all the alignment and
+image co-registration.
+
+ ::
+
+    # This runs in the background and saves screen output to a log file
+    # use "tail -f pbt_mode2.log" to watch the screen out put as it prints
+    preproc_batch_tops.csh data.in dem.grd 2 >& pbt_mode2.log &
+
+**NOTE** Preprocessing with Mode 2 will take much longer than mode 1. For ~30 images it may take roughly
+1-3 hours per F? subswath, depending on the processing power of your machine.
+
+**IF YOU ARE PROCESSING MULTIPLE SUBSWATHS** Remember to go back and complete the preproc_batch_tops.csh 
+process (mode 1 and mode 2) in each subswath raw/ directory. You will need to select the same reference
+image date for each subswath (and it needs to be promoted to the first line in the specific subswath's
+data.in file). Don't be tempted to use the same data.in file for each subswath, they are not interchangeable.
+
+*Re-creating baseline_table.dat*
+
+If you find you need to re-create your baseline_table.dat file, you can use the :doc:`get_baseline_table.csh`.
+
+
+
+
+Once you are done with preprocessing, you can start calculating your interferograms! Check out :doc:`S1_Batch_Interferograms`
