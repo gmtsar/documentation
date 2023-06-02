@@ -1,8 +1,8 @@
-.. index:: ! S1_Batch_Interferograms
+.. index:: ! Batch_Interferograms
 
-***********************
-S1_Batch_Interferograms 
-***********************
+********************
+Batch_Interferograms 
+********************
 
 This page covers the necessary set up and details for each step of the
 batch processing interferogram workflow for non-Sentinel-1 data:
