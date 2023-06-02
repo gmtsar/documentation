@@ -30,6 +30,7 @@ Preprocessing & Alignment
     * :doc:`pre_proc_batch_ALOS2_SCAN.csh`
     * :doc:`pre_proc_batch_ALOS_SLC.csh`
     * :doc:`align_batch.csh`
+    * :doc:`batch_processing.csh`
 
 
     ---
@@ -60,6 +61,7 @@ Interferometry & Filtering
     * :doc:`intf_tops.csh`
     * :doc:`intf_tops_parallel.csh`
     * :doc:`select_pairs.csh`
+    * :doc:`batch_processing.csh`
 
 
     ---
@@ -78,6 +80,7 @@ Unwrapping
     ^^^^^^^
     
     * :doc:`unwrap_parallel.csh`
+    * :doc:`batch_processing.csh`
 
     ---
 

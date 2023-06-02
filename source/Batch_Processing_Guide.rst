@@ -7,6 +7,10 @@ Batch Processing Guide
 This is the page to visit if you are interested in batch processing of
 interferograms, or preparing a batch process for time series. 
 
+**NOTE** There is a beta-version of an automatic batch processing script
+available at :doc:`batch_processing.csh` that can be used for all satellite types.
+Success is not guaranteed while it is still in beta-version testing.
+
 What type of data are you processing?
 -------------------------------------
 .. panels::

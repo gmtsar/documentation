@@ -77,6 +77,7 @@ Core Batch Processing Scripts
    align_batch.csh
    align_batch_ALOS2_SCAN.csh
    align_batch_ALOS_SLC.csh
+   batch_processing.csh
    pre_proc_batch.csh
    pre_proc_batch_ALOS2_SCAN.csh
    pre_proc_batch_ALOS_SLC.csh

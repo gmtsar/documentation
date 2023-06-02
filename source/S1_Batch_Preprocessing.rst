@@ -211,7 +211,7 @@ For example:
 
  ::
 
-    # inside the F1/raw directory, will all data, orbits, and DEM files linked properly
+    # inside the F1/raw directory, with all data, orbits, and DEM files linked properly
     prep_data.csh
 
 Next, use this data.in file to preprocess in mode 1.

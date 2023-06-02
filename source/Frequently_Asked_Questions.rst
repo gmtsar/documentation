@@ -100,7 +100,7 @@ Interferogram-related Questions
     or magnitude of atmospheric noise depends heavily on where your interferogram is.
 
     One possible choice is to use outside data or weather models to try correcting it.
-    There are a variety of these corrects available, but a common one to try is the
+    There are a variety of these corrections available, but a common one to try is the
     GACOS correction: http://www.gacos.net/  
 
     Correcting with GNSS data can also remove long-wavelength atmospheric noise

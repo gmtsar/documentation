@@ -77,12 +77,17 @@
 <li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">S1_Batch_Interferograms</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#selecting-pairs">Selecting Pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-the-intf-in-file-over-desired-subswaths">Set up the intf.in file over desired subswaths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-a-configuration-file">Preparing a configuration file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-intf-tops-csh-to-test-settings">Running intf_tops.csh to test settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-many-interferograms">Running Many interferograms</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
@@ -137,7 +142,128 @@ batch processing interferogram workflow for Sentinel-1 data:</p>
 </div></blockquote>
 <section id="selecting-pairs">
 <h2>Selecting Pairs<a class="headerlink" href="#selecting-pairs" title="Permalink to this headline"></a></h2>
-<p><em>page in progress</em></p>
+<p>The first thing you need to do to produce your batch of interferograms is to decide which
+interferograms you want to include in your batch or your time series. To do this, you
+need to select a temporal baseline threshold and a spatial baseline threshold (in other words
+you need to decide how long your longest interferograms will be apart in space and in time).</p>
+<p>To calculate your list of interferogram pairs, you can use the tool <a class="reference internal" href="select_pairs.csh.html"><span class="doc">select_pairs.csh</span></a>
+For example, in the F1 (or other subswath) directory, run:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you don&#39;t see your baseline_table.dat in F1, move it from your raw directory</span>
+
+<span class="n">select_pairs</span><span class="o">.</span><span class="n">csh</span> <span class="n">baseline_table</span><span class="o">.</span><span class="n">dat</span> <span class="mi">50</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This command will produce the file intf.in that includes all image pairs with a temporal baseline
+smaller than 50 days, and a perpendicular spatial baseline smaller than 100 meters.</p>
+<p>The file intf.in will list these pairs like this:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S1_20180508_ALL_F1</span><span class="p">:</span><span class="n">S1_20180514_ALL_F1</span>
+<span class="n">S1_20180508_ALL_F1</span><span class="p">:</span><span class="n">S1_20180526_ALL_F1</span>
+<span class="n">S1_20180508_ALL_F1</span><span class="p">:</span><span class="n">S1_20180607_ALL_F1</span>
+<span class="n">S1_20180508_ALL_F1</span><span class="p">:</span><span class="n">S1_20180520_ALL_F1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>To view their baselines in plot form, open up baseline.ps and to calculate the number of pairs in intf.in
+just use</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># output the number of lines in intf.in</span>
+<span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="set-up-the-intf-in-file-over-desired-subswaths">
+<h2>Set up the intf.in file over desired subswaths<a class="headerlink" href="#set-up-the-intf-in-file-over-desired-subswaths" title="Permalink to this headline"></a></h2>
+<p>Depending on which subswath you intend to process, you need to copy you intf.in in the first subswatch directory
+to the other subswath directories you plan to process. We use the same list of pairs for all subswatchs in order
+to process a consistent number and pairs of interferograms across subswaths. When you copy the intf.in file to
+a different subswath, edit the file in the new directory to match its subswath number:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># copy the intf.in file from F1 to subswaths F2 and F3</span>
+<span class="n">cp</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span> <span class="o">../</span><span class="n">F2</span>
+<span class="n">cp</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span> <span class="o">../</span><span class="n">F3</span>
+
+<span class="n">cd</span> <span class="o">../</span><span class="n">F2</span>
+<span class="n">vi</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span>
+<span class="c1"># once in vi (or the text editor of your choice), replace the F1s with F2s</span>
+<span class="c1"># (e.g., in vi, enter &quot;:%s/F1/F2/g&quot; and hit return to use sed to replace text</span>
+<span class="c1"># do the same in the file in F3 (if processing)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Now you should have an intf.in file in every subswath directory you plan to process.</p>
+</section>
+<section id="preparing-a-configuration-file">
+<h2>Preparing a configuration file<a class="headerlink" href="#preparing-a-configuration-file" title="Permalink to this headline"></a></h2>
+<p>Ensure that there is a batch_tops.config file in each of the subswath directories you wish to process.</p>
+<p>The batch_tops.config file is the file that contains all of your processing parameter settings, and it is
+where you will tell the processing programs how you want your interferograms prepared and calculated.</p>
+<p>The first thing you need to edit is to put the date of your reference image in the “master_image” line:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside the file:</span>
+<span class="c1"># the namestem of the master image - REQUIRED</span>
+<span class="n">master_image</span> <span class="o">=</span> <span class="n">S1_20190318_ALL_F1</span>
+
+<span class="c1"># Do the same for every batch_tops.config file in each subswath you are processing</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Then, you should check that these settings are set:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># keep these numbers consistent across subswaths</span>
+<span class="n">proc_stage</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># set stage to first produce the topo_ra.grd file</span>
+<span class="n">shift_topo</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># don&#39;t shift topo_ra</span>
+<span class="n">filter_wavelength</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># set the filter wavelength for your interferograms</span>
+<span class="n">range_dec</span> <span class="o">=</span> <span class="mi">8</span>   <span class="c1"># set the output decimation of your interferograms in range direction</span>
+<span class="n">azimuth_dec</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># set the output decimation of your interferograms in azimuth direction</span>
+<span class="n">threshold_snaphu</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 0 means do not unwrap</span>
+<span class="n">threshold_geocode</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 0 means do not geocode right now</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>After that, the config file will have default parameters to calculate interferograms, but all can be
+adjusted and changed to your liking (e.g., filter wavelength, region cut, image decimation)</p>
+</section>
+<section id="running-intf-tops-csh-to-test-settings">
+<h2>Running intf_tops.csh to test settings<a class="headerlink" href="#running-intf-tops-csh-to-test-settings" title="Permalink to this headline"></a></h2>
+<p>We recommend running a single interferograms in your batch first, in order to test your settings and
+make sure everything is working properly. In addition, the first step (stage 1) calculates a large file
+called topo_ra.grd, which is used to map topography into radar coordinates, and it only needs to be generated
+once (and they you can change the stage number to 2).</p>
+<p>To just run one test interferogram:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># grab one pair from intf.in</span>
+<span class="n">head</span> <span class="o">-</span><span class="mi">1</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span> <span class="o">&gt;</span> <span class="n">one</span><span class="o">.</span><span class="ow">in</span>
+
+<span class="c1"># run that one pair</span>
+<span class="n">intf_tops</span><span class="o">.</span><span class="n">csh</span> <span class="n">one</span><span class="o">.</span><span class="ow">in</span> <span class="n">batch_tops</span><span class="o">.</span><span class="n">config</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once that finishes, you should edit batch_tops.config again to set proc_stage = 2, which will enable
+a full run of interferograms, and will skip making the topo_ra file which was created with this first run above.</p>
+</section>
+<section id="running-many-interferograms">
+<h2>Running Many interferograms<a class="headerlink" href="#running-many-interferograms" title="Permalink to this headline"></a></h2>
+<p>You can choose to run all your interferograms using <a class="reference internal" href="intf_tops.csh.html"><span class="doc">intf_tops.csh</span></a>, and run one after the other in
+a for loop.</p>
+<p>There is also the option of running <a class="reference internal" href="intf_tops_parallel.csh.html"><span class="doc">intf_tops_parallel.csh</span></a> and which can run many interferograms
+in parallel on your machine. Please note that you will need to have GNU parallel installed, and you need to
+know the number of cores your machine has (and how much memory). For each “thread” specified in the command
+allow for one core and 5-8GB of memory. If you are on a lower memory machine (e.g., 64GB) we’d recommend
+starting with a low number (2-3) and seeing how that goes first.</p>
+<p>To run in parallel (with GNU parallel installed):</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">intf_tops_parallel</span><span class="o">.</span><span class="n">csh</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span> <span class="n">batch_tops</span><span class="o">.</span><span class="n">config</span> <span class="mi">5</span> <span class="o">&gt;&amp;</span> <span class="n">itp</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This may take some time, depending on your computing power and number of interferograms</p>
+<p>Interferograms and their corresponding directories will be output inside <strong>intf_all/</strong>.</p>
+<p><strong>NOTE:</strong> Repeat the above in each subswath directory you plan to process (including running stage 1 and changing to stage 2 afterwards).</p>
 </section>
 </section>
 

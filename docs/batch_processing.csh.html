@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>batch_processing.csh &mdash; GMTSAR 6.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pre_proc_batch.csh" href="pre_proc_batch.csh.html" />
+    <link rel="prev" title="align_batch_ALOS_SLC.csh" href="align_batch_ALOS_SLC.csh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GMTSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="align_batch.csh.html">align_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_batch_ALOS2_SCAN.csh.html">align_batch_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="align_batch_ALOS_SLC.csh.html">align_batch_ALOS_SLC.csh</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">batch_processing.csh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-arguments">Required Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-argument">Optional Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc_batch.csh.html">pre_proc_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc_batch_ALOS2_SCAN.csh.html">pre_proc_batch_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pre_proc_batch_ALOS_SLC.csh.html">pre_proc_batch_ALOS_SLC.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preproc_batch_tops.csh.html">preproc_batch_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preproc_batch_tops_esd.csh.html">preproc_batch_tops_esd.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="select_pairs.csh.html">select_pairs.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_batch.csh.html">intf_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_batch_ALOS2_SCAN.csh.html">intf_batch_ALOS2_SCAN.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intf_tops_parallel.csh.html">intf_tops_parallel.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unwrap_parallel.csh.html">unwrap_parallel.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_batch.csh.html">merge_batch.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_unwrap_geocode_tops.csh.html">merge_unwrap_geocode_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prep_data.csh.html">prep_data.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prep_data_linux.csh.html">prep_data_linux.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prep_sbas.csh.html">prep_sbas.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.csh.html">stack.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack_corr.csh.html">stack_corr.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organize_files_tops.csh.html">organize_files_tops.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organize_files_tops_linux.csh.html">organize_files_tops_linux.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_merge_input.csh.html">create_merge_input.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_baseline_table.csh.html">get_baseline_table.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download_sentinel_orbits.csh.html">download_sentinel_orbits.csh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download_sentinel_orbits_linux.csh.html">download_sentinel_orbits_linux.csh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#additional-scripts">Additional Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-c-modules">Core C Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GMTSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">Resources</a> &raquo;</li>
+      <li>batch_processing.csh</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/batch_processing.csh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="batch-processing-csh">
+<span id="index-0"></span><h1>batch_processing.csh<a class="headerlink" href="#batch-processing-csh" title="Permalink to this headline"></a></h1>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
+<p><strong>batch_processing.csh</strong> <em>SAT master_image inputfile step [configuration_file]</em></p>
+<p><strong>NOTE: THIS SCRIPT IS STILL IN BETA-VERSION TESTING</strong></p>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+<p><strong>batch_processing.csh</strong> completes batch processing for the specified satellite type, datafiles, and step number</p>
+<p>Put the data and orbit files in the raw folder, put DEM in the topo folder</p>
+<p>Make sure the files from the same date have the same stem, e.g. stem.tif stem.xml stem.cos stem.EOF, etc</p>
+<p>If the configuration file is left blank, the program will generate one with default parameters</p>
+</section>
+<section id="required-arguments">
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
+<p><em>SAT</em></p>
+<blockquote>
+<div><p>The SAT needs to be specified, choices with in ERS, ENVI, ALOS, ALOS_SLC, ALOS2, ALOS2_SCAN
+S1_STRIP, S1_TOPS, ENVI_SLC, CSK_RAW, CSK_SLC, TSX, RS2, GF3</p>
+</div></blockquote>
+<p><em>master_image</em></p>
+<blockquote>
+<div><p>User needs to provide the master/reference image name stem</p>
+</div></blockquote>
+<p><em>inputfile</em></p>
+<blockquote>
+<div><p>Input file depends on the step you request processing for (steps 1-6 described below).</p>
+</div></blockquote>
+<p><em>step</em></p>
+<blockquote>
+<div><p>Details: The step could be 1-preprocessing, 2-alignment, 3-backgeocoding, 4-interferometry,
+5-phase unwrapping, and 6-geocoding. For TOPS data, step 1 and 2 are done together.</p>
+<p><strong>STEP 1</strong>: preprocessing, inputfile should be a list of inputdata with or without orbit files, master_image should be in the first line
+NEED at least THREE records to run
+e.g., for ALOS data, the list should be: (pick FBS to be master image)
+IMG-HH-ALPSRP160702940-H1.0__D
+IMG-HH-ALPSRP200962940-H1.0__D
+IMG-HH-ALPSRP268062940-H1.0__D
+and for Sentinel-1 TOPS data, the list should be like:
+s1a-iw1-slc-vv-20150109t134413-20150109t134421-004095-004f4a-001:S1A_OPER_AUX_POEORB_OPOD_20210305T105546_V20150108T225944_20150110T005944.EOF
+s1a-iw1-slc-vv-20150121t134413-20150121t134421-004270-005317-001:S1A_OPER_AUX_POEORB_OPOD_20210305T143838_V20150120T225944_20150122T005944.EOF
+s1a-iw1-slc-vv-20150226t134412-20150226t134420-004795-005f58-001:S1A_OPER_AUX_POEORB_OPOD_20210306T014915_V20150225T225944_20150227T005944.EOF</p>
+<p><strong>STEP 2</strong>: alignment, inputfile should be a list of inputdata with master image in the first line
+e.g., for ALOS data, the list should be like:
+NEED at least THREE records to run
+IMG-HH-ALPSRP160702940-H1.0__D
+IMG-HH-ALPSRP200962940-H1.0__D
+IMG-HH-ALPSRP268062940-H1.0__D
+and for Sentinel-1 TOPS data, this step could be skipped.
+For secondary alignment, run this step multiple times with -skip_master = 1, for secondary and tertiary alignment.</p>
+<p><strong>STEP 3</strong>: backgeocoding, make sure DEM is in the topo directory, and PRM and LED file of the master image exist in the raw directory.
+This only need to be run once for a stack of data.</p>
+<p><strong>STEP 4</strong>: interferometry, inputfile should be a list of interferogram pairs
+e.g., for ALOS data the list should be like:
+IMG-HH-ALPSRP160702940-H1.0__D:IMG-HH-ALPSRP200962940-H1.0__D
+IMG-HH-ALPSRP160702940-H1.0__D:IMG-HH-ALPSRP268062940-H1.0__D
+IMG-HH-ALPSRP200962940-H1.0__D:IMG-HH-ALPSRP268062940-H1.0__D
+and for Sentinel-1 TOPS data, the list should be like:
+S1_20150121_ALL_F1:S1_20150310_ALL_F1
+S1_20150121_ALL_F1:S1_20150403_ALL_F1
+S1_20150310_ALL_F1:S1_20150403_ALL_F1</p>
+<p><strong>STEP 5</strong>: phase unwrapping, give the same input as step 4, and the script will go through every directory in intf_all and run
+phase unwrapping using parameters specified in the config file</p>
+<p><strong>STEP 6</strong>: geocoding, give the same input as step 4, and the script will go through every directory in intf_all and run geocoding</p>
+</div></blockquote>
+</section>
+<section id="optional-argument">
+<h2>Optional Argument<a class="headerlink" href="#optional-argument" title="Permalink to this headline"></a></h2>
+<p><em>[configuration_file]</em></p>
+<blockquote>
+<div><p>If the configuration file is left blank, the program will generate one with default parameters</p>
+</div></blockquote>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch_processing</span><span class="o">.</span><span class="n">csh</span> <span class="n">ALOS</span> <span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP055750660</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span> <span class="n">imagelist</span> <span class="mi">1</span> <span class="n">config</span><span class="o">.</span><span class="n">alos</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="align_batch_ALOS_SLC.csh.html" class="btn btn-neutral float-left" title="align_batch_ALOS_SLC.csh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pre_proc_batch.csh.html" class="btn btn-neutral float-right" title="pre_proc_batch.csh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
