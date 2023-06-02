@@ -30,6 +30,7 @@ What type of data are you processing?
     Non-Sentinel-1 (ALOS/ALOS2/Envisat/ERS)
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    * :doc:`batch_processing.csh`   
     * :doc:`Batch_Preprocessing`   
     * :doc:`Batch_Interferograms` 
     * :doc:`Batch_Unwrapping`  
