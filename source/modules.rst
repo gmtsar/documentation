@@ -13,7 +13,7 @@ Resources
    Time_Series_Examples
    Generating_DEM
    Guide_To_Interferogram_Corrections
-   Projecting_To_LatLon
+   Projecting_To_LatitudeLongitude
    Batch_Preprocessing 
    Batch_Unwrapping   
    Batch_Interferograms

@@ -51,7 +51,7 @@ Explore the tools, workflows and resources below!
         :caption: Getting the Most Out of Your Data
 
         Guide_To_Interferogram_Corrections 
-        Projecting_To_LatLon
+        Projecting_To_LatitudeLongitude
 
     ---
     .. toctree::

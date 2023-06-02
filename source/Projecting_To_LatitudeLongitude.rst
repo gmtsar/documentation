@@ -1,8 +1,8 @@
-.. index:: ! Projecting To LatLon 
+.. index:: ! Projecting To LatitudeLongitude
 
-********************
-Projecting To LatLon 
-********************
+*******************************
+Projecting To LatitudeLongitude
+*******************************
 
 We often want to project our InSAR results from radar coordinates (range/azimuth) into 
 geocoded coordinates in order to view and interpret them. This page walks you through how
