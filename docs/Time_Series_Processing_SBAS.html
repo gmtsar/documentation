@@ -77,15 +77,17 @@
 <li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">Batch_Interferograms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Preprocessing.html">S1_Batch_Preprocessing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Time_Series_Processing_SBAS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#preparing-merge-file">Preparing Merge File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-to-run-sbas">Setting Up to Run SBAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-sbas">Running SBAS</a></li>
 </ul>
 </li>
 </ul>
@@ -126,16 +128,43 @@
 <span id="index-0"></span><h1>Time_Series_Processing_SBAS<a class="headerlink" href="#time-series-processing-sbas" title="Permalink to this headline"></a></h1>
 <p>This page covers the necessary set up and details for running the
 time series processing of batch unwrapped interferograms, using the
-doc:<cite>sbas</cite> software.</p>
+<a class="reference internal" href="sbas.html"><span class="doc">sbas</span></a> software.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Setting up to run <a class="reference internal" href="sbas.html"><span class="doc">sbas</span></a></p></li>
 <li><p>Running <a class="reference internal" href="sbas.html"><span class="doc">sbas</span></a> or <a class="reference internal" href="sbas_parallel.html"><span class="doc">sbas_parallel</span></a></p></li>
 </ul>
 </div></blockquote>
-<section id="preparing-merge-file">
-<h2>Preparing Merge File<a class="headerlink" href="#preparing-merge-file" title="Permalink to this headline"></a></h2>
-<p><em>Page in progress</em></p>
+<section id="setting-up-to-run-sbas">
+<h2>Setting Up to Run SBAS<a class="headerlink" href="#setting-up-to-run-sbas" title="Permalink to this headline"></a></h2>
+<p><em>Prepare the Input Files</em></p>
+<p>First, you need to prepare the <strong>scene.tab</strong> and <strong>intf.tab</strong> files for running <a class="reference internal" href="sbas.html"><span class="doc">sbas</span></a>.
+To do this you can use the tool <a class="reference internal" href="prep_sbas.csh.html"><span class="doc">prep_sbas.csh</span></a> as long as you have your intf.in and
+baseline_table.dat files handy.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this assumes your unwrap.grd and corr.grd files are in ../merge/&quot;date1_date2&quot;/</span>
+<span class="n">prep_sbas</span><span class="o">.</span><span class="n">csh</span> <span class="n">intf</span><span class="o">.</span><span class="ow">in</span> <span class="n">baseline_table</span><span class="o">.</span><span class="n">dat</span> <span class="o">../</span><span class="n">merge</span> <span class="n">unwrap</span><span class="o">.</span><span class="n">grd</span> <span class="n">corr</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will produce the scene.tab files (the list of dates in your time series) and the intf.tab file
+(the list of interferogram phase and correlation files to be used in SBAS). It will also output a
+basic/default sbas command structure for you.</p>
+</section>
+<section id="running-sbas">
+<h2>Running SBAS<a class="headerlink" href="#running-sbas" title="Permalink to this headline"></a></h2>
+<p>Once you have your input files set up, you need to choose your sbas flags to produce the time series calculation
+you want (see the <a class="reference internal" href="sbas.html"><span class="doc">sbas</span></a> page for descriptions).</p>
+<p>Note that when you run sbas your machine will need a certain amount of memory to handle the calculation. The -mmap flag can
+help, but it will take longer to run. If you need to reduce the size of the calculation, you can choose to downsample your
+input phase and correlation grids to a lower resolution.</p>
+<p><em>Running in parallel</em></p>
+<p>There is an option to run sbas in parallel (see <a class="reference internal" href="sbas_parallel.html"><span class="doc">sbas_parallel</span></a>) if you have GNU parallel installed and if you have
+compiled the sbas_parallel program (see <a class="reference external" href="https://github.com/gmtsar/gmtsar/wiki/Compile-parallel-sbas-code">https://github.com/gmtsar/gmtsar/wiki/Compile-parallel-sbas-code</a> for instructions).</p>
+<p>When sbas finishes, there should be a cumulative displacement grid (disp_xxxxxxx.grd) for every date in your scene.tab file,
+a velocity grid (vel.grd), a DEM error grid (dem.grd, if you chose to output one), and an RMS misfit grid (rms.grd, if you
+chose to output one).</p>
+<p>To extract a point time series from these grids, check out <a class="reference internal" href="extract_one_time_series.csh.html"><span class="doc">extract_one_time_series.csh</span></a>.</p>
 </section>
 </section>
 
