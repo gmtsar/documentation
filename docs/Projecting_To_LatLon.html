@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projecting_To_LatLon &mdash; GMTSAR 6.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Batch_Preprocessing" href="Batch_Preprocessing.html" />
+    <link rel="prev" title="Generating_DEM" href="Generating_DEM.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> GMTSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Projecting_To_LatLon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#projecting-into-geocoded-coordinates">Projecting Into Geocoded Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-to-googleearth-kml-file">Converting to GoogleEarth KML file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#projecting-to-radar-coordinates">Projecting to Radar Coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">Batch_Interferograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="S1_Batch_Preprocessing.html">S1_Batch_Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Time_Series_Processing_SBAS.html">Time_Series_Processing_SBAS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#additional-scripts">Additional Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#core-c-modules">Core C Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GMTSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">Resources</a> &raquo;</li>
+      <li>Projecting_To_LatLon</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Projecting_To_LatLon.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="projecting-to-latlon">
+<span id="index-0"></span><h1>Projecting_To_LatLon<a class="headerlink" href="#projecting-to-latlon" title="Permalink to this headline"></a></h1>
+<p>We often want to project our InSAR results from radar coordinates (range/azimuth) into
+geocoded coordinates in order to view and interpret them. This page walks you through how
+to use <a class="reference internal" href="proj_ra2ll.csh.html"><span class="doc">proj_ra2ll.csh</span></a> and its inverse <a class="reference internal" href="proj_ll2ra.csh.html"><span class="doc">proj_ll2ra.csh</span></a>.</p>
+<section id="projecting-into-geocoded-coordinates">
+<h2>Projecting Into Geocoded Coordinates<a class="headerlink" href="#projecting-into-geocoded-coordinates" title="Permalink to this headline"></a></h2>
+<p>If you have a grid file in radar coordinates (e.g., a wrapped interferogram, phasefilt.grd or an
+unwrapped interferogram, unwrap.grd) and you want to project it to longitude/latitude, you can use
+<a class="reference internal" href="proj_ra2ll.csh.html"><span class="doc">proj_ra2ll.csh</span></a>. You will need to have the trans.dat file in the same directory (the file that
+contains the transformations between the radar coordinates and geocoded coordinates), as well as a filter
+file called “gauss_XXX”. A good choice is at least a gauss_600 file.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proj_ra2ll</span><span class="o">.</span><span class="n">csh</span> <span class="n">trans</span><span class="o">.</span><span class="n">dat</span> <span class="n">unwrap</span><span class="o">.</span><span class="n">grd</span> <span class="n">unwrap_ll</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will project the unwrap.grd grid from radar coordinates to geocoded coordinates. <a class="reference internal" href="proj_ra2ll.csh.html"><span class="doc">proj_ra2ll.csh</span></a>
+will create two grids raln.grd and ralt.grd that will be used again if you project anything else (they will
+not be overwritten if they exist in the directory).</p>
+</section>
+<section id="converting-to-googleearth-kml-file">
+<h2>Converting to GoogleEarth KML file<a class="headerlink" href="#converting-to-googleearth-kml-file" title="Permalink to this headline"></a></h2>
+<p>GoogleEarth is a great way to view results quickly, you just need to make a KML file:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># first make a color palette to plot with</span>
+<span class="n">gmt</span> <span class="n">grd2cpt</span> <span class="n">unwrap_ll</span><span class="o">.</span><span class="n">grd</span> <span class="o">-</span><span class="n">Croma</span> <span class="o">&gt;</span> <span class="n">unwrap_ll</span><span class="o">.</span><span class="n">cpt</span> <span class="c1"># -C specifies GMT-based color palette, this chooses &quot;roma&quot;</span>
+
+<span class="c1"># then make the kml file</span>
+<span class="n">grd2kml</span><span class="o">.</span><span class="n">csh</span> <span class="n">unwrap_ll</span> <span class="n">unwrap_ll</span><span class="o">.</span><span class="n">cpt</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will produce a kml file and a png file. These two files need to be in the same directory to open in GoogleEarth.</p>
+</section>
+<section id="projecting-to-radar-coordinates">
+<h2>Projecting to Radar Coordinates<a class="headerlink" href="#projecting-to-radar-coordinates" title="Permalink to this headline"></a></h2>
+<p>Conversely, if you want to project something into radar coordinates, you can use <a class="reference internal" href="proj_ll2ra.csh.html"><span class="doc">proj_ll2ra.csh</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Generating_DEM.html" class="btn btn-neutral float-left" title="Generating_DEM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Batch_Preprocessing.html" class="btn btn-neutral float-right" title="Batch_Preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
