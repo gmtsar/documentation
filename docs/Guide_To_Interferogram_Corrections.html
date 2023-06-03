@@ -22,7 +22,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Processing One Interferogram" href="Processing_One_Interferogram.html" />
+    <link rel="next" title="Projecting To LatitudeLongitude" href="Projecting_To_LatitudeLongitude.html" />
     <link rel="prev" title="Time Series Examples" href="Time_Series_Examples.html" /> 
 </head>
 
@@ -43,11 +43,25 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Processing An Interferogram</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Batch Processing and Time Series</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Batch_Processing_Scripts.html">Core Batch Processing Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guide To Interferogram Corrections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#atmospheric-corrections">Atmospheric Corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gnss-correction">GNSS Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -58,22 +72,8 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/gmtsar/gmtsar/blob/master/LICENSE.TXT">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Resources</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Frequently_Asked_Questions.html">Frequently Asked Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Citation_and_Funding_Information.html">Citation and Funding Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Learning_More_About_InSAR.html">Learning More About InSAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Quick_Start_Guide.html">Quick Start Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Processing_Guide.html">Batch Processing Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Interferogram_Examples.html">Interferogram Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Guide To Interferogram Corrections</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#placeholder">Placeholder</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#examples">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-processing-scripts">Core Processing Scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html#core-batch-processing-scripts">Core Batch Processing Scripts</a></li>
@@ -95,7 +95,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">Resources</a> &raquo;</li>
       <li>Guide To Interferogram Corrections</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Guide_To_Interferogram_Corrections.rst.txt" rel="nofollow"> View page source</a>
@@ -108,17 +107,35 @@
              
   <section id="guide-to-interferogram-corrections">
 <span id="index-0"></span><h1>Guide To Interferogram Corrections<a class="headerlink" href="#guide-to-interferogram-corrections" title="Permalink to this headline"></a></h1>
-<dl class="simple">
-<dt><em>Placeholder</em></dt><dd><p>To process an interferogram you need to download two SAR images from the
-same satellite, same satellite track, and that overlap in space</p>
-</dd>
-<dt><em>Placeholder</em></dt><dd><p>You will need to provide the orbital information for each of the SAR images
-you wish to process. This information is usually available from the same place
-you downloaded data. You will need one orbit file for each image.</p>
-</dd>
-</dl>
-<section id="placeholder">
-<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline"></a></h2>
+<p>There are many ways to apply different corrections to interferograms. This is <strong>not</strong> an
+exhaustive list in any way. Many of these correction topics are active areas of research, but
+we list these here in case they might help.</p>
+<section id="atmospheric-corrections">
+<h2>Atmospheric Corrections<a class="headerlink" href="#atmospheric-corrections" title="Permalink to this headline"></a></h2>
+<p>The atmosphere can be a large source of noise in SAR interferograms, especially because any signal
+delay gets doubled because the radar signal has to pass through the atmosphere to get to the ground
+and then back through the atmosphere when it is reflected. Correcting these delay effects is an active
+area of research, but one main area is in correcting the tropospheric delay which can be accomplished
+by using Weather Models or by using Global Navigation Satellite System (GNSS) point-based Zenith
+Tropospheric Delay (ZTD) measurements.</p>
+<p><em>Tropospheric Delay with GACOS</em></p>
+<p>One straightforward way to try to correct for tropospheric delay is to apply the GACOS Correction
+(the Generic Atmospheric Correction Online Service correction) (Yu et al., 2017,2018a,2018b). You can download
+a GACOS correction grid and read more about the process here: <a class="reference external" href="http://www.gacos.net/">http://www.gacos.net/</a></p>
+<p>The accuracy and benefit of this particular correction will vary depending on your study area. We make
+no guarantees that this will remove all of your tropospheric noise, but it may help.</p>
+<p>Citations for GACOS:</p>
+<p>Yu, C., Li, Z., Penna, N. T., &amp; Crippa, P. (2018). Generic atmospheric correction model for Interferometric Synthetic
+Aperture Radar observations. Journal of Geophysical Research: Solid Earth, 123(10), 9202-9222</p>
+<p>Yu, C., Li, Z., &amp; Penna, N. T. (2018). Interferometric synthetic aperture radar atmospheric correction using a GPS-based
+iterative tropospheric decomposition model. Remote Sensing of Environment, 204, 109-121</p>
+<p>Yu, C., Penna, N. T., &amp; Li, Z. (2017). Generation of real‐time mode high‐resolution water vapor fields from GPS observations.
+Journal of Geophysical Research: Atmospheres, 122(3), 2008-2025</p>
+</section>
+<section id="gnss-correction">
+<h2>GNSS Correction<a class="headerlink" href="#gnss-correction" title="Permalink to this headline"></a></h2>
+<p>Check out <a class="reference internal" href="correct_insar_with_gnss.csh.html"><span class="doc">correct_insar_with_gnss.csh</span></a> to read more about this.</p>
+<p><em>Page in progress</em></p>
 </section>
 </section>
 
@@ -127,7 +144,7 @@ you downloaded data. You will need one orbit file for each image.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Time_Series_Examples.html" class="btn btn-neutral float-left" title="Time Series Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Processing_One_Interferogram.html" class="btn btn-neutral float-right" title="Processing One Interferogram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Projecting_To_LatitudeLongitude.html" class="btn btn-neutral float-right" title="Projecting To LatitudeLongitude" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
