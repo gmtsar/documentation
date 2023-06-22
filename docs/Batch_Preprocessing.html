@@ -57,6 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -79,12 +80,15 @@
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Batch_Preprocessing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#directory-setup">Directory Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alignment">Alignment</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Batch_Interferograms.html">Batch_Interferograms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Merging.html">S1_Batch_Merging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Preprocessing.html">S1_Batch_Preprocessing</a></li>
@@ -130,15 +134,51 @@ batch processing workflow for non-Sentinel-1 data:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Directory Setup</p></li>
-<li><p>Organizing Data &amp; Region Coverage Clipping and Stitching</p></li>
-<li><p>Linking Data</p></li>
-<li><p>Preprocessing Mode I: Choosing a Reference Image</p></li>
-<li><p>Preprocessing Mode II: Aligning to Reference Image</p></li>
+<li><p>Preprocessing: Choosing a Reference Image</p></li>
+<li><p>Alignment: Aligning images to a Reference Image</p></li>
 </ul>
 </div></blockquote>
 <section id="directory-setup">
 <h2>Directory Setup<a class="headerlink" href="#directory-setup" title="Permalink to this headline"></a></h2>
-<p><em>Page in progress</em></p>
+<p>The first thing to do to prepare for batch processing is to organize your
+directory structure into the following path tree, for example, for a given track:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="p">[</span><span class="n">track</span><span class="c1">#]</span>
+         <span class="o">|</span>
+ <span class="n">________</span><span class="o">|</span><span class="n">_______</span>
+  <span class="o">|</span>      <span class="o">|</span>     <span class="o">|</span>
+<span class="p">[</span><span class="n">raw</span><span class="p">]</span> <span class="p">[</span><span class="n">topo</span><span class="p">]</span> <span class="p">[</span><span class="n">intf</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The directories are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[raw] is where you store your SAR data and preprocess your data</p></li>
+<li><p>[topo] is where you store your downloaded DEM file</p></li>
+<li><p>[intf] is where your interferograms will be stored</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline"></a></h2>
+<p>The first step of preprocessing your data is to calculate and plot a baseline diagram
+showing the placement of all your chosen input images in your batch. To accomplish this, you first
+need to create a data.in file, which is the input file for <a class="reference internal" href="pre_proc_batch.csh.html"><span class="doc">pre_proc_batch.csh</span></a> . All preprocessing
+occurs in the raw directory.</p>
+<p><em>Creating data.in</em></p>
+<p>The data.in file is a list of SAR image namestems — see <a class="reference internal" href="pre_proc_batch.csh.html"><span class="doc">pre_proc_batch.csh</span></a> to see how to
+format a data.in file for your given data type.</p>
+<p><em>NOTE</em>: The first line in your data.in file should be your reference image, but you will need to
+run this once to get your baseline_table and your baseline.ps plot to see how your images plot together.</p>
+</section>
+<section id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline"></a></h2>
+<p>The second step of preprocessing your data is to align all your images to your chosen reference
+image. See <a class="reference internal" href="align_batch.csh.html"><span class="doc">align_batch.csh</span></a> to see the usage for this tool. You will need to create an align.in
+file for this purpose.</p>
+<p>Once all your images are aligned to their reference image, you are ready to start processing
+interferograms.</p>
 </section>
 </section>
 

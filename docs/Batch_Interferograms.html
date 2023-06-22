@@ -57,6 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -79,10 +80,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Time_Series_Examples.html">Time Series Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Generating_DEM.html">Generating_DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Preprocessing.html">Batch_Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Batch_Unwrapping.html">Batch_Unwrapping</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Batch_Interferograms</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#selecting-pairs">Selecting Pairs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-a-configuration-file">Preparing a configuration file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-intf-csh-to-test-settings">Running intf.csh to test settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-many-interferograms">Running Many interferograms</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="S1_Batch_Interferograms.html">S1_Batch_Interferograms</a></li>
@@ -130,14 +135,68 @@ batch processing interferogram workflow for non-Sentinel-1 data:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Selecting pairs</p></li>
-<li><p>Set up the <em>intf.in</em> file over desired subswaths</p></li>
 <li><p>Preparing a configuration file</p></li>
 <li><p>Running <a class="reference internal" href="intf_batch.csh.html"><span class="doc">intf_batch.csh</span></a> to test settings</p></li>
 </ul>
 </div></blockquote>
 <section id="selecting-pairs">
 <h2>Selecting Pairs<a class="headerlink" href="#selecting-pairs" title="Permalink to this headline"></a></h2>
-<p><em>Page in progress</em></p>
+<p>The first thing you need to do to produce your batch of interferograms is to decide which
+interferograms you want to include in your batch or your time series. To do this, you
+need to select a temporal baseline threshold and a spatial baseline threshold (in other words
+you need to decide how long your longest interferograms will be apart in space and in time).</p>
+<p>To calculate your list of interferogram pairs, you can use the tool <a class="reference internal" href="select_pairs.csh.html"><span class="doc">select_pairs.csh</span></a>
+For example, in your raw directory, run:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select_pairs</span><span class="o">.</span><span class="n">csh</span> <span class="n">baseline_table</span><span class="o">.</span><span class="n">dat</span> <span class="mi">50</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This command will produce the file intf.in that includes all image pairs with a temporal baseline
+smaller than 50 days, and a perpendicular spatial baseline smaller than 100 meters.</p>
+<p>The file intf.in will list these pairs like this, for example, for ALOS data:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP096010650</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span><span class="p">:</span><span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP236920650</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span>
+<span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP089300650</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span><span class="p">:</span><span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP096010650</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span>
+<span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP089300650</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span><span class="p">:</span><span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP236920650</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="preparing-a-configuration-file">
+<h2>Preparing a configuration file<a class="headerlink" href="#preparing-a-configuration-file" title="Permalink to this headline"></a></h2>
+<p>Ensure that you have a batch_tops.config file in your track level directory. If you don’t have one
+use <a class="reference internal" href="pop_config.csh.html"><span class="doc">pop_config.csh</span></a> to generate one for your satellite data type.</p>
+<p>The batch_tops.config file is the file that contains all of your processing parameter settings, and it is
+where you will tell the processing programs how you want your interferograms prepared and calculated.</p>
+<p>The first thing you need to edit is to put the date of your reference image in the “master_image” line:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside the file:</span>
+<span class="c1"># the namestem of the master image - REQUIRED</span>
+<span class="n">master_image</span> <span class="o">=</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="running-intf-csh-to-test-settings">
+<h2>Running intf.csh to test settings<a class="headerlink" href="#running-intf-csh-to-test-settings" title="Permalink to this headline"></a></h2>
+<p>We recommend running a single interferograms in your batch first, in order to test your settings and
+make sure everything is working properly. In addition, the first step (stage 1) calculates a large file
+called topo_ra.grd, which is used to map topography into radar coordinates, and it only needs to be generated
+once (and they you can change the stage number to 2).</p>
+<p>To just run one test interferogram:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># run one pair</span>
+<span class="n">intf</span><span class="o">.</span><span class="n">csh</span> <span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP055750660</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span><span class="o">.</span><span class="n">PRM</span> <span class="n">IMG</span><span class="o">-</span><span class="n">HH</span><span class="o">-</span><span class="n">ALPSRP049040660</span><span class="o">-</span><span class="n">H1</span><span class="mf">.0</span><span class="n">__A</span><span class="o">.</span><span class="n">PRM</span> <span class="o">-</span><span class="n">topo</span> <span class="n">topo_ra</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once that finishes, you should edit batch_tops.config again to set proc_stage = 2, which will enable
+a full run of interferograms, and will skip making the topo_ra file which was created with this first run above.</p>
+</section>
+<section id="running-many-interferograms">
+<h2>Running Many interferograms<a class="headerlink" href="#running-many-interferograms" title="Permalink to this headline"></a></h2>
+<p>You can choose to run all your interferograms using <a class="reference internal" href="intf_batch.csh.html"><span class="doc">intf_batch.csh</span></a>.</p>
 </section>
 </section>
 
