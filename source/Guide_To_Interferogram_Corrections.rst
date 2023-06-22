@@ -46,7 +46,7 @@ Journal of Geophysical Research: Atmospheres, 122(3), 2008-2025
 GNSS Correction/Integration
 ---------------------------
 
-With the recent July 2021 GMTSAR distribution we have included a new script called correct_insar_with_gnss.csh
+The GMTSAR distribution includes a tool called :doc:`correct_insar_with_gnss.csh`
 which allows you to use your own GNSS displacements to correct InSAR interferograms for additional atmospheric
 effects. This also ties your interferogram to GNSS motions and helps provide an underlying reference frame. 
 This script uses the general approach of Neely et al. (2020) (e.g. GInSAR), but instead of solving for a best-fit 
