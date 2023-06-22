@@ -58,7 +58,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Guide To Interferogram Corrections</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#atmospheric-corrections">Atmospheric Corrections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gnss-correction">GNSS Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gnss-correction-integration">GNSS Correction/Integration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
@@ -120,10 +120,13 @@ by using Weather Models or by using Global Navigation Satellite System (GNSS) po
 Tropospheric Delay (ZTD) measurements.</p>
 <p><em>Tropospheric Delay with GACOS</em></p>
 <p>One straightforward way to try to correct for tropospheric delay is to apply the GACOS Correction
-(the Generic Atmospheric Correction Online Service correction) (Yu et al., 2017,2018a,2018b). You can download
+(the Generic Atmospheric Correction Online Service correction) which is currently based on
+weather model data for global grids (see Yu et al., 2017,2018a,2018b). You can download
 a GACOS correction grid and read more about the process here: <a class="reference external" href="http://www.gacos.net/">http://www.gacos.net/</a></p>
 <p>The accuracy and benefit of this particular correction will vary depending on your study area. We make
-no guarantees that this will remove all of your tropospheric noise, but it may help.</p>
+no guarantees that this will remove all of the tropospheric noise in your study area, but it may help.</p>
+<p>A script exists for using GMTSAR to incorporate GACOS grids; see github at:
+<a class="reference external" href="https://github.com/gmtsar/user-contributions/tree/main/gacos-correction">https://github.com/gmtsar/user-contributions/tree/main/gacos-correction</a></p>
 <p>Citations for GACOS:</p>
 <p>Yu, C., Li, Z., Penna, N. T., &amp; Crippa, P. (2018). Generic atmospheric correction model for Interferometric Synthetic
 Aperture Radar observations. Journal of Geophysical Research: Solid Earth, 123(10), 9202-9222</p>
@@ -132,10 +135,33 @@ iterative tropospheric decomposition model. Remote Sensing of Environment, 204, 
 <p>Yu, C., Penna, N. T., &amp; Li, Z. (2017). Generation of real‐time mode high‐resolution water vapor fields from GPS observations.
 Journal of Geophysical Research: Atmospheres, 122(3), 2008-2025</p>
 </section>
-<section id="gnss-correction">
-<h2>GNSS Correction<a class="headerlink" href="#gnss-correction" title="Permalink to this headline"></a></h2>
+<section id="gnss-correction-integration">
+<h2>GNSS Correction/Integration<a class="headerlink" href="#gnss-correction-integration" title="Permalink to this headline"></a></h2>
+<p>With the recent July 2021 GMTSAR distribution we have included a new script called correct_insar_with_gnss.csh
+which allows you to use your own GNSS displacements to correct InSAR interferograms for additional atmospheric
+effects. This also ties your interferogram to GNSS motions and helps provide an underlying reference frame.
+This script uses the general approach of Neely et al. (2020) (e.g. GInSAR), but instead of solving for a best-fit
+residual correction grid, this script applies a Gaussian filter to the correction grid before removing it from
+the interferogram. This approach is documented in Klein et al. (2019) and most recently by Xu et al. (2021) and
+Guns et al. (2022). This gaussian filter is user-specified (in units of meters), and we recommend using the value
+of average station spacing in your GNSS data set (in the example line below, we have an average station spacing of
+40 km, so we use 40,000 meters as our gaussian filter wavelength).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">correct_insar_with_gnss</span><span class="o">.</span><span class="n">csh</span> <span class="n">supermaster</span><span class="o">.</span><span class="n">PRM</span> <span class="n">unwrap_dsamp</span><span class="o">.</span><span class="n">grd</span> <span class="n">gnss_los</span><span class="o">.</span><span class="n">rad</span> <span class="mi">40000</span>
+</pre></div>
+</div>
 <p>Check out <a class="reference internal" href="correct_insar_with_gnss.csh.html"><span class="doc">correct_insar_with_gnss.csh</span></a> to read more about this.</p>
-<p><em>Page in progress</em></p>
+<p>References:</p>
+<p>Guns, K., Xu, X., Bock, Y., Sandwell, D., 2022, GNSS-corrected InSAR displacement time-series spanning the
+2019 Ridgecrest, CA earthquakes, Geophysical Journal International, Volume 230, Issue 2, September 2022,
+Pages 1358–1373, <a class="reference external" href="https://doi.org/10.1093/gji/ggac121">https://doi.org/10.1093/gji/ggac121</a></p>
+<p>Neely, W.R., Borsa, A.A., and Silverii, F., 2020. GInSAR: A cGPS Correction for Enhanced InSAR Time Series,
+IEEE Transactions on Geoscience and Remote Sensing, 58(1), 136 - 146, <a class="reference external" href="https://doi.org/10.1109/TGRS.2019.2934118">https://doi.org/10.1109/TGRS.2019.2934118</a>.</p>
+<p>Klein, E., Bock, Y., Xu, X., Sandwell, D. T., Golriz, D., Fang, P., &amp; Su, L. (2019). Transient deformation in
+California from two decades of GPS displacements: Implications for a three-dimensional kinematic reference frame.
+Journal of Geophysical Research: Solid Earth, 124, 12189– 12223. <a class="reference external" href="https://doi.org/10.1029/2018JB017201">https://doi.org/10.1029/2018JB017201</a></p>
+<p>Xu, X., Sandwell, D. T., Klein, E., &amp; Bock, Y. (2021). Integrated Sentinel-1 InSAR and GNSS time-series along the
+San Andreas fault system. Journal of Geophysical Research: Solid Earth, 126, e2021JB022579. <a class="reference external" href="https://doi.org/10.1029/2021JB022579">https://doi.org/10.1029/2021JB022579</a></p>
+<p><em>Page in progress as more research progresses</em></p>
 </section>
 </section>
 
