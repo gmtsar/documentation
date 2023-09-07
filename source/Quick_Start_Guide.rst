@@ -100,7 +100,75 @@ If you want to change the default processing parameters use :doc:`pop_config.csh
 default configuration file, and edit as necessary.
 
     
+Beyond the Wrapped Interferogram: Unwrapping
+--------------------------------------------
 
+If you are interested in also processing an unwrapped interferogram to visualize estimated
+absolute displacement, you can edit the main configuration files (e.g., config.tops.txt):
 
+   * Search for "snaphu" and find the "threshold_snaphu" parameter
+   * Change this parameter from 0 to a nonzero value less than 1 to turn on unwrapping
+     NOTE: do not just comment out one line and write a second line; just change the value
+   * For a place to start, try threshold_snaphu = 0.1
+   * Then, to run the unwrapping, change your "proc_stage" parameter to "5" at the top of your file
+   * Finally, re-run p2p_processing with this edited configuration file
+
+NOTE: the snaphu threshold value refers to a coherence threshold used for unwrapping.
+
+If your geocoding function is turned on, you should produce a pdf and kml file of your interferogram.
+
+Optional Presentation Choices
+-----------------------------
+
+**REFERENCE SYSTEM**: Since InSAR measurements are only with reference to the satellite, we need to 
+apply a reference system to our interferograms. One way to do this is to apply a reference pixel or 
+pin point in your interferogram. Another way to do this is to tie your interferogram to GNSS 
+displacements. 
+
+*Applying a Reference Point*
+
+To apply a reference point, you need to select a pixel inside your interferogram that is a relatively
+stable point (e.g., if you are calculating an earthquake interferogram, choose a point as far from the 
+epicenter as possible). If you know the stable point in longitude, latitude, you can use :doc:`SAT_llt2rat`
+like this to get your point in radar coordinates:
+
+ ::
+ 
+    SAT_llt2rat master.PRM 0 < point.llt > point.ratll 
+
+Once you have your point in radar coordinates, you can write a short script to extract the point's value
+and remove it from your entire interferogram to reference it to that point location:
+
+ ::
+
+    #!/bin/bash
+    #
+    # Applying a reference point to an interferogram
+    #
+    pinvalue=$( gmt grdtrack point.ratll -Gunwrap.grd | awk '{print $6}' ) 
+    gmt grdmath unwrap.grd ${pinvalue} SUB = unwrap_pinned.grd
+    #
+    # This outputs "unwrap_pinned.grd" as a referenced interferogram
+
+**CONVERTING RADIANS TO MILLIMETERS**: Another common presentation question is how to convert the unwrapped
+interferogram in radians to the more intuitive millimeter units. You can do this with the right conversion
+values like so:
+
+ ::
+
+    gmt grdmath unwrap.grd 0.0554658 MUL -79.58 MUL = unwrap_mm.grd
+
+After which you can choose to plot this with GMT.
+
+**PROJECTING INTO LAT-LON**: A last common question is how to project a grid file into geocoded
+coordinates. The way to do this is to use :doc:`proj_ra2ll.csh` like this:
+
+ ::
+
+    #In a directory where you have a trans.dat file:
+    proj_ra2ll.csh trans.dat unwrap.grd unwrap_ll.grd
+
+    # where the third input is the specified output file name, so this command will produce the 
+    # file "unwrap_ll.grd"
 
 

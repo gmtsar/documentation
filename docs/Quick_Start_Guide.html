@@ -49,6 +49,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#step-2-download-sar-data">Step 2: Download SAR Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-3-download-supporting-data">Step 3: Download Supporting Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-4-run-p2p-processing">Step 4: Run p2p_processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beyond-the-wrapped-interferogram-unwrapping">Beyond the Wrapped Interferogram: Unwrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-presentation-choices">Optional Presentation Choices</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Processing_Scripts.html">Core Processing Scripts</a></li>
@@ -63,6 +65,7 @@
 <p class="caption" role="heading"><span class="caption-text">Getting the Most Out of Your Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Guide_To_Interferogram_Corrections.html">Guide To Interferogram Corrections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Projecting_To_LatitudeLongitude.html">Projecting To LatitudeLongitude</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
 <ul>
@@ -218,6 +221,74 @@ to see its usage and inputs. To run with default parameter choices, leave the co
 </div></blockquote>
 <p>If you want to change the default processing parameters use <a class="reference internal" href="pop_config.csh.html"><span class="doc">pop_config.csh</span></a> to create a
 default configuration file, and edit as necessary.</p>
+</section>
+<section id="beyond-the-wrapped-interferogram-unwrapping">
+<h2>Beyond the Wrapped Interferogram: Unwrapping<a class="headerlink" href="#beyond-the-wrapped-interferogram-unwrapping" title="Permalink to this headline"></a></h2>
+<p>If you are interested in also processing an unwrapped interferogram to visualize estimated
+absolute displacement, you can edit the main configuration files (e.g., config.tops.txt):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Search for “snaphu” and find the “threshold_snaphu” parameter</p></li>
+<li><p>Change this parameter from 0 to a nonzero value less than 1 to turn on unwrapping
+NOTE: do not just comment out one line and write a second line; just change the value</p></li>
+<li><p>For a place to start, try threshold_snaphu = 0.1</p></li>
+<li><p>Then, to run the unwrapping, change your “proc_stage” parameter to “5” at the top of your file</p></li>
+<li><p>Finally, re-run p2p_processing with this edited configuration file</p></li>
+</ul>
+</div></blockquote>
+<p>NOTE: the snaphu threshold value refers to a coherence threshold used for unwrapping.</p>
+<p>If your geocoding function is turned on, you should produce a pdf and kml file of your interferogram.</p>
+</section>
+<section id="optional-presentation-choices">
+<h2>Optional Presentation Choices<a class="headerlink" href="#optional-presentation-choices" title="Permalink to this headline"></a></h2>
+<p><strong>REFERENCE SYSTEM</strong>: Since InSAR measurements are only with reference to the satellite, we need to
+apply a reference system to our interferograms. One way to do this is to apply a reference pixel or
+pin point in your interferogram. Another way to do this is to tie your interferogram to GNSS
+displacements.</p>
+<p><em>Applying a Reference Point</em></p>
+<p>To apply a reference point, you need to select a pixel inside your interferogram that is a relatively
+stable point (e.g., if you are calculating an earthquake interferogram, choose a point as far from the
+epicenter as possible). If you know the stable point in longitude, latitude, you can use <a class="reference internal" href="SAT_llt2rat.html"><span class="doc">SAT_llt2rat</span></a>
+like this to get your point in radar coordinates:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SAT_llt2rat</span> <span class="n">master</span><span class="o">.</span><span class="n">PRM</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">point</span><span class="o">.</span><span class="n">llt</span> <span class="o">&gt;</span> <span class="n">point</span><span class="o">.</span><span class="n">ratll</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once you have your point in radar coordinates, you can write a short script to extract the point’s value
+and remove it from your entire interferogram to reference it to that point location:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#
+# Applying a reference point to an interferogram
+#
+pinvalue=$( gmt grdtrack point.ratll -Gunwrap.grd | awk &#39;{print $6}&#39; )
+gmt grdmath unwrap.grd ${pinvalue} SUB = unwrap_pinned.grd
+#
+# This outputs &quot;unwrap_pinned.grd&quot; as a referenced interferogram
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>CONVERTING RADIANS TO MILLIMETERS</strong>: Another common presentation question is how to convert the unwrapped
+interferogram in radians to the more intuitive millimeter units. You can do this with the right conversion
+values like so:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gmt</span> <span class="n">grdmath</span> <span class="n">unwrap</span><span class="o">.</span><span class="n">grd</span> <span class="mf">0.0554658</span> <span class="n">MUL</span> <span class="o">-</span><span class="mf">79.58</span> <span class="n">MUL</span> <span class="o">=</span> <span class="n">unwrap_mm</span><span class="o">.</span><span class="n">grd</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>After which you can choose to plot this with GMT.</p>
+<p><strong>PROJECTING INTO LAT-LON</strong>: A last common question is how to project a grid file into geocoded
+coordinates. The way to do this is to use <a class="reference internal" href="proj_ra2ll.csh.html"><span class="doc">proj_ra2ll.csh</span></a> like this:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#In a directory where you have a trans.dat file:</span>
+<span class="n">proj_ra2ll</span><span class="o">.</span><span class="n">csh</span> <span class="n">trans</span><span class="o">.</span><span class="n">dat</span> <span class="n">unwrap</span><span class="o">.</span><span class="n">grd</span> <span class="n">unwrap_ll</span><span class="o">.</span><span class="n">grd</span>
+
+<span class="c1"># where the third input is the specified output file name, so this command will produce the</span>
+<span class="c1"># file &quot;unwrap_ll.grd&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </section>
 </section>
 
