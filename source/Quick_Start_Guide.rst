@@ -156,7 +156,11 @@ values like so:
 
  ::
 
-    gmt grdmath unwrap.grd 0.0554658 MUL -79.58 MUL = unwrap_mm.grd
+    # We need to know the wavelength of the satellite you are working with
+    gmt grdmath unwrap_mask.grd $wavel MUL -79.58 MUL = los_mm.grd
+    
+    #For Sentinel-1 data (0.0554658 is the wavelength in m)
+    gmt grdmath unwrap.grd 0.0554658 MUL -79.58 MUL = unwrap_los_mm.grd
 
 After which you can choose to plot this with GMT.
 

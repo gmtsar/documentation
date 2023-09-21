@@ -273,7 +273,11 @@ gmt grdmath unwrap.grd ${pinvalue} SUB = unwrap_pinned.grd
 interferogram in radians to the more intuitive millimeter units. You can do this with the right conversion
 values like so:</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gmt</span> <span class="n">grdmath</span> <span class="n">unwrap</span><span class="o">.</span><span class="n">grd</span> <span class="mf">0.0554658</span> <span class="n">MUL</span> <span class="o">-</span><span class="mf">79.58</span> <span class="n">MUL</span> <span class="o">=</span> <span class="n">unwrap_mm</span><span class="o">.</span><span class="n">grd</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span># We need to know the wavelength of the satellite you are working with
+gmt grdmath unwrap_mask.grd $wavel MUL -79.58 MUL = los_mm.grd
+
+#For Sentinel-1 data (0.0554658 is the wavelength in m)
+gmt grdmath unwrap.grd 0.0554658 MUL -79.58 MUL = unwrap_los_mm.grd
 </pre></div>
 </div>
 </div></blockquote>
